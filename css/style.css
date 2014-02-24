@@ -11,6 +11,12 @@
 }
 @font-face
 {
+    font-family: "Open Sans";
+    src: url("OpenSans-Italic.ttf");
+    font-style: italic;
+}
+@font-face
+{
     font-family: "Open Sans Condensed";
     src: url("OpenSansCondensed300.ttf");
 }
@@ -48,10 +54,17 @@ ol, ul, li
 a
 {
     text-decoration: none;
+    color: #43464d;
+    -webkit-transition: all 200ms;
+    -moz-transition: all 200ms;
+    -ms-transition: all 200ms;
+    -o-transition: all 200ms;
+    transition: all 200ms;
 }
 a:hover
 {
     text-decoration: underline;
+    color: #5e72a4;
 }
 blockquote, q
 {
@@ -705,7 +718,6 @@ button.disabled:hover
 .refresh-users,
 .view-all-users
 {
-    color: #768fce;
     cursor: pointer;
     font-size: 12px;
     border-left: solid 1px rgba( 69, 71, 77, .1 );
@@ -728,7 +740,6 @@ button.disabled:hover
 
 .module.toptrends ol li a {
     font: 13px 'Open Sans', sans-serif;
-    color: #768fce;
 }
 
 /***********************************
@@ -828,7 +839,7 @@ button.disabled:hover
     top: 0;
     width: 0;
     height: 100%;
-    background: #b2d47b;
+    background: #76b2ce;
     transition: all .2s linear;
 }
 .postboard-posts > .post.open:after
@@ -839,7 +850,7 @@ button.disabled:hover
 .post:hover,
 .post .post
 {
-    background: #ececed;
+    background: #fcfdff;
 }
 .post:hover
 {
@@ -915,6 +926,52 @@ button.disabled:hover
 {
     color: #768fce;
 }
+/* external http links */
+.post-text a[href^="http"] {
+    font: italic 13px "Open Sans", sans-serif;
+    color: #aa617d;
+    -webkit-transition: all 200ms;
+    -moz-transition: all 200ms;
+    -ms-transition: all 200ms;
+    -o-transition: all 200ms;
+    transition: all 200ms;
+}
+.post-text a[href^="http"]:after {
+    content: '';
+    display: inline-block;
+    position: relative;
+    top: 4px;
+    width: 17px;
+    height: 17px;
+    background: url(images/ext-link.png) no-repeat center center;
+    opacity: .8;
+}
+.post-text a[href^="http"]:hover{
+    color: #d57a9f;
+    text-decoration: underline;
+}
+.post-text a[href^="#profile"] {
+    color: #5e8da4;
+    -webkit-transition: all 200ms;
+    -moz-transition: all 200ms;
+    -ms-transition: all 200ms;
+    -o-transition: all 200ms;
+    transition: all 200ms;
+}
+.post-text a[href^="#profile"]:hover {
+    color: #76b2ce;
+}
+.toptrends-list a[href^="#hashtag"], .post-text a[href^="#hashtag"]{
+    color: #5e72a4;
+    -webkit-transition: all 200ms;
+    -moz-transition: all 200ms;
+    -ms-transition: all 200ms;
+    -o-transition: all 200ms;
+    transition: all 200ms;
+}
+.toptrends-list a[href^="#hashtag"]:hover, .post-text a[href^="#hashtag"]:hover{
+    color: #768fce;
+}
 .mini-screen-name
 {
     font-size: 13px;
@@ -940,12 +997,20 @@ button.disabled:hover
     color: #b2b2b2;
     cursor: pointer;
     font-size: 12px;
+    -webkit-transition: all 200ms;
+    -moz-transition: all 200ms;
+    -ms-transition: all 200ms;
+    -o-transition: all 200ms;
+    transition: all 200ms;
 }
 .post-expand
 {
     position: absolute;
     left: 60px;
     padding-top: 3px;
+}
+.post-expand:hover {
+    color: #898989;
 }
 .related .post-expand
 {
@@ -960,6 +1025,11 @@ button.disabled:hover
     margin-right: 3px;
     opacity: .7;
     display: none;
+    -webkit-transition: all 200ms;
+    -moz-transition: all 200ms;
+    -ms-transition: all 200ms;
+    -o-transition: all 200ms;
+    transition: all 200ms;
 }
 .post:hover .post-reply,
 .post:hover .post-propagate,
