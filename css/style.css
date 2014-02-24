@@ -664,7 +664,6 @@ button.disabled:hover
 }
 .followed-by
 {
-    color: #43464d;
     font-size: 13px;
     cursor: pointer;
 }
@@ -929,6 +928,7 @@ button.disabled:hover
 /* external http links */
 .post-text a[href^="http"] {
     font: italic 13px "Open Sans", sans-serif;
+    text-decoration: none;
     color: #aa617d;
     -webkit-transition: all 200ms;
     -moz-transition: all 200ms;
@@ -950,19 +950,21 @@ button.disabled:hover
     color: #d57a9f;
     text-decoration: underline;
 }
-.post-text a[href^="#profile"] {
+.post-text a[href^="#profile"], .follow-suggestions a[href^="#profile"] {
     color: #5e8da4;
+    text-decoration: none;
     -webkit-transition: all 200ms;
     -moz-transition: all 200ms;
     -ms-transition: all 200ms;
     -o-transition: all 200ms;
     transition: all 200ms;
 }
-.post-text a[href^="#profile"]:hover {
+.post-text a[href^="#profile"]:hover, .follow-suggestions a[href^="#profile"]:hover {
     color: #76b2ce;
 }
 .toptrends-list a[href^="#hashtag"], .post-text a[href^="#hashtag"]{
     color: #5e72a4;
+    text-decoration: none;
     -webkit-transition: all 200ms;
     -moz-transition: all 200ms;
     -ms-transition: all 200ms;
@@ -971,6 +973,19 @@ button.disabled:hover
 }
 .toptrends-list a[href^="#hashtag"]:hover, .post-text a[href^="#hashtag"]:hover{
     color: #768fce;
+}
+
+.post-info a[href^="#profile"], .followers a[href^="#profile"]{
+    color: #43464d;
+    -webkit-transition: all 200ms;
+    -moz-transition: all 200ms;
+    -ms-transition: all 200ms;
+    -o-transition: all 200ms;
+    transition: all 200ms;
+}
+.post-info a[href^="#profile"]:hover, .followers a[href^="#profile"]:hover {
+    color: #5e8da4;
+    text-decoration: none;
 }
 .mini-screen-name
 {
