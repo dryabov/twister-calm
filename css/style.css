@@ -908,6 +908,10 @@ button.disabled:hover
     opacity: .5;
     text-decoration: none;
 }
+.post-info-time:hover {
+    text-decoration: none;
+    color: #43464d;
+}
 .post-text
 {
     font-size: 13px;
@@ -927,6 +931,8 @@ button.disabled:hover
 }
 /* external http links */
 .post-text a[href^="http"] {
+    display: inline-block;
+    border-bottom: 0px solid #767b87;
     font: italic 13px "Open Sans", sans-serif;
     text-decoration: none;
     color: #aa617d;
@@ -936,19 +942,29 @@ button.disabled:hover
     -o-transition: all 200ms;
     transition: all 200ms;
 }
+.post-text a[href^="http"]:hover{
+    color: #d57a9f;
+    opacity: .8;
+}
 .post-text a[href^="http"]:after {
     content: '';
     display: inline-block;
     position: relative;
-    top: 4px;
-    width: 17px;
-    height: 17px;
+    top: 3px;
+    width: 16px;
+    height: 16px;
     background: url(images/ext-link.png) no-repeat center center;
-    opacity: .8;
+    opacity: 1;
+    zoom: .8;
+    -moz-transform: scale(.8);
+    -webkit-transition: all 200ms;
+    -moz-transition: all 200ms;
+    -ms-transition: all 200ms;
+    -o-transition: all 200ms;
+    transition: all 200ms;
 }
-.post-text a[href^="http"]:hover{
-    color: #d57a9f;
-    text-decoration: underline;
+.post-text a[href^="http"]:hover:after {
+    opacity: .8;
 }
 .post-text a[href^="#profile"], .follow-suggestions a[href^="#profile"] {
     color: #5e8da4;
@@ -975,7 +991,7 @@ button.disabled:hover
     color: #768fce;
 }
 
-.post-info a[href^="#profile"], .followers a[href^="#profile"]{
+.post-info a[href^="#profile"], .followers a[href^="#profile"],  a[href^="#profile"].post-retransmited-by{
     color: #43464d;
     -webkit-transition: all 200ms;
     -moz-transition: all 200ms;
@@ -983,7 +999,7 @@ button.disabled:hover
     -o-transition: all 200ms;
     transition: all 200ms;
 }
-.post-info a[href^="#profile"]:hover, .followers a[href^="#profile"]:hover {
+.post-info a[href^="#profile"]:hover, .followers a[href^="#profile"]:hover,  a[href^="#profile"].post-retransmited-by:hover {
     color: #5e8da4;
     text-decoration: none;
 }
@@ -1144,7 +1160,7 @@ button.disabled:hover
 {
     display: none;
     position: absolute;
-    background: #e34f42;
+    background: #43464d;
     font-size: 12px;
     white-space: nowrap;
     padding: 3px 5px;
@@ -1160,7 +1176,7 @@ button.disabled:hover
     width: 0;
     left: 4px;
     bottom: -5px;
-    border-top: solid 5px #e34f42;
+    border-top: solid 5px #43464d;
     border-left: solid 5px transparent;
     border-right: solid 5px transparent;
 }
@@ -1619,7 +1635,7 @@ button.disabled:hover
     display: inline-block;
     width: 120px;
     height: 10px;
-    background-color: #b43e34;
+    background-color: #43464d;
     border-radius: 100px;
     box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.05);
     position: relative;

@@ -98,7 +98,7 @@ function postToElem( post, kind ) {
         elem.find(".post-context").show();
         var retweetedByElem = elem.find(".post-retransmited-by");
         retweetedByElem.attr("href", $.MAL.userUrl(retweeted_by));
-        retweetedByElem.text(retweeted_by);
+        retweetedByElem.text('@'+retweeted_by);
     }
 
     return elem;
