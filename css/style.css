@@ -128,6 +128,23 @@ button.disabled:hover
     background: #43464d;
     z-index: 2;
 }
+.userMenu:after{
+    position: absolute;
+    content: '';
+    width: 9999px;
+    height: 40px;
+    background: #43464d;
+    z-index: -999;
+}
+.userMenu:before{
+    position: absolute;
+    content: '';
+    width: 9999px;
+    left: -9999px;
+    height: 40px;
+    background: #43464d;
+    z-index: -999;
+}
 /*.userMenu:after
 {
     content: "";
@@ -259,6 +276,34 @@ button.disabled:hover
 {
     float: right;
     position: relative;
+}
+input.userMenu-search-field::-webkit-input-placeholder {
+    color: #4d4d4d;
+    font-style: italic;
+}
+input.userMenu-search-field:-moz-placeholder {
+    color: #4d4d4d;
+    font-style: italic;
+}
+input.userMenu-search-field::-moz-placeholder {
+    color: #4d4d4d;
+    font-style: italic;
+}
+input.userMenu-search-field:-ms-input-placeholder {
+    color: #4d4d4d;
+    font-style: italic;
+}
+input.userMenu-search-field:focus::-webkit-input-placeholder {
+    color: #fff;
+}
+input.userMenu-search-field:focus:-moz-placeholder {
+    color: #fff;
+}
+input.userMenu-search-field:focus::-moz-placeholder {
+    color: #fff;
+}
+input.userMenu-search-field:focus::-ms-input-placeholder {
+    color: #fff;
 }
 .userMenu li.userMenu-config > a
 {
@@ -559,7 +604,7 @@ button.disabled:hover
 .post-area-new textarea
 {
     resize: none;
-    width: 445px;
+    width: 430px;
     display: block;
     transition: all .3s linear;
     height: 28px;
@@ -582,7 +627,7 @@ button.disabled:hover
 .post-area-new.open textarea
 {
     height: 80px;
-    border: solid 1px rgba( 227, 79, 66, .5 );
+    border: solid 1px rgba( 118, 145, 206, .8 );
     box-shadow: 0 0 10px rgba(0, 0, 0, .3 );
 }
 .post-area-extras
@@ -591,15 +636,50 @@ button.disabled:hover
     height: 0;
     text-align: right;
 }
-.post-submit
-{
-    background: #45474d;
-    color: rgba( 255, 255, 255, .8 );
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
+.post-submit, .dm-submit {
     display: inline-block;
-    margin-top: 4px;
+    height: 34px;
+    padding: 0 10px 0 40px;
+    color: #f1f1f1;
+    font: 17px/34px "Open Sans Condensed";
+    border-radius: 2px;
+    opacity: 1;
+    
+    -webkit-transition: all 200ms;
+    -moz-transition: all 200ms;
+    -ms-transition: all 200ms;
+    -o-transition: all 200ms;
+    transition: all 200ms;
+
+}
+.post-submit:hover, .dm-submit:hover {
+    color: #fff;
+    opacity: .9;
+    
+}
+.directMessages .dm-submit {
+    margin-right: 55px;
+    background: #6d83bd url(images/dm.png) no-repeat 10px 3px;
+}
+.post .post-submit {
+    margin-right: 16px;
+    background: #6d83bd url(images/pen.png) no-repeat 10px 3px;
+}
+.mini-profile .post-submit {
+    background: #6d83bd url(images/pen.png) no-repeat 10px 3px;
+    margin-right: 0;
+}
+.post-submit.disabled {
+    opacity: .6;
+    -webkit-transition: all 200ms;
+    -moz-transition: all 200ms;
+    -ms-transition: all 200ms;
+    -o-transition: all 200ms;
+    transition: all 200ms;
+}
+.post-submit.disabled:hover {
+    color: #fff;
+    opacity: .7;
 }
 .post-area-new.open textarea + .post-area-extras
 {
@@ -838,7 +918,7 @@ button.disabled:hover
     top: 0;
     width: 0;
     height: 100%;
-    background: #76b2ce;
+    background: #b2d67b;
     transition: all .2s linear;
 }
 .postboard-posts > .post.open:after
@@ -927,7 +1007,7 @@ button.disabled:hover
 .post-context a,
 .mini-screen-name
 {
-    color: #768fce;
+    color: #76b2ce;
 }
 /* external http links */
 .post-text a[href^="http"] {
@@ -1229,7 +1309,6 @@ button.disabled:hover
 .network.singleBlock ul li > span
 {
     font-weight: bold;
-    opacity: .7;
 }
 .singleBlock .spam-msg
 {
@@ -1248,7 +1327,7 @@ button.disabled:hover
     margin-bottom: 10px;
 }
 .highlight {
-    background: rgba(255, 230, 0, 0.5);
+    background: #fff;
     padding: 3px 5px;
     margin: -3px -5px;
     line-height: 1.7;
@@ -1257,11 +1336,11 @@ button.disabled:hover
 }
 .connection-status
 {
-    border: 2px solid red;
+    border: 2px solid #e18881;
 }
 .connection-status.connected
 {
-    border: 2px solid green;
+    border: 2px solid #b2d67b;
 }
 .character-limit
 {
@@ -1444,7 +1523,7 @@ button.disabled:hover
 .directMessages .modal-content
 {
     overflow-y: auto;
-    height: 300px;
+    height: 94%;
 }
 .directMessages .modal-buttons
 {
