@@ -765,7 +765,7 @@ if(preferredLanguage == "ru"){
        "days": "%{smart_count} день |||| %{smart_count} дней",
        "Detailed information": "Подробная информация",
        "DHT network down.": "Недоступна DHT сеть.",
-       "Direct Messages": "Личные сообщения",
+       "Direct Messages": "ЛС",
        "Disable": "Отключено",
        "Display mentions to @": "Показать ответы для @",
        "Display retransmissions": "Показать репосты",
