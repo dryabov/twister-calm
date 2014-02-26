@@ -108,7 +108,7 @@ if(preferredLanguage == "en"){
       "reply_to": "Reply to %{fullname}",
       "Retransmit": "Retransmit",
       "Retransmits": "Retransmits",
-      "Retransmitted by": "Retransmitted by",
+      "Retransmitted by": "Retransmitted by ",
       "search": "search",
       "seconds": "%{smart_count} second |||| %{smart_count} seconds",
       "send": "send",
