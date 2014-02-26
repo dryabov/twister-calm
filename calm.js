@@ -2,5 +2,8 @@ $(function(){
 	$('.post-text').on('click', 'a', function(e){
 		e.stopPropagation();
 	});
-	console.log(ret)
+	$(".modal-blackout").on('click', function(){
+		closeModal($(this));
+		if($(".modal-content").attr("style") != undefined){$(".modal-content").removeAttr("style")}
+	})
 })

@@ -134,6 +134,8 @@ function hideDmSnippetShowDmThread()
 
     var dm_screenname = $this.attr("data-dm-screen-name");
     openDmWithUserModal(dm_screenname);
+
+    $(".modal-content").css("height", "300px"); //fix
 }
 
 
