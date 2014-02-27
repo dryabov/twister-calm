@@ -144,6 +144,7 @@ function directMessagesWithUserPopup()
     var $userInfo = $(this).closest("[data-screen-name]");
     var dm_screenname = $userInfo.attr("data-screen-name");
     openDmWithUserModal( dm_screenname );
+    $(".modal-content").css("height", "300px"); //fix
 }
 
 function openDmWithUserModal(dm_screenname)
