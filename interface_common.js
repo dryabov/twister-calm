@@ -30,7 +30,7 @@ function openModal( modalClass )
 
 //fecha o modal removendo o conteúdo por detach
 function closeModal($this)
-{
+{   
     var $body = $( "body" );
     var $modalWindows = $( "body" ).children( ".modal-blackout" );
 
@@ -440,7 +440,9 @@ var retweetSubmit = function(e)
 
 
 function initInterfaceCommon() {
-    $( "body" ).on( "click", ".cancel" , function() { closeModal($(this)); } );
+    $( "body" ).on( "click", function(event) { 
+        if($(event.target).hasClass('cancel')) closeModal($(this));
+    });
     $( ".post-reply" ).bind( "click", postReplyClick );
     $( ".post-propagate" ).bind( "click", reTwistPopup );
     $( ".userMenu-config-dropdown" ).bind( "click", dropDownMenu );
@@ -460,4 +462,5 @@ function initInterfaceCommon() {
     $( ".open-hashtag-modal").bind( "click", openHashtagModal );
     $( ".open-following-modal").bind( "click", openFollowingModal );
     $( ".userMenu-connections a").bind( "click", openMentionsModal );
+
 }
