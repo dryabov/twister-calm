@@ -257,6 +257,7 @@ var MAL = function()
             if( newDMs ) {
                 $DMsCounter.text(newDMs);
                 $DMsCounter.fadeIn();
+                // DMsNotif();
             } else {
                 $DMsCounter.hide();
             }

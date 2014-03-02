@@ -5,27 +5,29 @@
     <title>twister</title>
     <link rel="stylesheet" href="css/style.css" type="text/css"/>
     <link rel="stylesheet" href="css/profile.css" type="text/css"/>
-    <script src="jquery.min.js"></script>
-    <script src="jQueryPlugins.js"></script>
-    <script src="jquery.json-2.4.js"></script>
-    <script src="jquery.jsonrpcclient.js"></script>
-    <script src="jquery.storageapi.js"></script>
-    <script src="mobile_abstract.js"></script>
-    <script src="twister_io.js"></script>
-    <script src="polyglot.min.js"></script>
-    <script src="interface_localization.js"></script>
-    <script src="twister_network.js"></script>
-    <script src="twister_user.js"></script>
-    <script src="twister_formatpost.js"></script>
-    <script src="twister_following.js"></script>
-    <script src="twister_timeline.js"></script>
-    <script src="twister_newmsgs.js"></script>
-    <script src="twister_actions.js"></script>
-    <script src="twister_directmsg.js"></script>
-    <script src="interface_common.js"></script>
-    <script src="interface_home.js"></script>
-    <script src="jquery.animate-colors-min.js"></script>
-    <script src="calm.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jQueryPlugins.js"></script>
+    <script src="js/jquery.json-2.4.js"></script>
+    <script src="js/jquery.jsonrpcclient.js"></script>
+    <script src="js/jquery.storageapi.js"></script>
+    <script src="js/mobile_abstract.js"></script>
+    <script src="js/twister_io.js"></script>
+    <script src="js/polyglot.min.js"></script>
+    <script src="js/interface_localization.js"></script>
+    <script src="js/twister_network.js"></script>
+    <script src="js/twister_user.js"></script>
+    <script src="js/twister_formatpost.js"></script>
+    <script src="js/twister_following.js"></script>
+    <script src="js/twister_timeline.js"></script>
+    <script src="js/twister_newmsgs.js"></script>
+    <script src="js/twister_actions.js"></script>
+    <script src="js/twister_directmsg.js"></script>
+    <script src="js/interface_common.js"></script>
+    <script src="js/interface_home.js"></script>
+    <script src="js/jquery.animate-colors-min.js"></script>
+    <script src="js/calm.js"></script>
+    <script src="js/options.js"></script>
+    <script>$(function(){setInterval("networkUpdate()", 2000); homeIntInit ();})</script>
 
     <link rel="icon" type="image/png" href="img/twister_mini.png" />
   </head>
@@ -36,35 +38,28 @@
   <nav class="userMenu">
     <ul>
       <li class="userMenu-home"><a href="#"></a></li>
-     <!--  <li class="userMenu-network"><a href="network.html">Network</a></li>
-      <li class="userMenu-profile"><a href="profile-edit.html">Profile</a></li> -->
       <li class="userMenu-config">
         <a class="userMenu-config-dropdown" href="#">
           <div class="config-menu dialog-modal">
-            <!-- <div class="mini-profile-info">
-              <div class="mini-profile-photo"><img src="img/grayed_avatar_placeholder_24.png" alt="user-photo"/></div>
-              <a href="#" class="mini-profile-name">Fulano da Silva</a>
-              <span class="mini-profile-view">View</span>
-            </div> -->
+            <a class="dropdown-menu-item" href="options.html">Options</a>
+            <a class="dropdown-menu-item" href="network.html">Network config</a>
             <a class="dropdown-menu-item" href="profile-edit.html">Setup account</a>
             <a class="dropdown-menu-item" href="following.html">Following users</a>
-            <a class="dropdown-menu-item" href="network.html">Network config</a>
             <a class="dropdown-menu-item" href="login.html">Change user</a>
-            <!-- <a class="dropdown-menu-item promoted-posts-only" href="#">Switch to Promoted posts</a> -->
-            <!-- <a class="direct-messages dropdown-menu-item" href="#">Direct Messages</a> -->
           </div>
         </a>
       </li>
       <li class="userMenu-connections">
         <a href="#">
-          <span class="messages-qtd" style="display:none;">12</span>
+          <span class="messages-qtd" style="display:none;">0</span>
         </a>
       </li>
       <li class="userMenu-messages">
         <a href="#">
-          <span class="messages-qtd" style="display:none;">12</span>
+          <span class="messages-qtd" style="display:none;">0</span>
         </a>
       </li>
+      <li class="userMenu-dhtindicator"><a href="network.html"></a></li>
 
       <!-- BUSCA -->
       <li class="userMenu-search">
@@ -219,7 +214,8 @@
             <p class="post-text"></p>
             <div class="post-context" style="display: none;">
                 <i class="post-retransmited-icon"></i>
-                <span>Retransmitted by</span><a class="post-retransmited-by open-profile-modal" href=""></a>
+                <span>twisted again by</span>
+                <a class="post-retransmited-by open-profile-modal" href=""></a>
             </div>
             <span class="post-expand">Expand</span>
             <!-- elementos de interação com o post que são exibidos no hover -->
@@ -276,6 +272,7 @@
         <div class="modal-header">
           <h3></h3>
           <span id="closeModal" class="modal-close cancel">&times;</span>
+          <span class="modal-back"><</span>
         </div>
         <div class="modal-content"></div>
         <div class="modal-buttons">
@@ -442,6 +439,7 @@
 
   </div>
   <!-- TEMPLATES END -->
-    
+  <audio id="player"></audio>
+  <audio id="playerSec"></audio> 
   </body>
 </html>

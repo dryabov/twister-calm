@@ -19,6 +19,7 @@ function processMention(user, mentionTime, data) {
         console.log("mention from the future will be ignored");
     } else {
         if( !(key in _knownMentions) ) {
+            mensNotif(); // sound notification
             // mention must be somewhat recent compared to last known one to be considered new
             if( mentionTime + 3600 > _lastMentionTime ) {
                 _newMentions++;
@@ -149,13 +150,15 @@ function requestDMsCount() {
 }
 
 function getNewDMsCount() {
-    var newDMs = 0;
+    var newDMs = 0, key, reslt;
 
     for( var key in _newDMsPerUser ) {
         if( _newDMsPerUser.hasOwnProperty(key) ) {
             newDMs += _newDMsPerUser[key];
         }
     }
+    for (key in _newDMsPerUser){if(_newDMsPerUser[key] * 1)reslt = true};
+    if(newDMs > 0 && reslt) DMsNotif(); //sound notification
     return newDMs;
 }
 
