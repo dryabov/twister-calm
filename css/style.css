@@ -544,7 +544,7 @@ input.userMenu-search-field:focus::-ms-input-placeholder {
 }
 .following-list .mini-profile-name
 {
-    padding: 5px 5px 5px 5px;   
+    padding: 5px 5px 5px 5px;
 }
 .profile-data
 {
@@ -590,7 +590,7 @@ input.userMenu-search-field:focus::-ms-input-placeholder {
     cursor: pointer;
     font-size: 14px;
     display: inline-block;
-    width: 70px;
+    width: 85px;
     transition: all .2s linear;
 }
 .mini-profile-actions ul
@@ -1051,11 +1051,9 @@ input.userMenu-search-field:focus::-ms-input-placeholder {
 }
 /* external http links */
 .post-text a[href^="http"] {
-    display: inline-block;
-    border-bottom: 0px solid #767b87;
     font: italic 13px "Open Sans", sans-serif;
     text-decoration: none;
-    color: #aa617d;
+    color: #b46e67;
     -webkit-transition: all 200ms;
     -moz-transition: all 200ms;
     -ms-transition: all 200ms;
@@ -1063,7 +1061,7 @@ input.userMenu-search-field:focus::-ms-input-placeholder {
     transition: all 200ms;
 }
 .post-text a[href^="http"]:hover{
-    color: #d57a9f;
+    color: #e18881;
     opacity: .8;
 }
 .post-text a[href^="http"]:after {
@@ -1888,4 +1886,41 @@ input.userMenu-search-field:focus::-ms-input-placeholder {
 }
 #notifyForm p {
     margin-top: 15px;
+}
+/* Following page */
+.following ol.following-list > li{
+    display: inline-block;
+    width: 280px;
+    height: 120px;
+    margin: 5px;
+    float: left;
+    border: 3px dashed #e0e6f5;
+    background: #fff;
+    border-radius: 10px;
+}
+.following ol.following-list li .swarm-status {
+    font: 11px "Open Sans", sans-serif;
+    color: #343434;
+    margin-left: 10px;
+}
+.following ol.following-list li span.mini-profile-name:hover {
+    color: #5e8da4;
+}
+.following ol.following-list li span.mini-screen-name {
+    color: #5e8da4;
+}
+.following ol.following-list li span.mini-screen-name:hover {
+    color: #76b2ce;
+}
+.following ol.following-list .mini-profile-info .mini-profile-actions {
+    position: absolute;
+    top: 8px;
+    right: 2px;
+    z-index: 10;
+}
+.following ol.following-list .mini-profile-info button {
+    margin-top: 5px;
+}
+.following ol.following-list .mini-profile-info .mini-profile-name {
+
 }
