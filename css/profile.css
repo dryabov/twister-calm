@@ -3,7 +3,7 @@
 ***************************************/
 .profile-card
 {
-/*    padding: 7px;*/
+    padding: 9px;
     background: rgba( 255, 255, 255, .5 );
     border: solid 1px rgba( 69, 71, 77, .05 );
     position: relative;
@@ -179,7 +179,7 @@
 }
 .profile-card-main input.input-description
 {
-    width: 500px;
+    width: 90%;
     margin-top: 100px;
 }
 .input-name

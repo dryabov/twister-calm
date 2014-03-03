@@ -94,7 +94,6 @@ function DMsNotif() {
 		}
 	player[0].volume = localStorage['playerVol'];
 	player[0].play();
-	// setTimeout('player[0].pause', 1000);
 }
 
 function mensNotif() {
