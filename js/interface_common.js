@@ -386,14 +386,28 @@ function replyTextKeypress(e) {
             $.MAL.disableButton(tweetAction);
         }
 
-        if (e.keyCode === 13) {
-            if (!e.ctrlKey) {
+        if(localStorage['keysSend'] == 1){
+            if (e.keyCode === 13 && (!e.metaKey && !e.ctrlKey)) {
                 $this.val($this.val().trim());
                 if( !tweetAction.hasClass("disabled") ) {
                     tweetAction.click();
+                    if($this.parent().parent().is('.post-area,.post-reply-content')){
+                        $this.parent().removeClass('open');
+                        $this.blur();
+                    }
                 }
-            } else {
-                $this.val($this.val() + "\r");
+            }
+        }else if(localStorage['keysSend'] == 2){
+            if (e.keyCode === 13 && (e.metaKey || e.ctrlKey)) {
+                
+                $this.val($this.val().trim());
+                if( !tweetAction.hasClass("disabled") ) {
+                    tweetAction.click();
+                    if($this.parent().parent().is('.post-area,.post-reply-content')){
+                        $this.parent().removeClass('open');
+                        $this.blur();
+                    }
+                }
             }
         }
     }
@@ -456,7 +470,7 @@ function initInterfaceCommon() {
     $( ".modal-propagate").click( retweetSubmit );
 
     var $replyText = $( ".post-area-new textarea" );
-    $replyText.keyup( replyTextKeypress );
+    $replyText.on("keydown", replyTextKeypress );
 
     $( ".open-profile-modal").bind( "click", openProfileModal );
     $( ".open-hashtag-modal").bind( "click", openHashtagModal );

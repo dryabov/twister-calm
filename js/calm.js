@@ -26,7 +26,7 @@ $(function(){
 	setTimeout(function() {setInterval(dhtIndicatorBg, 2000)}, 400);
 })
 
-function modalDMIntr () {
+function modalDMIntr() {
 	$(".cancel").on('click', function(event){
 		if(!$(event.target).hasClass("cancel")) return;
 		if($(".modal-content").attr("style") != undefined){$(".modal-content").removeAttr("style")};
@@ -40,7 +40,7 @@ function modalDMIntr () {
 };
 //sound notifications
 
-function soundNotifOptions () {
+function soundNotifOptions() {
 	if(!localStorage['sndDM']) localStorage['sndDM'] = false;
 	if(!localStorage['sndMention']) localStorage['sndMention'] = false;
 	$('#notifyForm select').each(function(){
@@ -110,11 +110,21 @@ function mensNotif() {
 		}
 	player[0].volume = localStorage['playerVol'];
 	player[0].play();
-	// setTimeout('player[0].pause', 1000);
 };
+
+function keysSend() {
+	if(!localStorage['keysSend']) localStorage['keysSend'] = 1;
+	$('#keysOpt select')[0].value = localStorage['keysSend'];
+	
+	$('#keysOpt select').on('change', function(){
+		localStorage[this.id] = this.value;
+	
+	})
+}
 function InitOptions () {
 	soundNotifOptions();
 	volumeControl();
+	keysSend();
 }
 function homeIntInit () {
 	modalDMIntr ();

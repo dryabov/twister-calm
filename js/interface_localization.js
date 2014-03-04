@@ -78,6 +78,7 @@ if(preferredLanguage == "en"){
       "Internal error: lastPostId unknown (following yourself may fix!)": "Internal error: lastPostId unknown (following yourself may fix!)",
       "Known peers:": "Known peers: ",
       "Last block is ahead of your computer time, check your clock.": "Last block is ahead of your computer time, check your clock.",
+      "Mentions": "Mentions",
       "mentions_at": "Mentions @%{user}",
       "minutes": "%{smart_count} minute |||| %{smart_count} minutes",
       "Must be 16 characters or less.": "Must be 16 characters or less.", // username
@@ -117,6 +118,7 @@ if(preferredLanguage == "en"){
       "Sent Direct Message": "Sent Direct Message",
       "Sent Post to @": "Sent Post to @",
       "Setup account": "Setup account",
+      "Sound notifications": "Sound notifications",
       "switch_to_network": "Local daemon is not connected to the network or\n" +
                 "block chain is outdated. If you stay in this page\n" +
                 "your actions may not work.\n" +

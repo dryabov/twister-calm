@@ -1412,7 +1412,7 @@ input.userMenu-search-field:focus::-ms-input-placeholder {
     background: #fff;
     transition: background-color 100ms linear;
 }
-.login .module select.local-usernames, .sndOpt {
+.login .module select.local-usernames, .sndOpt, #keysOpt select{
     height: 30px;
     font: 13px/24px "Open sans";
     text-align: center;
