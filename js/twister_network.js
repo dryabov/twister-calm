@@ -200,7 +200,7 @@ function getSpamMsg() {
                function(args, ret) {
                    var $postArea = $(".spam-msg");
                    var $localUsersList = $("select.local-usernames.spam-user");
-                   $postArea.val(ret[1]);
+                   $postArea.val(polyglot.t(ret[1]));
                    $localUsersList.val(ret[0]);
                }, {},
                function(args, ret) {

@@ -99,6 +99,7 @@ if(preferredLanguage == "en"){
       "post": "post", // verb - button to post a message
       "Post to promote:": "Post to promote: ",
       "Posts": "Posts",
+      "Promoted posts are needed to run the network infrastructure. If you want to help, start generating blocks and advertise. [en]": "Promoted posts are needed to run the network infrastructure. If you want to help, start generating blocks and advertise. [en]",
       "propagating_nickname": "Propagating nickname %{username} to the network...",
       "Public": "Public",
       "Refresh": "Refresh",
@@ -754,12 +755,12 @@ if(preferredLanguage == "ru"){
        "Available": "Доступно", // username is available
        "Block chain information": "Информация цепочки блоков",
        "Block chain is up-to-date, twister is ready to use!": "Цепочка блоков обновлена, twister готов к использованию!",
-       "Block generation": "Майнинг блоков ",
+       "Block generation": "Генерация блоков ",
        "Cancel": "Отменить",
        "Change user": "Сменить пользователя",
        "Checking...": "Проверка...", // checking if username is available
        "Collapse": "Свернуть", // smaller view of a post
-       "Configure block generation": "Настройка майнинга",
+       "Configure block generation": "Настройка генерации блоков",
        "Connections:": "Соединений: ", // to network
        "Connection lost.": "Соединение с сетью было потеряно.",
        "days": "%{smart_count} день |||| %{smart_count} дней",
@@ -769,12 +770,12 @@ if(preferredLanguage == "ru"){
        "Disable": "Отключено",
        "Display mentions to @": "Показать ответы для @",
        "Display retransmissions": "Показать репосты",
-       "DNS to obtain list of peers:": "DNS адресс для получения пиров:",
+       "DNS to obtain list of peers:": "DNS адрес для получения пиров:",
        "downloading_block_chain": "Загрузка цепочки блоков, пожалуйста подождите, (Цепочка блоков устарела на %{days} дней).",
        "download_posts_status": "Загружено %{portion} постов", // Downloaded 10/30 posts
        "Enable": "Включено",
        "error": "Ошибка: %{error}",
-       "error_connecting_to_daemon": "Ошибка  к локальному демону twisterd.",
+       "error_connecting_to_daemon": "Ошибка подключения к локальному демону twisterd.",
        "Error in 'createwalletuser' RPC.": "Ошибка при обращении к RPC - при попытке выполнить 'createwalletuser'.",
        "Error in 'importprivkey'": "Ошибка при обращении к RPC - при попытке выполнить 'importprivkey' %{rpc}",
        "Error in 'sendnewusertransaction' RPC.": "Ошибка при обращении к RPC - при попытке выполнить 'sendnewusertransaction'",
@@ -789,12 +790,13 @@ if(preferredLanguage == "ru"){
        "Following users": "Подписанные пользователи",
        "Force connection to peer:": "Принудительно подключиться к пиру:",
        "General information": "Основное",
-       "Generate blocks (send promoted messages)": "Майнинг (отправка рекламных сообщений)",
+       "Generate blocks (send promoted messages)": "Генерация блоков (отправка рекламных сообщений)",
        "Home": "Главная", // homepage
        "hours": "%{smart_count} час |||| %{smart_count} часов",
-       "Internal error: lastPostId unknown (following yourself may fix!)": "Внутренняя ошибка: lastPostId неизвестен (Попробуйте подписаться сами на себя, это должно помоч!)",
+       "Internal error: lastPostId unknown (following yourself may fix!)": "Внутренняя ошибка: lastPostId неизвестен (Попробуйте подписаться сами на себя, это должно помочь!)",
        "Known peers:": "Известные пиры: ",
        "Last block is ahead of your computer time, check your clock.": "Последний полученный блок опережает время вашего компьютера, проверьте правильно ли работают часы.",
+       "Mentions": "Упоминания",
        "mentions_at": "Упоминания @%{user}",
        "minutes": "%{smart_count} минута |||| %{smart_count} минут",
        "Must be 16 characters or less.": "Должно быть не более 16 знаков.", // username
@@ -808,7 +810,8 @@ if(preferredLanguage == "ru"){
        "Not available": "Недоступно", // username is not available
        "Number of blocks in block chain:": "Количество блоков в цепочке: ",
        "Number of CPUs to use": "Сколько использовать ядер процессора",
-       "Only alphanumeric and underscore allowed.": "Разрешены только латинские буквы и цифры.",
+       "Only alphanumeric and underscore allowed.": "Разрешены только латинские буквы, цифры и подчеркивания.",
+       "Options": "Опции",
        "peer address": "адрес пира",
        "Private": "Приватный",
        "Profile": "Профиль",
@@ -816,6 +819,7 @@ if(preferredLanguage == "ru"){
        "post": "отправить", // verb - button to post a message
        "Post to promote:": "Рекламное сообщение: ",
        "Posts": "Посты",
+       "Promoted posts are needed to run the network infrastructure. If you want to help, start generating blocks and advertise. [en]": "Рекламные сообщения нужны для того, чтобы поддерживать инфраструктуру сети. Если вы хотите помочь, то включите генерацию блоков и распространяйте информацию о сети. [ru]",
        "propagating_nickname": "Распространяю информацию о регистрации %{username} в сеть...",
        "Public": "Публичный",
        "Refresh": "Обновить",
@@ -833,13 +837,15 @@ if(preferredLanguage == "ru"){
        "Sent Direct Message": "Отправить личное сообщение",
        "Sent Post to @": "Отправить сообщение для @",      
        "Setup account": "Настроить аккаунт",
+       "Sound notifications": "Звуковые уведомления",
        "switch_to_network": "Локальный демон не подключен к сети или\n" +
                  "цепочка блоков устарела. Если вы останитесь на этой странице\n" +
-                 "ваши действия могут быть не выполнеными.\n" +
+                 "ваши действия могут быть не выполнены.\n" +
                  "Не хотите перейти на страницу настройки сети?",
-       "The File APIs are not fully supported in this browser.": "The File APIs are not fully supported in this browser.",
+       "The File APIs are not fully supported in this browser.": "File APIs не полностью поддерживается этим браузером.",
        "time_ago": "%{time} назад", // 5 minutes ago
        "Time of the last block:": "Время последнего блока: ",
+       "Top Trends": "Тенденции",
        "Type message here": "Введите ваше сообщение тут",
        "Unfollow": "Отписаться",
        "Update": "Обновить",
@@ -849,13 +855,13 @@ if(preferredLanguage == "ru"){
                  "или отправлять сообщение.\n\n" +
                  "Пожалуйста подождите пару минут.\n\n" +
                  "Кнопка 'Сохранить' будет доступна автоматически того,\n" +
-                 "когда процес регистрации будет завершен. (Я обещаю, это\n"+
+                 "когда процес регистрации завершится. (Я обещаю, это\n"+
                  "последний раз, когда вы ждете перед использованием\n" +
                  "twister'a).\n\n" +
                  "Хозяйке на заметку: Сейчас вы можете выбрать аватар!",
        "users_mentions": "Ответ от @%{username}",
        "users_profile": "%{username}'s профиль",
-       "username_undefined": "Имя пользователя не определено, требуеться войти.",
+       "username_undefined": "Имя пользователя не определено, требуется войти.",
        "View": "Просмотреть",
        "View All": "Просмотреть Всё",
        "Who to Follow": "Кого почитать",
@@ -870,11 +876,11 @@ if(preferredLanguage == "ru"){
        "Type nickname here": "Введите ваш ник тут",
        "Import secret key": "Импортировать секретный ключ",
        "52-characters secret": "52-значный ключ",
-       "With nickname": "С от логина",
+       "With nickname": "С логином",
        "Import key": "Импортировать ключ",
        "Client Version:": "Версия клиента:",
-       "Mining difficulty:": "Сложность майнинга:",
-       "Block generation status": "Статус майнинга блоков",
+       "Mining difficulty:": "Сложность генерации:",
+       "Block generation status": "Статус генерации блоков",
        "Current hash rate:": "Текущая скорость хэширования:",
        "Terminate Daemon:": "Остановить twister:",
        "Exit": "Выход",
@@ -1051,6 +1057,11 @@ var fixedLabels = [
   ".post-context span",
   ".post-stats .stat-count span",
   ".postboard span",
+  ".module.toptrends h3",
+
+  //options page
+  "#notifyForm p",
+  ".module p",
 
   // following page
   ".following h2",
