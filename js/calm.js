@@ -121,6 +121,62 @@ function keysSend() {
 	
 	})
 }
+
+function autocompleteAndEmoji() {
+	var storFollArr = JSON.parse(localStorage[localStorage.defaultScreenName]), suggests = [];
+	
+	for(var i = 0; i < storFollArr.followingUsers.length; i++){
+		if(storFollArr.followingUsers[i] == localStorage.defaultScreenName) continue;
+		suggests.push(storFollArr.followingUsers[i]);
+	}
+	suggests.reverse();
+	$('textarea').textcomplete([
+    { // html
+        mentions: suggests,
+        match: /\B@(\w*)$/,
+        search: function (term, callback) {
+            callback($.map(this.mentions, function (mention) {
+                return mention.indexOf(term) === 0 ? mention : null;
+            }));
+        },
+        index: 1,
+        replace: function (mention) {
+            return '@' + mention + ' ';
+        }
+    }
+])
+	$('textarea').textcomplete([
+    { // emoji strategy
+        match: /\B:([\-+\w]*)$/,
+        search: function (term, callback) {
+            callback($.map(emojies, function (emoji) {
+                return emoji.indexOf(term) === 0 ? emoji : null;
+            }));
+        },
+        template: function (value) {
+            return '<img src="../img/emoji/' + value + '.png"></img>' + value;
+        },
+        replace: function (value) {
+            return ':' + value + ': ';
+        },
+        index: 1,
+        maxCount: 5
+    }
+]);
+}
+
+
+function replaceEmoji() {
+		var exp = /\B:[A-Za-z0-9_+-]+:\B/gi;
+	$('.post-text').each(function(){
+		var string = $(this).text();
+		$(this).html(string.replace(exp, function(match){
+			var clearMatch = match.replace(/:/gi,'');
+			if(emojies.indexOf(clearMatch) < 0) return match;
+			return '<img src="../img/emoji/'+clearMatch+'.png"></img>'
+		}));
+	})
+}
 function InitOptions () {
 	soundNotifOptions();
 	volumeControl();
@@ -128,4 +184,6 @@ function InitOptions () {
 }
 function homeIntInit () {
 	modalDMIntr ();
+	setTimeout(autocompleteAndEmoji, 500);
+	setTimeout(replaceEmoji, 500)
 }
