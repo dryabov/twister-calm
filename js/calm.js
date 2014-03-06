@@ -169,7 +169,7 @@ function autocompleteAndEmoji() {
 function replaceEmoji() {
 		var exp = /\B:[A-Za-z0-9_+-]+:\B/gi;
 	$('.post-text').each(function(){
-		var string = $(this).text();
+		var string = $(this).html();
 		$(this).html(string.replace(exp, function(match){
 			var clearMatch = match.replace(/:/gi,'');
 			if(emojies.indexOf(clearMatch) < 0) return match;
@@ -184,6 +184,6 @@ function InitOptions () {
 }
 function homeIntInit () {
 	modalDMIntr ();
-	setTimeout(autocompleteAndEmoji, 500);
-	setTimeout(replaceEmoji, 500)
+	setTimeout(autocompleteAndEmoji, 800);
+	setTimeout(replaceEmoji, 800)
 }
