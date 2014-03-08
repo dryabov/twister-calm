@@ -1,4 +1,8 @@
 $(function(){
+	$('.dropdown-menu').on('keydown', function(e){
+		e = event || window.event;
+		e.stopPropagation();
+	})
 	$('.post-text').on('click', 'a', function(e){
 		e.stopPropagation();
 	});
@@ -161,10 +165,9 @@ function autocompleteAndEmoji() {
         },
         index: 1,
         maxCount: 5
-    }
-]);
+    	}
+	]);
 }
-
 
 function replaceEmoji() {
 		var exp = /\B:[A-Za-z0-9_+-]+:\B/gi;
@@ -177,6 +180,7 @@ function replaceEmoji() {
 		}));
 	})
 }
+
 function InitOptions () {
 	soundNotifOptions();
 	volumeControl();

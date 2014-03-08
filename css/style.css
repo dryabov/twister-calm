@@ -1926,6 +1926,7 @@ input.userMenu-search-field:focus::-ms-input-placeholder {
 .following ol.following-list .mini-profile-info button {
     margin-top: 5px;
 }
+
 /* Autocomplite*/
 ul.dropdown-menu {
     position: absolute;

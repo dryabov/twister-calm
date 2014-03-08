@@ -386,13 +386,13 @@ function replyTextKeypress(e) {
             $.MAL.disableButton(tweetAction);
         }
 
-        if(localStorage['keysSend'] == 1){
+        if(localStorage['keysSend'] == 1 && $('.dropdown-menu').css('display') == 'none'){
             if (e.keyCode === 13 && (!e.metaKey && !e.ctrlKey)) {
                 $this.val($this.val().trim());
-                if( !tweetAction.hasClass("disabled") ) {
+                if( !tweetAction.hasClass("disabled")) {
                     tweetAction.click();
-                    if($this.parent().parent().is('.post-area,.post-reply-content')){
-                        $this.parent().removeClass('open');
+                    if($this.parent().parent().parent().is('.post-area,.post-reply-content')){
+                        $this.parent().parent().removeClass('open');
                         $this.blur();
                     }
                 }
@@ -403,8 +403,8 @@ function replyTextKeypress(e) {
                 $this.val($this.val().trim());
                 if( !tweetAction.hasClass("disabled") ) {
                     tweetAction.click();
-                    if($this.parent().parent().is('.post-area,.post-reply-content')){
-                        $this.parent().removeClass('open');
+                    if($this.parent().parent().parent().is('.post-area,.post-reply-content')){
+                        $this.parent().parent().removeClass('open');
                         $this.blur();
                     }
                 }
