@@ -48,6 +48,25 @@
 
   <div class="wrapper">
 
+      <div class="language">
+
+      <div class="module">
+        <p> Language </p>
+        <div>
+            <form action="" id="choselanguage">
+              <p>Use language</p>
+              <select onchange="savelang();" name="" id="language">
+                <option value="en">English</option>
+                <option value="ru">Russian</option>
+                <option value="zh">zh</option>
+				<option value="de">de</option>
+				<option value="fr">fr</option>
+				<option value="it">it</option>
+				<option value="nl">nl</option>
+              </select>
+            </form>
+        </div>
+
     <div class="sounds">
 
       <div class="module">
@@ -91,7 +110,17 @@
               </select>
             </form>
         </div>
-     
-    
+   
+
+  
+    <script>
+function savelang () {
+  var  preferredLanguagel	= document.getElementById('language').value;
+	    localStorage.setItem('preferredLanguagel', preferredLanguagel);
+	    document.location.reload()
+    }
+var preferredLanguagel = localStorage.getItem("preferredLanguagel");
+document.getElementById('language').value = preferredLanguagel;
+    </script>
   </body>
 </html>

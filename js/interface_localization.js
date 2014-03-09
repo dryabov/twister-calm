@@ -6,6 +6,9 @@
 // translators: add your language code here such as "es" for Spanish, "ru" for Russian
 var knownLanguages = ["en","nl","it","fr","ru","de","zh"];
 
+// get localstorage language
+var preferredLanguagel = localStorage.getItem("preferredLanguagel");
+
 // detect language with JavaScript
 var preferredLanguage = window.navigator.userLanguage || window.navigator.language || "en";
 if(knownLanguages.indexOf(preferredLanguage) > -1){
@@ -19,6 +22,14 @@ else if(knownLanguages.indexOf(preferredLanguage.split("-")[0]) > -1){
 else{
   // did not find match
   preferredLanguage = "en";
+}
+if (preferredLanguage !== preferredLanguagel) {
+	console.log('use language from localstorage');
+	var preferredLanguage = preferredLanguagel;
+}
+else {
+	console.log('use auto language');
+	
 }
 
 // set up Polyglot
