@@ -181,10 +181,19 @@ function replaceEmoji() {
 	})
 }
 
+function setLang() {
+
+	$('#language').val(localStorage['locLang'] || 'auto')
+	$('#language').on('change', function(){
+		localStorage['locLang'] = $(this).val();
+	})
+}
+
 function InitOptions () {
 	soundNotifOptions();
 	volumeControl();
 	keysSend();
+	setLang();
 }
 function homeIntInit () {
 	modalDMIntr ();

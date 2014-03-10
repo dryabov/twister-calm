@@ -4,23 +4,27 @@
 // uses Polyglot.js ( https://github.com/airbnb/polyglot.js ) to translate interface
 
 // translators: add your language code here such as "es" for Spanish, "ru" for Russian
-var knownLanguages = ["en","nl","it","fr","ru","de","zh"];
+var knownLanguages = ["en","nl","it","fr","ru","de","zh"], preferredLanguage;
 
-// detect language with JavaScript
-var preferredLanguage = window.navigator.userLanguage || window.navigator.language || "en";
-if(knownLanguages.indexOf(preferredLanguage) > -1){
-  // en for en or similar
-  preferredLanguage = preferredLanguage;
+if(!localStorage['locLang'] || localStorage['locLang'] == 'auto'){
+  if(!localStorage['locLang']) localStorage['locLang'] = 'auto';
+  // detect language with JavaScript
+  preferredLanguage = window.navigator.userLanguage || window.navigator.language || "en";
+  if(knownLanguages.indexOf(preferredLanguage) > -1){
+    // en for en or similar
+    preferredLanguage = preferredLanguage;
+  }
+  else if(knownLanguages.indexOf(preferredLanguage.split("-")[0]) > -1){
+    // en for en-US or similar
+    preferredLanguage = preferredLanguage.split("-")[0];
+  }
+  else{
+    // did not find match
+    preferredLanguage = "en";
+  }
+}else{
+  preferredLanguage = localStorage['locLang'];
 }
-else if(knownLanguages.indexOf(preferredLanguage.split("-")[0]) > -1){
-  // en for en-US or similar
-  preferredLanguage = preferredLanguage.split("-")[0];
-}
-else{
-  // did not find match
-  preferredLanguage = "en";
-}
-
 // set up Polyglot
 polyglot = new Polyglot();
 var wordset = {};

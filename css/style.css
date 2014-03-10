@@ -1394,13 +1394,13 @@ input.userMenu-search-field:focus::-ms-input-placeholder {
 /*************************************
 **************************** LOGIN PAGE
 **************************************/
-.login .module, .sounds .module {
+.login .module, .sounds .module, .keys .module, .language .module {
     padding: 20px;
     width: 500px;
     margin: 10px auto;
     border: 5px solid #c7cdda;
 }
-.login .module p, .sounds .module p {
+.login .module p, .sounds .module p, .keys .module p, .language .module p {
     font: 14px "Open Sans", sans-serif;
     margin-bottom: 5px;
 
@@ -1417,7 +1417,7 @@ input.userMenu-search-field:focus::-ms-input-placeholder {
     background: #fff;
     transition: background-color 100ms linear;
 }
-.login .module select.local-usernames, .sndOpt, #keysOpt select{
+.login .module select.local-usernames, .sndOpt, #keysOpt select, #choseLanguage select{
     height: 30px;
     font: 13px/24px "Open sans";
     text-align: center;
@@ -1889,7 +1889,7 @@ input.userMenu-search-field:focus::-ms-input-placeholder {
     margin-right: -163px;
     font: 12px "Open Sans", sans-serif;
 }
-#notifyForm p {
+#notifyForm p, #choseLanguage p, #keysOpt p {
     margin-top: 15px;
 }
 /* Following page */
