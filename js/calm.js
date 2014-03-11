@@ -176,7 +176,7 @@ function replaceEmoji() {
 		$(this).html(string.replace(exp, function(match){
 			var clearMatch = match.replace(/:/gi,'');
 			if(emojies.indexOf(clearMatch) < 0) return match;
-			return '<img src="../img/emoji/'+clearMatch+'.png"></img>'
+			return '<img src="../img/emoji/'+clearMatch+'.png">'
 		}));
 	})
 }

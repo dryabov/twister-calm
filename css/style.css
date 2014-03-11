@@ -231,16 +231,16 @@ button.disabled:hover
 }
 .userMenu li.userMenu-options > a
 {
-    background: url(../img/following.png) no-repeat 5px center;
+    background: url(../img/switch.png) no-repeat 5px center;
     padding-left: 50px;
 }
 .userMenu li.userMenu-options:hover > a
 {
-    background: url(../img/following.png) no-repeat 5px center rgba( 0, 0, 0 , .4 );
+    background: url(../img/switch.png) no-repeat 5px center rgba( 0, 0, 0 , .4 );
 }
 .userMenu li.userMenu-options.current > a
 {
-    background: url(../img/following.png) no-repeat 5px center #768fce;
+    background: url(../img/switch.png) no-repeat 5px center #768fce;
 }
 .userMenu li.userMenu-messages > a
 {
@@ -610,7 +610,7 @@ input.userMenu-search-field:focus::-ms-input-placeholder {
 }
 .mini-profile-actions:hover ul
 {
-    height: 118px;
+    height: 90px;
     box-shadow: 0 2px 5px #65686f;
 }
 .mini-profile-actions ul li

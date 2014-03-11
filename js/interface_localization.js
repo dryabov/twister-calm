@@ -80,6 +80,7 @@ if(preferredLanguage == "en"){
       "Home": "Home", // homepage
       "hours": "%{smart_count} hour |||| %{smart_count} hours",
       "Internal error: lastPostId unknown (following yourself may fix!)": "Internal error: lastPostId unknown (following yourself may fix!)",
+      "Keys":"Keys",
       "Known peers:": "Known peers: ",
       "Last block is ahead of your computer time, check your clock.": "Last block is ahead of your computer time, check your clock.",
       "Mentions": "Mentions",
@@ -118,11 +119,13 @@ if(preferredLanguage == "en"){
       "search": "search",
       "seconds": "%{smart_count} second |||| %{smart_count} seconds",
       "send": "send",
+      "Send key":"Send key",
       "Send post with username": "Send post with username ",
       "Sent Direct Message": "Sent Direct Message",
       "Sent Post to @": "Sent Post to @",
       "Setup account": "Setup account",
       "Sound notifications": "Sound notifications",
+      "Show QR code":"Show QR code",
       "switch_to_network": "Local daemon is not connected to the network or\n" +
                 "block chain is outdated. If you stay in this page\n" +
                 "your actions may not work.\n" +
@@ -134,6 +137,7 @@ if(preferredLanguage == "en"){
       "Unfollow": "Unfollow",
       "Update": "Update",
       "Updating status...": "Updating status...", // status of block chain
+      "Use language": "Use language",
       "user_not_yet_accepted": "Other peers have not yet accepted this new user.\n" +
                 "Unfortunately it is not possible to save profile\n" +
                 "or send any posts in this state.\n\n" +
@@ -800,6 +804,7 @@ if(preferredLanguage == "ru"){
        "Home": "Главная", // homepage
        "hours": "%{smart_count} час |||| %{smart_count} часов",
        "Internal error: lastPostId unknown (following yourself may fix!)": "Внутренняя ошибка: lastPostId неизвестен (Попробуйте подписаться сами на себя, это должно помочь!)",
+       "Keys":"Клавиши",
        "Known peers:": "Известные пиры: ",
        "Last block is ahead of your computer time, check your clock.": "Последний полученный блок опережает время вашего компьютера, проверьте правильно ли работают часы.",
        "Mentions": "Упоминания",
@@ -839,11 +844,13 @@ if(preferredLanguage == "ru"){
        "search": "поиск",
        "seconds": "%{smart_count} секунда |||| %{smart_count} секунд",
        "send": "отправить",
+       "Send key":"Клавиша отправки",
        "Send post with username": "Отправить сообщение от имени",
        "Sent Direct Message": "Отправить личное сообщение",
        "Sent Post to @": "Отправить сообщение для @",      
        "Setup account": "Настроить аккаунт",
        "Sound notifications": "Звуковые уведомления",
+       "Show QR code":"Показать QR код",
        "switch_to_network": "Локальный демон не подключен к сети или\n" +
                  "цепочка блоков устарела. Если вы останитесь на этой странице\n" +
                  "ваши действия могут быть не выполнены.\n" +
@@ -856,6 +863,7 @@ if(preferredLanguage == "ru"){
        "Unfollow": "Отписаться",
        "Update": "Обновить",
        "Updating status...": "Обновление информации...", // status of block chain
+       "Use language": "Использовать язык",
        "user_not_yet_accepted": "Другие участники сети еще не получили информацию о новом пользователе.\n" +
                  "К сожалению, сейчас вы не можете редактировать ваш профиль\n" +
                  "или отправлять сообщение.\n\n" +

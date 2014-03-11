@@ -394,6 +394,7 @@ function replyTextKeypress(e) {
                     if($this.parent().parent().parent().is('.post-area,.post-reply-content')){
                         $this.parent().parent().removeClass('open');
                         $this.blur();
+                        setTimeout('requestTimelineUpdate("latest",postsPerRefresh,followingUsers,promotedPostsOnly)', 1000);
                     }
                 }
             }
@@ -406,10 +407,12 @@ function replyTextKeypress(e) {
                     if($this.parent().parent().parent().is('.post-area,.post-reply-content')){
                         $this.parent().parent().removeClass('open');
                         $this.blur();
+                        setTimeout('requestTimelineUpdate("latest",postsPerRefresh,followingUsers,promotedPostsOnly)', 1000);
                     }
                 }
             }
         }
+
     }
 }
 
