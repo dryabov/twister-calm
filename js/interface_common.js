@@ -391,10 +391,6 @@ function replyTextKeypress(e) {
                 $this.val($this.val().trim());
                 if( !tweetAction.hasClass("disabled")) {
                     tweetAction.click();
-                    if($this.parent().parent().parent().is('.post-area,.post-reply-content')){
-                        $this.parent().parent().removeClass('open');
-                        $this.blur();
-                    }
                 }
             }
         }else if(localStorage['keysSend'] == 2){
@@ -403,10 +399,6 @@ function replyTextKeypress(e) {
                 $this.val($this.val().trim());
                 if( !tweetAction.hasClass("disabled") ) {
                     tweetAction.click();
-                    if($this.parent().parent().parent().is('.post-area,.post-reply-content')){
-                        $this.parent().parent().removeClass('open');
-                        $this.blur();
-                    }
                 }
             }
         }
@@ -436,6 +428,9 @@ var postSubmit = function(e)
     remainingCount.text(140);
     $replyText.attr("placeholder", "Your message was sent!");
     closeModal($this);
+    if($this.closest('.post-area,.post-reply-content')){
+        $('.post-area-new').removeClass('open').find('textarea').blur();
+    };
     setTimeout('requestTimelineUpdate("latest",postsPerRefresh,followingUsers,promotedPostsOnly)', 1000);
 }
 
