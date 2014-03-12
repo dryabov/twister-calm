@@ -153,7 +153,7 @@ function htmlFormatMsg( msg, output, mentions ) {
         match = reAll.exec(msg);
         if( match ) {
             if( match[0] == "@" ) {
-                output.append(msg.substr(0, match.index));
+                output.append($.emotions(msg.substr(0, match.index)));
                 tmp = msg.substr(match.index+1);
                 var username = _extractUsername(tmp);
                 if( username.length ) {
@@ -170,7 +170,7 @@ function htmlFormatMsg( msg, output, mentions ) {
             }
     
             if( reHttp.exec(match[0]) ) {
-                output.append(msg.substr(0, match.index));
+                output.append($.emotions(msg.substr(0, match.index)));
                 tmp = msg.substring(match.index);
                 var space = tmp.indexOf(" ");
                 var url;
@@ -188,7 +188,7 @@ function htmlFormatMsg( msg, output, mentions ) {
             }
     
             if( match[0] == "#" ) {
-                output.append(msg.substr(0, match.index));
+                output.append($.emotions(msg.substr(0, match.index)));
                 tmp = msg.substr(match.index+1);
                 var hashtag = _extractUsername(tmp);
                 if( hashtag.length ) {
@@ -203,7 +203,7 @@ function htmlFormatMsg( msg, output, mentions ) {
             }
         }
 
-        output.append(msg);
+        output.append($.emotions(msg));
         msg = "";
     }
 }

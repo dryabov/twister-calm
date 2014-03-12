@@ -1,0 +1,67 @@
+.emotions {
+    width: 20px;
+    height: 20px;
+    background: url("emotions/blank.gif") no-repeat center center;
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+.emo-angel {
+    background: url("emotions/icq/angel.gif");
+}
+
+.emo-confused {
+    background: url("emotions/icq/confused.gif");
+}
+
+.emo-devil {
+    background: url("emotions/icq/devil.gif");
+}
+
+.emo-grin {
+    background: url("emotions/icq/grin.gif");
+}
+
+.emo-heart {
+    background: url("emotions/icq/heart.gif");
+}
+
+.emo-kiss {
+    background: url("emotions/icq/kiss.gif");
+}
+
+.emo-smile {
+    background: url("emotions/icq/smile.gif");
+}
+
+.emo-sunglasses {
+    background: url("emotions/icq/sunglasses.gif");
+}
+
+.emo-unsure {
+    background: url("emotions/icq/unsure.gif");
+}
+
+.emo-wink {
+    background: url("emotions/icq/wink.gif");
+}
+
+.emo-cry {
+    background: url("emotions/icq/cry.gif");
+}
+
+.emo-glasses {
+    background: url("emotions/icq/glasses.gif");
+}
+
+.emo-grumpy {
+    background: url("emotions/icq/grumpy.gif");
+}
+
+.emo-tongue {
+    background: url("emotions/icq/tongue.gif");
+}
+
+.emo-frown {
+    background: url("emotions/icq/frown.gif");
+}

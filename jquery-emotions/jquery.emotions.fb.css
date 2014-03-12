@@ -1,0 +1,71 @@
+.emotions {
+    width: 14px;
+    height: 14px;
+    background: url("emotions/blank.gif") no-repeat center center;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.emo-angel {
+    background: url("emotions/fb/angel.gif");
+    width: 16px;
+    height: 15px;
+}
+
+.emo-confused {
+    background: url("emotions/fb/confused.gif");
+}
+
+.emo-devil {
+    background: url("emotions/fb/devil.gif");
+    height: 15px;
+}
+
+.emo-grin {
+    background: url("emotions/fb/grin.gif");
+}
+
+.emo-heart {
+    background: url("emotions/fb/heart.gif");
+    width: 15px;
+}
+
+.emo-kiss {
+    background: url("emotions/fb/kiss.gif");
+}
+
+.emo-smile {
+    background: url("emotions/fb/smile.gif");
+}
+
+.emo-sunglasses {
+    background: url("emotions/fb/sunglasses.gif");
+}
+
+.emo-unsure {
+    background: url("emotions/fb/unsure.gif");
+}
+
+.emo-wink {
+    background: url("emotions/fb/wink.gif");
+}
+
+.emo-cry {
+    background: url("emotions/fb/cry.gif");
+}
+
+.emo-glasses {
+    background: url("emotions/fb/glasses.gif");
+}
+
+.emo-grumpy {
+    background: url("emotions/fb/grumpy.gif");
+}
+
+.emo-tongue {
+    background: url("emotions/fb/tongue.gif");
+}
+
+.emo-frown {
+    background: url("emotions/fb/frown.gif");
+}
