@@ -126,7 +126,7 @@ function keysSend() {
 	})
 }
 
-function autocompleteAndEmoji() {
+function mensAutocomplete() {
 	var storFollArr = JSON.parse(localStorage[localStorage.defaultScreenName]), suggests = [];
 	
 	for(var i = 0; i < storFollArr.followingUsers.length; i++){
@@ -149,36 +149,6 @@ function autocompleteAndEmoji() {
         }
     }
 ])
-	$('textarea').textcomplete([
-    { // emoji strategy
-        match: /\B:([\-+\w]*)$/,
-        search: function (term, callback) {
-            callback($.map(emojies, function (emoji) {
-                return emoji.indexOf(term) === 0 ? emoji : null;
-            }));
-        },
-        template: function (value) {
-            return '<img src="../img/emoji/' + value + '.png"></img>' + value;
-        },
-        replace: function (value) {
-            return ':' + value + ': ';
-        },
-        index: 1,
-        maxCount: 5
-    	}
-	]);
-}
-
-function replaceEmoji() {
-		var exp = /\B:[A-Za-z0-9_+-]+:\B/gi;
-	$('.post-text').each(function(){
-		var string = $(this).html();
-		$(this).html(string.replace(exp, function(match){
-			var clearMatch = match.replace(/:/gi,'');
-			if(emojies.indexOf(clearMatch) < 0) return match;
-			return '<img src="../img/emoji/'+clearMatch+'.png">'
-		}));
-	})
 }
 
 function setLang() {
@@ -197,6 +167,5 @@ function InitOptions () {
 }
 function homeIntInit () {
 	modalDMIntr ();
-	setTimeout(autocompleteAndEmoji, 800);
-	setTimeout(replaceEmoji, 800)
+	setTimeout(mensAutocomplete, 800);
 }

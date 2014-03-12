@@ -426,7 +426,7 @@ var postSubmit = function(e)
     if (!$postOrig.length) {
         $postOrig = $this.closest(".modal-content").find(".post-data");
     }
-
+    
     newPostMsg($replyText.val(), $postOrig);
 
     $replyText.val("");
