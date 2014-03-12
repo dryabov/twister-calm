@@ -1928,6 +1928,9 @@ input.userMenu-search-field:focus::-ms-input-placeholder {
 }
 
 /* Autocomplite*/
+.textcomplete-wrapper textarea {
+    display: inline;
+}
 ul.dropdown-menu {
     position: absolute;
     top: 23px;
