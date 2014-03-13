@@ -26,7 +26,13 @@
             replacement: '<span class="emotions emo-{eId}"></span>',
             map: {
                 "o:)": "angel",
+                "0:)": "angel",
+                "O:)": "angel",
+                "o:-)": "angel",
+                "O:-)": "angel",
+                "0:-)": "angel",
                 "o.O": "confused",
+                "o_O": "confused",
                 "3:)": "devil",
                 "<3": "heart",
                 ":*": "kiss",
@@ -34,15 +40,21 @@
                 ":]": "smile",
                 "8|": "sunglasses",
                 ":/": "unsure",
+                ":\\": "unsure",
                 ";)": "wink",
+                ";-)": "wink",
                 ":'(": "cry",
                 ">:(": "grumpy",
                 ":(": "frown",
+                "=(": "frown",
+                ":-(": "frown",
                 "8)": "glasses",
                 ":p": "tongue",
+                ":P": "tongue",
                 ":)": "smile",
                 "=)": "smile",
-                ":D": "grin"
+                ":D": "grin",
+                ":-D": "grin"
             }
         },
         shortcode: function(eId){

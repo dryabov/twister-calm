@@ -1,0 +1,67 @@
+.emotions {
+    width: 22px;
+    height: 22px;
+    background: url("emotions/blank.png") no-repeat center center;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.emo-angel {
+    background: url("emotions/calm/angel.png");
+}
+
+.emo-confused {
+    background: url("emotions/calm/confused.png");
+}
+
+.emo-devil {
+    background: url("emotions/calm/devil.png");
+}
+
+.emo-grin {
+    background: url("emotions/calm/grin.png");
+}
+
+.emo-heart {
+    background: url("emotions/calm/heart.png");
+}
+
+.emo-kiss {
+    background: url("emotions/calm/kiss.png");
+}
+
+.emo-smile {
+    background: url("emotions/calm/smile.png");
+}
+
+.emo-sunglasses {
+    background: url("emotions/calm/sunglasses.png");
+}
+
+.emo-unsure {
+    background: url("emotions/calm/unsure.png");
+}
+
+.emo-wink {
+    background: url("emotions/calm/wink.png");
+}
+
+.emo-cry {
+    background: url("emotions/calm/cry.png");
+}
+
+.emo-glasses {
+    background: url("emotions/calm/glasses.png");
+}
+
+.emo-grumpy {
+    background: url("emotions/calm/grumpy.png");
+}
+
+.emo-tongue {
+    background: url("emotions/calm/tongue.png");
+}
+
+.emo-frown {
+    background: url("emotions/calm/frown.png");
+}
