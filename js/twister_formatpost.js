@@ -157,7 +157,7 @@ function htmlFormatMsg( msg, output, mentions ) {
         if( match ) {
             index = (match[0] === match[1]) ? match.index : match.index + 1;
             if( match[1] == "@" ) {
-                output.append($.emotions(msg.substr(0, index)));
+                output.append(_parseText(msg.substr(0, index)));
                 tmp = msg.substr(index+1);
                 var username = _extractUsername(tmp);
                 if( username.length ) {
@@ -177,7 +177,7 @@ function htmlFormatMsg( msg, output, mentions ) {
             }
     
             if( reHttp.exec(match[1]) ) {
-                output.append($.emotions(msg.substr(0, index)));
+                output.append(_parseText(msg.substr(0, index)));
                 tmp = msg.substring(index);
                 var space = tmp.indexOf(" ");
                 var url;
@@ -195,7 +195,7 @@ function htmlFormatMsg( msg, output, mentions ) {
             }
 
             if( reEmail.exec(match[1]) ) {
-                output.append($.emotions(msg.substr(0, index)));
+                output.append(_parseText(msg.substr(0, index)));
                 tmp = msg.substring(index);
                 var space = tmp.indexOf(" ");
                 var email;
@@ -213,7 +213,7 @@ function htmlFormatMsg( msg, output, mentions ) {
             }
     
             if( match[1] == "#" ) {
-                output.append($.emotions(msg.substr(0, index)));
+                output.append(_parseText(msg.substr(0, index)));
                 tmp = msg.substr(index+1);
                 var hashtag = _extractHashtag(tmp);
                 if( hashtag.length ) {
@@ -231,9 +231,17 @@ function htmlFormatMsg( msg, output, mentions ) {
             }
         }
 
-        output.append($.emotions(msg));
+        output.append(_parseText(msg));
         msg = "";
     }
+}
+
+function _parseText(text)
+{
+    text = unescapeHtmlEntities(text);
+    text = $.emotions(text);
+    text = escapeHtmlEntities(text);
+    return text;
 }
 
 // internal function for htmlFormatMsg
@@ -268,5 +276,9 @@ function _extractHashtag(s) {
 
 function escapeHtmlEntities(str) {
     return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&apos;');
+}
+
+function unescapeHtmlEntities(str) {
+    return str.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&apos;/g, "'").replace(/&amp;/g, '&');
 }
 
