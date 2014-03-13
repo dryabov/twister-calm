@@ -143,8 +143,11 @@ function htmlFormatMsg( msg, output, mentions ) {
     var tmp;
     var match = null;
     var index;
-    var reAll = new RegExp("(#|@|http[s]?://)");
-    var reHttp = new RegExp("http[s]?://");
+    var strUrlRegexp = "http[s]?://";
+    var strEmailRegexp = "\\S+@\\S+\\.\\S+";
+    var reAll = new RegExp("(?:^|[ \\n\\t.,:\\/?!])(#|@|" + strUrlRegexp + "|" + strEmailRegexp + ")");
+    var reHttp = new RegExp(strUrlRegexp);
+    var reEmail = new RegExp(strEmailRegexp);
     
     msg = escapeHtmlEntities(msg);
 
@@ -152,9 +155,10 @@ function htmlFormatMsg( msg, output, mentions ) {
         
         match = reAll.exec(msg);
         if( match ) {
-            if( match[0] == "@" ) {
-                output.append($.emotions(msg.substr(0, match.index)));
-                tmp = msg.substr(match.index+1);
+            index = (match[0] === match[1]) ? match.index : match.index + 1;
+            if( match[1] == "@" ) {
+                output.append($.emotions(msg.substr(0, index)));
+                tmp = msg.substr(index+1);
                 var username = _extractUsername(tmp);
                 if( username.length ) {
                     if( mentions.indexOf(username) < 0 )
@@ -167,11 +171,14 @@ function htmlFormatMsg( msg, output, mentions ) {
                     msg = tmp.substr(String(username).length);
                     continue;
                 }
+                output.append('@');
+                msg = tmp;
+                continue;
             }
     
-            if( reHttp.exec(match[0]) ) {
-                output.append($.emotions(msg.substr(0, match.index)));
-                tmp = msg.substring(match.index);
+            if( reHttp.exec(match[1]) ) {
+                output.append($.emotions(msg.substr(0, index)));
+                tmp = msg.substring(index);
                 var space = tmp.indexOf(" ");
                 var url;
                 if( space != -1 ) url = tmp.substring(0,space); else url = tmp;
@@ -179,17 +186,35 @@ function htmlFormatMsg( msg, output, mentions ) {
                     var extLinkTemplate = $("#external-page-link-template").clone(true);
                     extLinkTemplate.removeAttr("id");
                     extLinkTemplate.attr("href",url);
-                    extLinkTemplate.text(url);
+                    extLinkTemplate.html(url);
                     extLinkTemplate.attr("title",url);
                     output.append(extLinkTemplate);
                     msg = tmp.substr(String(url).length);
                     continue;
                 }
             }
+
+            if( reEmail.exec(match[1]) ) {
+                output.append($.emotions(msg.substr(0, index)));
+                tmp = msg.substring(index);
+                var space = tmp.indexOf(" ");
+                var email;
+                if( space != -1 ) email = tmp.substring(0,space); else email = tmp;
+                if( email.length ) {
+                    var extLinkTemplate = $("#external-page-link-template").clone(true);
+                    extLinkTemplate.removeAttr("id");
+                    extLinkTemplate.attr("href","mailto:" + email);
+                    extLinkTemplate.html(email);
+                    extLinkTemplate.attr("title",email);
+                    output.append(extLinkTemplate);
+                    msg = tmp.substr(String(email).length);
+                    continue;
+                }
+            }
     
-            if( match[0] == "#" ) {
-                output.append($.emotions(msg.substr(0, match.index)));
-                tmp = msg.substr(match.index+1);
+            if( match[1] == "#" ) {
+                output.append($.emotions(msg.substr(0, index)));
+                tmp = msg.substr(index+1);
                 var hashtag = _extractHashtag(tmp);
                 if( hashtag.length ) {
                     var hashtagLinkTemplate = $("#hashtag-link-template").clone(true);
@@ -200,6 +225,9 @@ function htmlFormatMsg( msg, output, mentions ) {
                     msg = tmp.substr(String(hashtag).length);
                     continue;
                 }
+                output.append('#');
+                msg = tmp;
+                continue;
             }
         }
 
