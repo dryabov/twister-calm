@@ -190,7 +190,7 @@ function htmlFormatMsg( msg, output, mentions ) {
             if( match[0] == "#" ) {
                 output.append($.emotions(msg.substr(0, match.index)));
                 tmp = msg.substr(match.index+1);
-                var hashtag = _extractUsername(tmp);
+                var hashtag = _extractHashtag(tmp);
                 if( hashtag.length ) {
                     var hashtagLinkTemplate = $("#hashtag-link-template").clone(true);
                     hashtagLinkTemplate.removeAttr("id");
@@ -223,6 +223,19 @@ function _extractUsername(s) {
         }
     }
     return username.toLowerCase();
+}
+
+// internal function for htmlFormatMsg
+function _extractHashtag(s) {
+    var hashtag = "";
+    for( var i = 0; i < s.length; i++ ) {
+        if( " \n\t.,:/?!".indexOf(s[i]) < 0 ) {
+            hashtag += s[i];
+        } else {
+            break;
+        }
+    }
+    return hashtag;
 }
 
 function escapeHtmlEntities(str) {
