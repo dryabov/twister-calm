@@ -238,9 +238,7 @@ function htmlFormatMsg( msg, output, mentions ) {
 
 function _parseText(text)
 {
-    text = unescapeHtmlEntities(text);
     text = $.emotions(text);
-    text = escapeHtmlEntities(text);
     return text;
 }
 

@@ -81,9 +81,15 @@
                 var rep = $s.replacement
                     .replace(/\{eId\}/g, $s.map[pattern]);
 
-                text = text
-                    .replace(new RegExp($t.quote(pattern), "g"), rep)
-                    .replace(new RegExp($t.quote(encPattent), "g"), rep);
+                if (pattern[0] === ';') {
+                    text = text
+                        .replace(new RegExp("(^|\W)" + $t.quote(pattern), "g"), "\\1" + rep)
+                        .replace(new RegExp("(^|\W)" + $t.quote(encPattent), "g"), "\\1" + rep);
+                } else {
+                    text = text
+                        .replace(new RegExp($t.quote(pattern), "g"), rep)
+                        .replace(new RegExp($t.quote(encPattent), "g"), rep);
+                }
             }
 
             return text;
