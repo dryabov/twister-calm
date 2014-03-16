@@ -217,9 +217,14 @@ function htmlFormatMsg( msg, output, mentions ) {
                 tmp = msg.substr(index+1);
                 var hashtag = _extractHashtag(tmp);
                 if( hashtag.length ) {
+                    var hashtag_lc='';
+                    for( var i = 0; i < hashtag.length; i++ ) {
+                        var c = hashtag[i];
+                        hashtag_lc += (c >= 'A' && c <= 'Z') ? c.toLowerCase() : c;
+                    }
                     var hashtagLinkTemplate = $("#hashtag-link-template").clone(true);
                     hashtagLinkTemplate.removeAttr("id");
-                    hashtagLinkTemplate.attr("href",$.MAL.hashtagUrl(hashtag));
+                    hashtagLinkTemplate.attr("href",$.MAL.hashtagUrl(hashtag_lc));
                     hashtagLinkTemplate.text("#"+hashtag);
                     output.append(hashtagLinkTemplate);
                     msg = tmp.substr(String(hashtag).length);
