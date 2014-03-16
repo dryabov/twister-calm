@@ -1038,7 +1038,7 @@ input.userMenu-search-field:focus::-ms-input-placeholder {
 {
     float: right;
     font-size: 12px;
-    margin: 5px 10px;
+    margin-right: 5px;
     opacity: .5;
     text-decoration: none;
 }
