@@ -191,6 +191,7 @@ function clearHashtagProcessed() {
 }
 
 function requestHashtag(postboard,hashtag,resource) {
+    if(/[a-z]/i.test(hashtag))hashtag = hashtag.toLowerCase(); //hed//fix english hashtag case dependentcy bug
     dhtget( hashtag, resource, "m",
            function(args, data) {
                processHashtag(args.postboard, args.hashtag, data);

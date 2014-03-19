@@ -6,7 +6,6 @@ $(function(){
 	$('.post-text').on('click', 'a', function(e){
 		e.stopPropagation();
 	});
-
 	$('#showqr').on('click', function(){
 			if($('#qrcode img')[0]) return;
          	var skey = document.getElementById('skey').innerText;

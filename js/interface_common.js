@@ -459,7 +459,7 @@ function initInterfaceCommon() {
     $( ".userMenu-config-dropdown" ).bind( "click", dropDownMenu );
     $( ".config-menu" ).clickoutside( closeThis );
     $( ".module.post" ).bind( "click", function(e) {
-        postExpandFunction(e,$(this)); });
+        if(window.getSelection() == 0)postExpandFunction(e,$(this)); });
     $( ".post-area-new" ).bind( "click", function(e) {
         composeNewPost(e,$(this));} );
     $( ".post-area-new" ).clickoutside( unfocusThis );
