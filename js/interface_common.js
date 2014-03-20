@@ -93,7 +93,6 @@ function newProfileModal(username) {
     var profileModalContent = $( "#profile-modal-template" ).children().clone(true);
 
     updateProfileData(profileModalContent, username);
-
     return profileModalContent;
 }
 
@@ -113,6 +112,13 @@ function openProfileModal(e)
 
     //título do modal
     $( "."+profileModalClass + " h3" ).text( polyglot.t("users_profile", { username: username }) );
+    
+    //hed//add dinamic follow button in profile modal window
+    if(followingUsers.indexOf(username) != -1){
+        $('.profile-card button').first().removeClass('follow').addClass('profileUnfollow').text(polyglot.t('Unfollow')).on('click', function(){
+            unfollow(username);
+        });
+    };
 }
 
 function newHashtagModal(hashtag) {

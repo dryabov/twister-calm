@@ -7,10 +7,12 @@ $(function(){
 		e.stopPropagation();
 	});
 	$('#showqr').on('click', function(){
-			if($('#qrcode img')[0]) return;
-         	var skey = document.getElementById('skey').innerText;
-         	new QRCode(document.getElementById("qrcode"), skey);
-        });
+		if($('#qrcode img')[0]) return;
+         var skey = document.getElementById('skey').innerText;
+         new QRCode(document.getElementById("qrcode"), skey);
+    });
+})
+
 
 	function dhtIndicatorBg(){
 		var bgcolor = '';
@@ -27,7 +29,6 @@ $(function(){
 	};
 	setTimeout(dhtIndicatorBg, 300);
 	setTimeout(function() {setInterval(dhtIndicatorBg, 2000)}, 400);
-})
 
 function modalDMIntr() {
 	$(".cancel").on('click', function(event){
@@ -126,11 +127,11 @@ function keysSend() {
 }
 
 function mensAutocomplete() {
-	var storFollArr = JSON.parse(localStorage[localStorage.defaultScreenName]), suggests = [];
+	var suggests = [];
 	
-	for(var i = 0; i < storFollArr.followingUsers.length; i++){
-		if(storFollArr.followingUsers[i] == localStorage.defaultScreenName) continue;
-		suggests.push(storFollArr.followingUsers[i]);
+	for(var i = 0; i < followingUsers.length; i++){
+		if(followingUsers[i] == localStorage.defaultScreenName) continue;
+		suggests.push(followingUsers[i]);
 	}
 	suggests.reverse();
 	$('textarea').textcomplete([

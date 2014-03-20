@@ -1984,6 +1984,7 @@ ul.dropdown-menu > li > a {
     clear: both;
     font: 13px/20px "Open Sans", sans-serif;
     white-space: nowrap;
+    cursor: pointer;
     -webkit-transition: all 200ms;
     -moz-transition: all 200ms;
     -ms-transition: all 200ms;
