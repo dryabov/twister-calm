@@ -408,7 +408,6 @@ function replyTextKeypress(e) {
                 }
             }
         }
-
     }
 }
 
@@ -473,7 +472,7 @@ function initInterfaceCommon() {
     $( ".modal-propagate").click( retweetSubmit );
 
     var $replyText = $( ".post-area-new textarea" );
-    $replyText.on("keydown", replyTextKeypress );
+    $replyText.on("keyup", replyTextKeypress );
 
     $( ".open-profile-modal").bind( "click", openProfileModal );
     $( ".open-hashtag-modal").bind( "click", openHashtagModal );
