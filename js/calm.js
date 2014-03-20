@@ -16,14 +16,14 @@ $(function(){
 
 	function dhtIndicatorBg(){
 		var bgcolor = '';
-			  if(twisterDhtNodes <= 10){bgcolor = '#770900'
-		}else if(twisterDhtNodes <= 20){bgcolor = '#773400'
-		}else if(twisterDhtNodes <= 30){bgcolor = '#774c00'
-		}else if(twisterDhtNodes <= 40){bgcolor = '#776400'
-		}else if(twisterDhtNodes <= 50){bgcolor = '#707500'
-		}else if(twisterDhtNodes <= 60){bgcolor = '#3f6900'
-		}else if(twisterDhtNodes <= 70){bgcolor = '#005f15'
-		}else if(twisterDhtNodes >= 71){bgcolor = '#009922'
+			  if(twisterDhtNodes <= 20){bgcolor = '#770900'
+		}else if(twisterDhtNodes <= 60){bgcolor = '#773400'
+		}else if(twisterDhtNodes <= 90){bgcolor = '#774c00'
+		}else if(twisterDhtNodes <= 120){bgcolor = '#776400'
+		}else if(twisterDhtNodes <= 150){bgcolor = '#707500'
+		}else if(twisterDhtNodes <= 180){bgcolor = '#3f6900'
+		}else if(twisterDhtNodes <= 210){bgcolor = '#005f15'
+		}else if(twisterDhtNodes >= 250){bgcolor = '#009922'
 		}
 		$('.userMenu-dhtindicator').animate({'background-color': bgcolor });
 	};
