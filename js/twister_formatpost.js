@@ -157,7 +157,7 @@ function htmlFormatMsg( msg, output, mentions ) {
         if( match ) {
             index = (match[0] === match[1]) ? match.index : match.index + 1;
             if( match[1] == "@" ) {
-                output.append($.emotions(msg.substr(0, index)));
+                output.append(_formatText(msg.substr(0, index)));
                 tmp = msg.substr(index+1);
                 var username = _extractUsername(tmp);
                 if( username.length ) {
@@ -177,12 +177,13 @@ function htmlFormatMsg( msg, output, mentions ) {
             }
     
             if( reHttp.exec(match[1]) ) {
-                output.append($.emotions(msg.substr(0, index)));
+                output.append(_formatText(msg.substr(0, index)));
                 tmp = msg.substring(index);
                 var space = tmp.indexOf(" ");
                 var url;
                 if( space != -1 ) url = tmp.substring(0,space); else url = tmp;
                 if( url.length ) {
+                    url = url.replace('&amp;', '&');
                     var extLinkTemplate = $("#external-page-link-template").clone(true);
                     extLinkTemplate.removeAttr("id");
                     extLinkTemplate.attr("href",url);
@@ -195,7 +196,7 @@ function htmlFormatMsg( msg, output, mentions ) {
             }
 
             if( reEmail.exec(match[1]) ) {
-                output.append($.emotions(msg.substr(0, index)));
+                output.append(_formatText(msg.substr(0, index)));
                 tmp = msg.substring(index);
                 var space = tmp.indexOf(" ");
                 var email;
@@ -213,7 +214,7 @@ function htmlFormatMsg( msg, output, mentions ) {
             }
     
             if( match[1] == "#" ) {
-                output.append($.emotions(msg.substr(0, index)));
+                output.append(_formatText(msg.substr(0, index)));
                 tmp = msg.substr(index+1);
                 var hashtag = _extractHashtag(tmp);
                 if( hashtag.length ) {
@@ -236,12 +237,19 @@ function htmlFormatMsg( msg, output, mentions ) {
             }
         }
 
-        output.append($.emotions(msg));
+        output.append(_formatText(msg));
         msg = "";
     }
 }
 
 // internal function for htmlFormatMsg
+function _formatText(msg)
+{
+    msg = $.emotions(msg);
+    msg = msg.replace(/\n/g, '<br />');
+    return msg;
+}
+
 function _extractUsername(s) {
     var username = "";
     for( var i = 0; i < s.length; i++ ) {
@@ -272,5 +280,5 @@ function _extractHashtag(s) {
 }
 
 function escapeHtmlEntities(str) {
-    return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&apos;');
+    return str.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('"', '&quot;').replace("'", '&apos;');
 }

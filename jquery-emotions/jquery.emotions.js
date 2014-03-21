@@ -23,7 +23,7 @@
     $.extend($.emotions, {
 
         settings: {
-            replacement: '<span class="emotions emo-{eId}"></span>',
+            replacement: '<span class="emotions emo-{eId}">$2</span>',
             map: {
                 "o:)": "angel",
                 "0:)": "angel",
@@ -87,15 +87,10 @@
                 var rep = $s.replacement
                     .replace(/\{eId\}/g, $s.map[pattern]);
 
-                if (pattern[0] === ';') {
-                    text = text
-                        .replace(new RegExp("(^|\\W)" + $t.quote(pattern), "g"), "$1" + rep)
-                        .replace(new RegExp("(^|\\W)" + $t.quote(encPattent), "g"), "$1" + rep);
-                } else {
-                    text = text
-                        .replace(new RegExp($t.quote(pattern), "g"), rep)
-                        .replace(new RegExp($t.quote(encPattent), "g"), rep);
-                }
+                text = text.replace(
+                    new RegExp("(^|\\s)(" + $t.quote(pattern) + "|" + $t.quote(encPattent) + ")(?=\\s|$)", "g"),
+                    "$1" + rep
+                );
             }
 
             return text;
