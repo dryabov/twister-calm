@@ -93,7 +93,6 @@ function newProfileModal(username) {
     var profileModalContent = $( "#profile-modal-template" ).children().clone(true);
 
     updateProfileData(profileModalContent, username);
-
     return profileModalContent;
 }
 
@@ -113,6 +112,13 @@ function openProfileModal(e)
 
     //título do modal
     $( "."+profileModalClass + " h3" ).text( polyglot.t("users_profile", { username: username }) );
+    
+    //hed//add dinamic follow button in profile modal window
+    if(followingUsers.indexOf(username) != -1){
+        $('.profile-card button').first().removeClass('follow').addClass('profileUnfollow').text(polyglot.t('Unfollow')).on('click', function(){
+            unfollow(username);
+        });
+    };
 }
 
 function newHashtagModal(hashtag) {
@@ -402,7 +408,6 @@ function replyTextKeypress(e) {
                 }
             }
         }
-
     }
 }
 
@@ -459,7 +464,7 @@ function initInterfaceCommon() {
     $( ".userMenu-config-dropdown" ).bind( "click", dropDownMenu );
     $( ".config-menu" ).clickoutside( closeThis );
     $( ".module.post" ).bind( "click", function(e) {
-        postExpandFunction(e,$(this)); });
+        if(window.getSelection() == 0)postExpandFunction(e,$(this)); });
     $( ".post-area-new" ).bind( "click", function(e) {
         composeNewPost(e,$(this));} );
     $( ".post-area-new" ).clickoutside( unfocusThis );
@@ -467,7 +472,7 @@ function initInterfaceCommon() {
     $( ".modal-propagate").click( retweetSubmit );
 
     var $replyText = $( ".post-area-new textarea" );
-    $replyText.on("keydown", replyTextKeypress );
+    $replyText.on("keyup", replyTextKeypress );
 
     $( ".open-profile-modal").bind( "click", openProfileModal );
     $( ".open-hashtag-modal").bind( "click", openHashtagModal );
