@@ -23,7 +23,7 @@
     $.extend($.emotions, {
 
         settings: {
-            replacement: '<span class="emotions emo-{eId}"></span>',
+            replacement: '<span class="emotions emo-{eId}">$2</span>',
             map: {
                 "o:)": "angel",
                 "0:)": "angel",

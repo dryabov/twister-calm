@@ -4,6 +4,8 @@
     background: url("emotions/blank.gif") no-repeat center center;
     display: inline-block;
     vertical-align: bottom;
+    color: transparent;
+    overflow: hidden;
 }
 
 .emo-angel {
