@@ -247,6 +247,10 @@ function loadProfileForEdit() {
                        $(".input-city").val(profile.location);
                    if( "url" in profile)
                        $(".input-website").val(profile.url);
+                   if( "tox" in profile)
+                       $(".input-tox").val(profile.tox);
+                   if( "bitmessage" in profile)
+                       $(".input-bitmessage").val(profile.bitmessage);
                }
            }, {} );
 }
@@ -258,6 +262,8 @@ function saveProfile(e)
     profile["bio"]      = $(".input-description").val();
     profile["location"] = $(".input-city").val();
     profile["url"]      = $(".input-website").val();
+    profile["tox"]      = $(".input-tox").val();
+    profile["bitmessage"] = $(".input-bitmessage").val();
     dhtput( defaultScreenName, "profile", "s",
             profile, defaultScreenName, ++profileSeqNum );
     var avatarData = $(".profile-card-photo.forEdition").attr("src");
