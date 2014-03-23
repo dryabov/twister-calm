@@ -183,6 +183,7 @@ function htmlFormatMsg( msg, output, mentions ) {
                 var url;
                 if( space != -1 ) url = tmp.substring(0,space); else url = tmp;
                 if( url.length ) {
+                    msg = tmp.substr(String(url).length);
                     url = url.replace('&amp;', '&');
                     var extLinkTemplate = $("#external-page-link-template").clone(true);
                     extLinkTemplate.removeAttr("id");
@@ -190,7 +191,6 @@ function htmlFormatMsg( msg, output, mentions ) {
                     extLinkTemplate.html(url);
                     extLinkTemplate.attr("title",url);
                     output.append(extLinkTemplate);
-                    msg = tmp.substr(String(url).length);
                     continue;
                 }
             }
