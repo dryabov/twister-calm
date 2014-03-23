@@ -179,7 +179,7 @@ function htmlFormatMsg( msg, output, mentions ) {
             if( reHttp.exec(match[1]) ) {
                 output.append(_formatText(msg.substr(0, index)));
                 tmp = msg.substring(index);
-                var space = tmp.indexOf(" ");
+                var space = tmp.search(/[ \n\t]/);
                 var url;
                 if( space != -1 ) url = tmp.substring(0,space); else url = tmp;
                 if( url.length ) {
@@ -198,7 +198,7 @@ function htmlFormatMsg( msg, output, mentions ) {
             if( reEmail.exec(match[1]) ) {
                 output.append(_formatText(msg.substr(0, index)));
                 tmp = msg.substring(index);
-                var space = tmp.indexOf(" ");
+                var space = tmp.search(/[ \n\t]/);
                 var email;
                 if( space != -1 ) email = tmp.substring(0,space); else email = tmp;
                 if( email.length ) {
