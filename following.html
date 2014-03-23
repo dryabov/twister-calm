@@ -3,18 +3,9 @@
   <head>
     <meta charset="utf-8"/>
     <title>Following</title>
-<script>
-var theme = localStorage.getItem('theme');
-if (theme=='calm') {
- document.write('<link rel="stylesheet" type="text/css" href="css/style.css">');
-    document.write('<link rel="stylesheet" type="text/css" href="css/profile.css">');
-    document.write('<link rel="stylesheet" type="text/css" href="jquery-emotions/jquery.emotions.calm.css">');
-   
-} else {
-	 document.write('<link rel="stylesheet" type="text/css" href="css/orange/style.css">');
-    document.write('<link rel="stylesheet" type="text/css" href="css/orange/profile.css">');
-}
-    </script>
+    <link id="stylecss" rel="stylesheet" href="css/style.css">
+    <link id="profilecss" rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="jquery-emotions/jquery.emotions.calm.css">
     <script src="js/jquery.min.js"></script>
     <script src="js/jQueryPlugins.js"></script>
     <script src="js/jquery.json-2.4.js"></script>
@@ -35,10 +26,8 @@ if (theme=='calm') {
     <script src="jquery-emotions/jquery.emotions.js"></script>
 
     <script>
-        $(document).ready(function()
-        {
-           initInterfaceFollowing();
-        });
+    $(document).ready(function(){initInterfaceFollowing()});
+    changeStyle();
     </script>
 
     <link rel="icon" type="image/png" href="img/twister_mini.png" />

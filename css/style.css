@@ -1429,7 +1429,7 @@ input.userMenu-search-field:focus::-ms-input-placeholder {
     background: #fff;
     transition: background-color 100ms linear;
 }
-.login .module select.local-usernames, .sndOpt, #keysOpt select, #choseLanguage select{
+.login .module select.local-usernames, .sndOpt, #keysOpt select, #selectLanguage select, #selectTheme select {
     height: 30px;
     font: 13px/24px "Open sans";
     text-align: center;
@@ -1909,7 +1909,7 @@ input.userMenu-search-field:focus::-ms-input-placeholder {
     margin-right: -163px;
     font: 12px "Open Sans", sans-serif;
 }
-#notifyForm p, #choseLanguage p, #keysOpt p {
+#notifyForm p, #selectLanguage p, #keysOpt p {
     margin-top: 15px;
 }
 /* Following page */
