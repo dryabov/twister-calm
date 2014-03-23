@@ -3,8 +3,18 @@
   <head>
     <meta charset="utf-8"/>
     <title>Following</title>
-    <link rel="stylesheet" href="css/style.css" type="text/css"/>
-    <link rel="stylesheet" href="css/profile.css" type="text/css"/>
+<script>
+var theme = localStorage.getItem('theme');
+if (theme=='calm') {
+ document.write('<link rel="stylesheet" type="text/css" href="css/style.css">');
+    document.write('<link rel="stylesheet" type="text/css" href="css/profile.css">');
+    document.write('<link rel="stylesheet" type="text/css" href="jquery-emotions/jquery.emotions.calm.css">');
+   
+} else {
+	 document.write('<link rel="stylesheet" type="text/css" href="css/orange/style.css">');
+    document.write('<link rel="stylesheet" type="text/css" href="css/orange/profile.css">');
+}
+    </script>
     <script src="js/jquery.min.js"></script>
     <script src="js/jQueryPlugins.js"></script>
     <script src="js/jquery.json-2.4.js"></script>

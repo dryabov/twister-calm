@@ -3,7 +3,18 @@
   <head>
     <meta charset="utf-8"/>
     <title>twister login</title>
-    <link rel="stylesheet" href="css/style.css" type="text/css"/>
+<script>
+var theme = localStorage.getItem('theme');
+if (theme=='calm') {
+ document.write('<link rel="stylesheet" type="text/css" href="css/style.css">');
+    document.write('<link rel="stylesheet" type="text/css" href="css/profile.css">');
+    document.write('<link rel="stylesheet" type="text/css" href="jquery-emotions/jquery.emotions.calm.css">');
+   
+} else {
+	 document.write('<link rel="stylesheet" type="text/css" href="css/orange/style.css">');
+    document.write('<link rel="stylesheet" type="text/css" href="css/orange/profile.css">');
+}
+    </script>
     <script src="js/jquery.min.js"></script>
     <script src="js/jQueryPlugins.js"></script>
     <script src="js/jquery.json-2.4.js"></script>
@@ -22,6 +33,13 @@
     <script>$(function(){
       initInterfaceCommon();
       InitOptions();})
+      
+    $(document).ready(function(){
+    $('#c_theme').change(function(){
+    localStorage.setItem('theme', $(this).val());
+    location.reload();
+    });
+	});
     </script>
   </head>
 
@@ -114,7 +132,22 @@
           </div>
         </div>
       </div>
-  </div>
+            <div class="Theme">
+        <div class="module">
+          <p> Theme </p>
+          <div> 
 
+              <select name="" id="c_theme">
+                <option value="calm">Calm</option>
+                <option value="original">Original</option>
+              </select>
+          </div>
+        </div>
+      </div>
+  </div>
+<script>
+var theme = localStorage.getItem('theme');
+$("#c_theme").val(theme);
+</script>
   </body>
 </html>
