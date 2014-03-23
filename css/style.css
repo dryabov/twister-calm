@@ -1676,6 +1676,12 @@ input.userMenu-search-field:focus::-ms-input-placeholder {
     right: -65px;
     left: auto;
 }
+.direct-messages-thread li.message {
+    cursor: auto;
+}
+.direct-messages-thread li.message:hover {
+    background: none;
+}
 /*************************************
 ****************** NEW USER MODAL
 **************************************/
