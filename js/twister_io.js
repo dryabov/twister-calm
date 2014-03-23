@@ -219,6 +219,26 @@ function getBio( username, item ){
     getProfileResource( username, "bio", item);
 }
 
+// get tox address and store it in item.text
+function getTox( username, item ){
+    getProfileResource( username, "tox", false, function(item, text){
+        item.empty();
+        if(text) {
+            item.append($('<a></a>').attr('href', 'tox:'+text).text(text));
+        }
+    }, item);
+}
+
+// get bitmessage address and store it in item.text
+function getBitmessage( username, item ){
+    getProfileResource( username, "bitmessage", false, function(item, text){
+        item.empty();
+        if(text) {
+            item.append($('<a></a>').attr('href', 'bitmsg:'+text).text(text));
+        }
+    }, item);
+}
+
 // get location and store it in item.text
 function getLocation( username, item ){
     getProfileResource( username, "location", item);

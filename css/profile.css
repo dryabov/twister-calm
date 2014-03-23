@@ -195,6 +195,12 @@
     display: inline-block;
     margin-top: 10px;
 }
+.forEdition .profile-card-main .input-tox,
+.forEdition .profile-card-main .input-bitmessage
+{
+    width: 90%;
+    margin-top: 10px;
+}
 .profile-edition-buttons
 {
     padding: 10px;
@@ -238,6 +244,18 @@
 }
 .profile-modal .profile-location {
     color: #48577d;
+}
+.profile-modal .profile-tox:before {
+    content: "Tox: ";
+}
+.profile-modal .profile-tox:empty {
+    display: none;
+}
+.profile-modal .profile-bitmessage:before {
+    content: "Bitmessage: ";
+}
+.profile-modal .profile-bitmessage:empty {
+    display: none;
 }
 
 .profile-modal .profile-data
