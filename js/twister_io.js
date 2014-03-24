@@ -239,7 +239,7 @@ function getBitmessage( username, item ){
     getProfileResource( username, "bitmessage", false, function(item, text){
         item.empty();
         if(text) {
-            item.attr('href', 'bitmsg:'+text);
+            item.attr('href', 'bitmsg:'+text+'?action=add&label='+username);
             setTimeout(function(){
               $('#bmbtnwr').show();
               $('.bitmessage-ctc').attr('data', text);

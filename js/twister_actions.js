@@ -179,7 +179,7 @@ function updateProfileData(profileModalContent, username) {
     
     profileModalContent.find(".following-count").parent().attr("href", $.MAL.followingUrl(username));
 
-    requestPostRecursively(profileModalContent.find(".postboard-posts"),username,"status",10);
+    requestPostRecursively(profileModalContent.find(".postboard-posts"),username,"status",20);
 }
 
 function updateFollowingData(followingModalContent, username) {

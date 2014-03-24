@@ -242,6 +242,13 @@
 .profile-modal .profile-location {
     color: #48577d;
 }
+.profile-modal .profile-url {
+    font-size: 14px;
+    font-style: italic;
+}
+.profile-modal .profile-bio {
+    text-align: center;
+}
 #msngrswr {
     position: absolute;
     left: 10px;
@@ -256,21 +263,22 @@
     width: 30px;
     display: inline-block;
     margin-right: 10px;
-    border: 1px solid #c0c2c6;
+    border: 1px solid #d6d8dc;
     background: #e3e5ea url(img/clipboard.png) center no-repeat;
     opacity: .8;
     -webkit-border-radius: 0 5px 5px 0;
     -moz-border-radius: 0 5px 5px 0;
     border-radius: 0 5px 5px 0;
-    -webkit-transition: all 200ms;
-    -moz-transition: all 200ms;
-    -ms-transition: all 200ms;
-    -o-transition: all 200ms;
-    transition: all 200ms;
+    -webkit-transition: all 20ms;
+    -moz-transition: all 20ms;
+    -ms-transition: all 20ms;
+    -o-transition: all 20ms;
+    transition: all 20ms;
 }
 .bitmessage-ctc:hover, .tox-ctc:hover {
     background-color: #f0f2f8;
     opacity: 1;
+    cursor: pointer;
 }
 .bitmessage-ctc:active, .tox-ctc:active {
     background-color: #edfced;
@@ -279,7 +287,6 @@
     display: inline-block;
     width: 80px;
     height: 35px;
-    margin-right: 2px;
     border: 1px solid #c0c2c6;
     opacity: .8;
     -webkit-border-radius: 5px 0 0 5px;
@@ -296,7 +303,7 @@
     background-color: #f0f2f8;
 }
 .profile-modal .profile-tox:active, .profile-modal .profile-bitmessage:active {
-    background-color: #fff0f0;
+    background-color: #edfced;
 }
 .profile-modal .profile-tox {
     background: #e3e5ea url(../img/tox.png) center no-repeat;
@@ -389,6 +396,7 @@ h1.profile-name {
 h2.profile-screen-name {
     display: inline;
     bottom: 0;
+    color: #8f95a4;
 }
 
 .profile-modal .modal-buttons {
