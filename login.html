@@ -20,6 +20,7 @@
     <script src="js/polyglot.min.js"></script>
     <script src="js/interface_localization.js"></script>
     <script src="js/options.js"></script>
+    <script src="js/calm.js"></script>
 
     <script>
         $(document).ready(function(){initInterfaceLogin()});
@@ -31,7 +32,8 @@
 
   <body>
     
-  <!-- MENU SUPERIOR INIT --> 
+  <!-- MENU SUPERIOR INIT CALM -->
+ <div style="display:none" class="calm_menu"> 
   <nav class="userMenu">
     <ul>
     <li class="userMenu-home"><a href="home.html"></a></li>
@@ -52,7 +54,24 @@
 
     </ul>
   </nav>
-  <!-- MENU SUPERIOR END -->
+ </div> 
+  <!-- MENU SUPERIOR END CALM-->
+    <!-- MENU SUPERIOR INIT Original--> 
+ <div style="display:none" class="original_menu">   
+  <nav class="userMenu">
+    <ul>
+    <li class="userMenu-home"><a href="home.html">Home</a></li>
+    <li class="userMenu-network"><a href="network.html">Network</a></li>
+    <li class="userMenu-profile current"><a href="login.html">Login</a></li>
+      <li class="userMenu-config">
+      </li>
+      
+    
+
+    </ul>
+  </nav>
+ </div>
+  <!-- MENU SUPERIOR END Original-->
 
 
   <div class="wrapper">
