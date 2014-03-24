@@ -11,6 +11,12 @@ $(function(){
          var skey = document.getElementById('skey').innerText;
          new QRCode(document.getElementById("qrcode"), skey);
     });
+    $('.tox-ctc').on('click', function(){
+    	window.prompt('Press Ctrl/Cmd+C to copy then Enter to close', $(this).attr('data'))
+    })
+    $('.bitmessage-ctc').on('click', function(){
+    	window.prompt('Press Ctrl/Cmd+C to copy then Enter to close', $(this).attr('data'))
+    })
 })
 
 

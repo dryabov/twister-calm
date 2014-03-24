@@ -26,6 +26,7 @@
     <script src="js/interface_common.js"></script>
     <script src="js/interface_home.js"></script>
     <script src="js/jquery.animate-colors-min.js"></script>
+    <script src="js/ZeroClipboard.min.js"></script>
     <script src="js/jquery.textcomplete.js"></script>
     <script src="js/calm.js"></script>
     <script src="js/options.js"></script>
@@ -432,7 +433,7 @@
                  style="background: url(img/imgBack.png) no-repeat center center;"-->
             <div class="profile-card-main">
               <img class="profile-card-photo" src="img/grayed_avatar_placeholder_24.png"/>
-              <h1 class="profile-name"></h1>
+              <h1 class="profile-name"></h1><br>
               <h2 class="profile-screen-name">@<b></b></h2>
               <div>
                 <span class="profile-location"></span>
@@ -440,15 +441,21 @@
               </div>
               <div class="profile-bio">
               </div>
-              <div class="profile-tox"></div>
-              <div class="profile-bitmessage"></div>
+              <div id="msngrswr">
+                <div id="toxbtnwr">
+                  <a class="profile-tox"></a><a class="tox-ctc"></a>
+                </div>
+                <div id="bmbtnwr">
+                  <a class="profile-bitmessage"></a><a class="bitmessage-ctc"></a>
+                </div>
+              </div>
             </div>
             <ul class="module profile-data">
               <li><a href="#"><span class="posts-count">&nbsp;</span><span class="label">Posts</span></a></li>
               <li><a href="#" class="open-following-modal"><span class="following-count">&nbsp;</span><span class="label">Following</span></a></li>
               <li><a href="#"><span class="followers-count">&nbsp;</span><span class="label">Followers</span></a></li>
             </ul>
-            <button class="follow" href="#">Follow</button>
+            <button class="followButton follow" href="#">Follow</button>
             <button class="direct-messages-with-user" href="#">Direct Messages</button>
 
           </div>

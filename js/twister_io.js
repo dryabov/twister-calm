@@ -224,7 +224,12 @@ function getTox( username, item ){
     getProfileResource( username, "tox", false, function(item, text){
         item.empty();
         if(text) {
-            item.append($('<a></a>').attr('href', 'tox:'+text).text(text));
+            item.attr('href', 'tox:'+text);
+            
+            setTimeout(function(){
+              $('#toxbtnwr').show()
+              $('.tox-ctc').attr('data', text);
+            }, 0);
         }
     }, item);
 }
@@ -234,7 +239,11 @@ function getBitmessage( username, item ){
     getProfileResource( username, "bitmessage", false, function(item, text){
         item.empty();
         if(text) {
-            item.append($('<a></a>').attr('href', 'bitmsg:'+text).text(text));
+            item.attr('href', 'bitmsg:'+text);
+            setTimeout(function(){
+              $('#bmbtnwr').show();
+              $('.bitmessage-ctc').attr('data', text);
+            }, 0);
         }
     }, item);
 }

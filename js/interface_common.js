@@ -115,10 +115,14 @@ function openProfileModal(e)
     
     //hed//add dinamic follow button in profile modal window
     if(followingUsers.indexOf(username) != -1){
-        $('.profile-card button').first().removeClass('follow').addClass('profileUnfollow').text(polyglot.t('Unfollow')).on('click', function(){
+        $('.profile-card button.followButton').first().removeClass('follow').addClass('profileUnfollow').text(polyglot.t('Unfollow')).on('click', function(){
             unfollow(username);
         });
     };
+    $mc = $('.modal-content');
+    $mch = parseInt($('.modal-content').css('height'));//
+    $pch = parseInt($('.profile-card').css('height'));//
+    $mc.css('height', $mch - ($pch + Math.floor($mch/50)));//hed//fix .modal-content height
 }
 
 function newHashtagModal(hashtag) {

@@ -53,11 +53,8 @@
     color: #fff;
 }
 .profile-card-main h2 {
-    display: block;
-    position: absolute;
-    left: 17%;
-    top: 16%;
     color: #7691ce;
+    font-size: 14px;
 }
 .forEdition .profile-card-main h2 {
     left: 20%;
@@ -229,15 +226,15 @@
     border-radius: 5px;
     overflow: hidden;
     position: absolute;
-    top:10%;
-    height: 80%;
+    top:5%;
+    height: 90%;
     margin-left: -300px;
 
 }
 .profile-modal .modal-content
 {
     padding: 3px;
-    height: 90%;
+    height: 100%;
 }
 .profile-modal h1.profile-name {
     color: #43464d;
@@ -245,23 +242,73 @@
 .profile-modal .profile-location {
     color: #48577d;
 }
-.profile-modal .profile-tox:before {
-    content: "Tox: ";
+#msngrswr {
+    position: absolute;
+    left: 10px;
+    margin-top: 10px;
 }
-.profile-modal .profile-tox:empty {
+#toxbtnwr, #bmbtnwr {
+    float: left;
     display: none;
 }
-.profile-modal .profile-bitmessage:before {
-    content: "Bitmessage: ";
+.bitmessage-ctc, .tox-ctc {
+    height: 35px;
+    width: 30px;
+    display: inline-block;
+    margin-right: 10px;
+    border: 1px solid #c0c2c6;
+    background: #e3e5ea url(img/clipboard.png) center no-repeat;
+    opacity: .8;
+    -webkit-border-radius: 0 5px 5px 0;
+    -moz-border-radius: 0 5px 5px 0;
+    border-radius: 0 5px 5px 0;
+    -webkit-transition: all 200ms;
+    -moz-transition: all 200ms;
+    -ms-transition: all 200ms;
+    -o-transition: all 200ms;
+    transition: all 200ms;
 }
-.profile-modal .profile-bitmessage:empty {
-    display: none;
+.bitmessage-ctc:hover, .tox-ctc:hover {
+    background-color: #f0f2f8;
+    opacity: 1;
 }
-
+.bitmessage-ctc:active, .tox-ctc:active {
+    background-color: #edfced;
+}
+.profile-modal .profile-tox, .profile-modal .profile-bitmessage {
+    display: inline-block;
+    width: 80px;
+    height: 35px;
+    margin-right: 2px;
+    border: 1px solid #c0c2c6;
+    opacity: .8;
+    -webkit-border-radius: 5px 0 0 5px;
+    -moz-border-radius: 5px 0 0 5px;
+    border-radius: 5px 0 0 5px;
+    -webkit-transition: all 200ms;
+    -moz-transition: all 200ms;
+    -ms-transition: all 200ms;
+    -o-transition: all 200ms;
+    transition: all 200ms;
+}
+.profile-modal .profile-tox:hover, .profile-modal .profile-bitmessage:hover {
+    opacity: 1;
+    background-color: #f0f2f8;
+}
+.profile-modal .profile-tox:active, .profile-modal .profile-bitmessage:active {
+    background-color: #fff0f0;
+}
+.profile-modal .profile-tox {
+    background: #e3e5ea url(../img/tox.png) center no-repeat;
+}
+.profile-modal .profile-bitmessage {
+    background: #e3e5ea url(../img/bm.png) center no-repeat;
+}
 .profile-modal .profile-data
 {
     display: inline-block;
     margin-left: -4px;
+    margin-top: 40px;
     border-bottom: 0;
 }
 button.follow:hover {
@@ -341,6 +388,7 @@ h1.profile-name {
 }
 h2.profile-screen-name {
     display: inline;
+    bottom: 0;
 }
 
 .profile-modal .modal-buttons {
