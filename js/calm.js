@@ -76,17 +76,17 @@ function mensAutocomplete() {
 
 function changeStyle() {
 	var style, profile, menu;
-	if(localStorage['theme'] == 'calm')
-	{
-		style = 'css/style.css';
-		profile = 'css/profile.css';
-		menu = '.calm_menu';
-	}else if(localStorage['theme'] == 'original')
+	if(localStorage['theme'] == 'original')
 	{
 		style = 'css/orange/style.css';
 		profile = 'css/orange/profile.css';
 		menu = '.original_menu';
 		$(".userMenu-dhtindicator").hide();
+	}else 
+	{
+		style = 'css/style.css';
+		profile = 'css/profile.css';
+		menu = '.calm_menu';
 	}
 	$('#stylecss').attr('href', style);
 	$('#profilecss').attr('href', profile);
