@@ -12,16 +12,43 @@
     background: url("emotions/calm/angel.png");
 }
 
+.emo-beer {
+    background: url("emotions/calm/beer.png");
+    width: 36px;
+    height: 22px;
+}
 .emo-confused {
     background: url("emotions/calm/confused.png");
+}
+
+.emo-cry {
+    background: url("emotions/calm/cry.png");
 }
 
 .emo-devil {
     background: url("emotions/calm/devil.png");
 }
 
+.emo-friends {
+    background: url("emotions/calm/friends.png");
+    width: 67px;
+    height: 23px;
+}
+
+.emo-frown {
+    background: url("emotions/calm/frown.png");
+}
+
+.emo-glasses {
+    background: url("emotions/calm/glasses.png");
+}
+
 .emo-grin {
     background: url("emotions/calm/grin.png");
+}
+
+.emo-grumpy {
+    background: url("emotions/calm/grumpy.png");
 }
 
 .emo-heart {
@@ -32,12 +59,20 @@
     background: url("emotions/calm/kiss.png");
 }
 
+.emo-mimi {
+    background: url("emotions/calm/mimi.png");
+}
+
 .emo-smile {
     background: url("emotions/calm/smile.png");
 }
 
 .emo-sunglasses {
     background: url("emotions/calm/sunglasses.png");
+}
+
+.emo-tongue {
+    background: url("emotions/calm/tongue.png");
 }
 
 .emo-unsure {
@@ -48,22 +83,9 @@
     background: url("emotions/calm/wink.png");
 }
 
-.emo-cry {
-    background: url("emotions/calm/cry.png");
-}
 
-.emo-glasses {
-    background: url("emotions/calm/glasses.png");
-}
 
-.emo-grumpy {
-    background: url("emotions/calm/grumpy.png");
-}
 
-.emo-tongue {
-    background: url("emotions/calm/tongue.png");
-}
 
-.emo-frown {
-    background: url("emotions/calm/frown.png");
-}
+
+
