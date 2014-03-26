@@ -106,7 +106,8 @@
                 .replace(/&/g, '&amp;')
                 .replace(/</g, '&lt;')
                 .replace(/>/g, '&gt;')
-                .replace(/"/g, '&quot;');
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&apos;');
         },
         quote: function (str) {
             return (str + '').replace(/([.?*+^$[\]\\(){}|-])/g, "\\$1");
