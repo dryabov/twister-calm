@@ -100,6 +100,14 @@ function postToElem( post, kind ) {
         retweetedByElem.attr("href", $.MAL.userUrl(retweeted_by));
         retweetedByElem.text('@'+retweeted_by);
     }
+    //hed//image in post
+    var previewContainer = elem.find('.preview-container'), postText = elem.find(".post-text");
+    
+    if(imagePreview(postText)){
+        previewContainer.show();
+        previewContainer.append(imagePreview(postText))
+    };
+    
 
     return elem;
 }
@@ -238,6 +246,7 @@ function htmlFormatMsg( msg, output, mentions ) {
         }
 
         output.append(_formatText(msg));
+
         msg = "";
     }
 }
@@ -247,6 +256,7 @@ function _formatText(msg)
 {
     msg = $.emotions(msg);
     msg = msg.replace(/\n/g, '<br />');
+
     return msg;
 }
 
@@ -281,4 +291,13 @@ function _extractHashtag(s) {
 
 function escapeHtmlEntities(str) {
     return str.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('"', '&quot;').replace("'", '&apos;');
+}
+function imagePreview(post) {
+    if (localStorage['showPreviewOpt'] == 'enable') {
+        var link = post.find("a[rel='nofollow']");
+        if (link.html() && /(\.jpg)|(\.gif)|(\.png)|(\.jpeg)/.test(link.html().toLowerCase()))
+        {
+             return "<img src='" + link.html() + "' class='image-preview' />";
+        }
+    }
 }

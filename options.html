@@ -72,88 +72,75 @@
  </div>
   <!-- MENU SUPERIOR END Original-->
   
-  <div class="wrapper">
-
-    <div class="language">
+  <div class="wrapper optionsPage">
 
       <div class="module">
-        <p> Use language </p>
+        <h1> Use language </h1>
         <div>
-            <form action="" id="selectLanguage">
-              <select name="" id="language">
-                <option value="auto">Auto</option>
-                <option value="en">English</option>
-                <option value="ru">Russian</option>
-                <option value="zh">Chinese</option>
-        				<option value="de">German</option>
-        				<option value="fr">French</option>
-        				<option value="it">Italian</option>
-        				<option value="nl">Dutch</option>
-              </select>
-            </form>
+          <select name="" id="language">
+            <option value="auto">Auto</option>
+            <option value="en">English</option>
+            <option value="ru">Russian</option>
+            <option value="zh">Chinese</option>
+    				<option value="de">German</option>
+    				<option value="fr">French</option>
+    				<option value="it">Italian</option>
+    				<option value="nl">Dutch</option>
+          </select>
         </div>
       </div>
-    </div>
-    <div class="language">
 
       <div class="module">
-        <p> Theme </p>
+        <h1> Theme </h1>
         <div>
-            <form action="" id="selectTheme">
-              <select name="" id="theme">
-                <option value="calm">Calm</option>
-                <option value="original">Original</option>
-              </select>
-            </form>
+          <select name="" id="theme">
+            <option value="calm">Calm</option>
+            <option value="original">Original</option>
+          </select>
         </div>
       </div>
-    </div>
-
-    <div class="sounds">
 
       <div class="module">
-        <p> Sound notifications </p>
-        <div>
-            <form action="" id="notifyForm">
-              <p>Mentions</p>
-              <select name="" id="sndMention" class="sndOpt">
-                <option value="false">none</option>
-                <option value="1">beat</option>
-                <option value="2">pip</option>
-                <option value="3">vibro</option>
-                <option value="4">flip</option>
-                <option value="5">click</option>
-              </select><br>
-              <p>Direct Messages</p>
-              <select name="" id="sndDM" class="sndOpt">
-                <option value="false">none</option>
-                <option value="1">beat</option>
-                <option value="2">pip</option>
-                <option value="3">vibro</option>
-                <option value="4">flip</option>
-                <option value="5">click</option>
-              </select>
-              <input type="range" name="playerVol" id="playerVol" min="0" max="1" step="0.01"><span class="volValue">0</span>
-            </form>
-            <audio id="player"></audio>
-        </div>
+        <h1> Sound notifications </h1>
+          <h2>Mentions</h2>
+          <select name="" id="sndMention" class="sndOpt">
+            <option value="false">none</option>
+            <option value="1">beat</option>
+            <option value="2">pip</option>
+            <option value="3">vibro</option>
+            <option value="4">flip</option>
+            <option value="5">click</option>
+          </select><br>
+          <h2>Direct Messages</h2>
+          <select name="" id="sndDM" class="sndOpt">
+            <option value="false">none</option>
+            <option value="1">beat</option>
+            <option value="2">pip</option>
+            <option value="3">vibro</option>
+            <option value="4">flip</option>
+            <option value="5">click</option>
+          </select>
+          <input type="range" name="playerVol" id="playerVol" min="0" max="1" step="0.01"><span class="volValue">0</span>
+          <audio id="player"></audio>
       </div>
-    </div>
 
-      <div class="keys">
-        <div class="module">
-          <p> Keys </p>
-          <div>
-              <form action="" id="keysOpt">
-                <p>Send key</p>
-                <select name="" id="keysSend">
-                  <option value="1">Enter</option>
-                  <option value="2">Ctrl/Cmd+Enter</option>
-                </select>
-              </form>
-          </div>
-        </div>
+      <div class="module">
+        <h1> Keys </h1>
+          <h2>Send key</h2>
+          <select name="" id="keysSend">
+            <option value="1">Enter</option>
+            <option value="2">Ctrl/Cmd+Enter</option>
+          </select>
       </div>
-  </div>
+
+      <div class="module">
+        <h1>Inline image preview</h1>
+        <select name="" id="displayPreview">
+          <option value="disable">Ignore</option>
+          <option value="enable">Display</option>
+        </select>
+      </div>
+
+    </div>
   </body>
 </html>

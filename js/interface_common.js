@@ -119,10 +119,13 @@ function openProfileModal(e)
             unfollow(username);
         });
     };
-    $mc = $('.modal-content');
-    $mch = parseInt($('.modal-content').css('height'));//
-    $pch = parseInt($('.profile-card').css('height'));//
-    $mc.css('height', $mch - ($pch + Math.floor($mch/50)));//hed//fix .modal-content height
+    //hed//fix .modal-content height in profile modal
+    if($('.modal-blackout').hasClass('profile-modal')){
+        $mc = $('.modal-content');
+        $mch = parseInt($('.modal-content').css('height'));
+        $pch = parseInt($('.profile-card').css('height'));
+        $mc.css('height', $mch - ($pch + Math.floor($mch/50)));
+    }
 }
 
 function newHashtagModal(hashtag) {
@@ -318,6 +321,9 @@ var postExpandFunction = function( e, postLi )
         requestRepliesAfter(originalLi);
         // RTs faces and counter
         requestRTs(originalLi);
+
+        //hed//image preview 
+        postLi.find('.preview-container').css('height', '100%');
     }
     else
     {
@@ -331,6 +337,7 @@ var postExpandFunction = function( e, postLi )
             postLi.empty();
             postLi.append(originalPost);
         });
+        postLi.find('.preview-container').css('height', '')
     }
 
     e.stopPropagation();

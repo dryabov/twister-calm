@@ -5,7 +5,7 @@ $(function() {
 function soundNotifOptions() {
 	if(!localStorage['sndDM']) localStorage['sndDM'] = false;
 	if(!localStorage['sndMention']) localStorage['sndMention'] = false;
-	$('#notifyForm select').each(function(){
+	$('.sndOpt').each(function(){
 		this.value = localStorage[this.id];
 	});
 
@@ -14,7 +14,7 @@ function soundNotifOptions() {
 	$('#player').empty();
 
 
-	$('form#notifyForm').on('change','select',function(){
+	$('.sndOpt').on('change',function(){
 		localStorage.setItem(this.id, this.value);
 
 		if(this.value == false) {player[0].pause(); return;}
@@ -76,9 +76,9 @@ function mensNotif() {
 
 function keysSend() {
 	if(!localStorage['keysSend']) localStorage['keysSend'] = 1;
-	$('#keysOpt select')[0].value = localStorage['keysSend'];
+	$('#keysSend')[0].value = localStorage['keysSend'];
 	
-	$('#keysOpt select').on('change', function(){
+	$('#keysSend').on('change', function(){
 		localStorage[this.id] = this.value;
 	
 	})
@@ -101,10 +101,19 @@ function setTheme() {
 
 }
 
+function setShowPreviewOpt(){
+	$('#displayPreview').val(localStorage['showPreviewOpt'] || "enable");
+	if(!localStorage['showPreviewOpt']) localStorage['showPreviewOpt'] = "enable";
+	$('#displayPreview').on('change', function(){
+		localStorage['showPreviewOpt'] = $(this).val();
+	})
+}
+
 function InitOptions () {
 	soundNotifOptions();
 	volumeControl();
 	keysSend();
 	setLang();
 	setTheme();
+	setShowPreviewOpt();
 }

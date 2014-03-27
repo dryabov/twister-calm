@@ -26,7 +26,6 @@
     <script src="js/interface_common.js"></script>
     <script src="js/interface_home.js"></script>
     <script src="js/jquery.animate-colors-min.js"></script>
-    <script src="js/ZeroClipboard.min.js"></script>
     <script src="js/jquery.textcomplete.js"></script>
     <script src="js/calm.js"></script>
     <script src="js/options.js"></script>
@@ -288,6 +287,8 @@
                 <a class="post-info-time"></a>
             </div>
             <p class="post-text"></p>
+            <div class="preview-container"></div>
+            <div style="clearfix:both"></div>
             <div class="post-context" style="display: none;">
                 <i class="post-retransmited-icon"></i>
                 <span>twisted again by</span>
@@ -433,9 +434,13 @@
                  style="background: url(img/imgBack.png) no-repeat center center;"-->
             <div class="profile-card-main">
               <img class="profile-card-photo" src="img/grayed_avatar_placeholder_24.png"/>
-              <h1 class="profile-name"></h1><br>
-              <h2 class="profile-screen-name">@<b></b></h2><br>
-              <span class="profile-location"></span><br>
+              <h1 class="profile-name"></h1>
+              <div>
+                <h2 class="profile-screen-name">@<b></b></h2>
+              </div>
+              <div>
+                <span class="profile-location"></span>
+              </div>
               <a class="profile-url" rel="nofollow" target="_blank"></a>
               <div class="profile-bio"></div>
               <div id="msngrswr">
