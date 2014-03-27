@@ -196,6 +196,9 @@ function getProfileResource( username, resource, item, cbFunc, cbArg ){
                        if( args.cbFunc )
                            args.cbFunc(args.cbArg, null);
                    }
+                   if (item) {
+                       item.trigger('profileloaded');
+                   }
                }, {username:username,item:item,cbFunc:cbFunc,cbArg:cbArg});
     }
 }
@@ -225,11 +228,8 @@ function getTox( username, item ){
         item.empty();
         if(text) {
             item.attr('href', 'tox:'+text);
-            
-            setTimeout(function(){
-              $('#toxbtnwr').show()
-              $('.tox-ctc').attr('data', text);
-            }, 0);
+            item.next().attr('data', text);
+            item.parent().show().parent().show();
         }
     }, item);
 }
@@ -240,10 +240,8 @@ function getBitmessage( username, item ){
         item.empty();
         if(text) {
             item.attr('href', 'bitmsg:'+text+'?action=add&label='+username);
-            setTimeout(function(){
-              $('#bmbtnwr').show();
-              $('.bitmessage-ctc').attr('data', text);
-            }, 0);
+            item.next().attr('data', text);
+            item.parent().show().parent().show();
         }
     }, item);
 }
