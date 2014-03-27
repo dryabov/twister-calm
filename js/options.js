@@ -107,7 +107,6 @@ function setShowPreviewOpt(){
 	$('#displayPreview').on('change', function(){
 		localStorage['showPreviewOpt'] = $(this).val();
 	})
-	console.log('lala');
 }
 
 function InitOptions() {
@@ -116,5 +115,8 @@ function InitOptions() {
 	keysSend();
 	setLang();
 	setTheme();
+	setShowPreviewOpt();
+}
+function InitOptionsforHome() {
 	setShowPreviewOpt();
 }
