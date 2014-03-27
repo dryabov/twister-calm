@@ -1267,6 +1267,8 @@ input.userMenu-search-field:focus::-ms-input-placeholder {
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
+    line-height: 0;
+    margin-bottom: 3px;
 }
 .post-stats
 {
