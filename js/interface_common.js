@@ -326,6 +326,9 @@ var postExpandFunction = function( e, postLi )
         requestRepliesAfter(originalLi);
         // RTs faces and counter
         requestRTs(originalLi);
+
+        //hed//image preview 
+        postLi.find('.preview-container').css('height', '100%');
     }
     else
     {
@@ -339,6 +342,7 @@ var postExpandFunction = function( e, postLi )
             postLi.empty();
             postLi.append(originalPost);
         });
+        postLi.find('.preview-container').css('height', '')
     }
 
     e.stopPropagation();

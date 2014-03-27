@@ -1252,6 +1252,22 @@ input.userMenu-search-field:focus::-ms-input-placeholder {
     display: none;
     padding: 5px 5px 0 5px;
 }
+.image-preview
+{
+    max-height: 500px;
+    width: 100%;
+}
+.preview-container
+{
+    height: 100px;
+    width: 95%;
+    margin: 0 auto;
+    overflow: hidden;
+    display: none;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
 .post-stats
 {
     margin: 0 10px 0 55px;
@@ -1405,14 +1421,14 @@ input.userMenu-search-field:focus::-ms-input-placeholder {
 /*************************************
 **************************** LOGIN PAGE
 **************************************/
-.login .module, .sounds .module, .keys .module, .language .module {
+.login .module, .optionsPage .module {
     padding: 20px;
     width: 500px;
     margin: 10px auto;
     border: 3px solid #c7cdda;
     border-radius: 6px;
 }
-.login .module p, .sounds .module p, .keys .module p, .language .module p {
+.login .module p, .optionsPage .module p{
     font: 14px "Open Sans", sans-serif;
     margin-bottom: 5px;
 
@@ -1429,7 +1445,7 @@ input.userMenu-search-field:focus::-ms-input-placeholder {
     background: #fff;
     transition: background-color 100ms linear;
 }
-.login .module select.local-usernames, .sndOpt, #keysOpt select, #selectLanguage select, #selectTheme select {
+.login .module select, .optionsPage select{
     height: 30px;
     font: 13px/24px "Open sans";
     text-align: center;
@@ -1909,8 +1925,13 @@ input.userMenu-search-field:focus::-ms-input-placeholder {
     margin-right: -163px;
     font: 12px "Open Sans", sans-serif;
 }
-#notifyForm p, #selectLanguage p, #keysOpt p {
-    margin-top: 15px;
+.optionsPage .module h1 {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+.optionsPage .module h2 {
+    margin-top: 10px;
+    font-size: 11px;
 }
 /* Following page */
 .following ol.following-list > li{
