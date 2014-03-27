@@ -119,13 +119,18 @@ function openProfileModal(e)
             unfollow(username);
         });
     };
-    //hed//fix .modal-content height in profile modal
-    if($('.modal-blackout').hasClass('profile-modal')){
-        $mc = $('.modal-content');
-        $mch = parseInt($('.modal-content').css('height'));
-        $pch = parseInt($('.profile-card').css('height'));
-        $mc.css('height', $mch - ($pch + Math.floor($mch/50)));
-    }
+    $mc = $('.modal-content');
+//    $mch = parseInt($('.modal-content').css('height'));//
+//    $pch = parseInt($('.profile-card').css('height'));//
+//    $mc.css('height', $mch - ($pch + Math.floor($mch/50)));//hed//fix .modal-content height
+
+    $mc.off('profileloaded');
+    $mc.on('profileloaded', function() {
+        var viewHeader = $mc.find(".postboard > h2");
+        var h = viewHeader.offset().top + viewHeader.outerHeight() - $mc.parent().offset().top + 5;
+        $mc.find(".postboard-posts").css('border-top', parseInt(h, 10) + "px solid transparent");
+    });
+    $mc.trigger('profileloaded');
 }
 
 function newHashtagModal(hashtag) {
