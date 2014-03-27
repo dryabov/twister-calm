@@ -705,13 +705,17 @@ input.userMenu-search-field:focus::-ms-input-placeholder {
     margin-right: 55px;
     background: #6d83bd url(../img/dm.png) no-repeat 10px 3px;
 }
-.post .post-submit {
-    margin-right: 16px;
+.post-submit {
     background: #6d83bd url(../img/pen.png) no-repeat 10px 3px;
 }
+.post .post-submit {
+    margin-right: 16px;
+}
 .mini-profile .post-submit {
-    background: #6d83bd url(../img/pen.png) no-repeat 10px 3px;
     margin-right: 0;
+}
+.reply .post-submit {
+    margin-right: 35px;
 }
 .post-submit.disabled {
     opacity: .6;
@@ -2029,4 +2033,8 @@ ul.dropdown-menu img {
 p.post-text img {
     width: 20px;
     height: 20px;
+}
+
+.reply textarea{
+    margin-top: 20px;
 }

@@ -337,6 +337,11 @@ button.follow:hover {
     background: #b2d67b;
     color: #fff;
 }
+.profile-modal .separator {
+    height: 10px;
+    width: 100%;
+    background-color: #000;
+}
 .profile-modal .postboard
 {
     margin-left: 0;
