@@ -103,9 +103,24 @@ function setTheme() {
 
 function setShowPreviewOpt(){
 	$('#displayPreview').val(localStorage['showPreviewOpt'] || "enable");
+	$('input[type="checkbox"]').prop('checked', localStorage['showPreviewOptGif'] == 'true')
+	
+	if(localStorage['showPreviewOpt'] == 'disable'){
+		$('input[type="checkbox"]').prop('disabled', true)
+	}
+	
 	if(!localStorage['showPreviewOpt']) localStorage['showPreviewOpt'] = "enable";
+	
 	$('#displayPreview').on('change', function(){
 		localStorage['showPreviewOpt'] = $(this).val();
+		switch($(this).val()){
+			case 'enable': $('.gifCheckBox').prop('disabled', false); break;
+			case 'disable': $('.gifCheckBox').prop('disabled', true); break;
+		}
+	})
+	
+	$('input[type="checkbox"]').on('click', function(){
+		localStorage[$(this).attr('name')] = $(this).prop('checked')
 	})
 }
 

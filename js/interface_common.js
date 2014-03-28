@@ -448,11 +448,11 @@ var postSubmit = function(e)
     var remainingCount = tweetForm.find(".post-area-remaining");
     remainingCount.text(140);
     $replyText.attr("placeholder", "Your message was sent!");
-    closeModal($this);
+
     if($this.closest('.post-area,.post-reply-content')){
         $('.post-area-new').removeClass('open').find('textarea').blur();
     };
-    setTimeout('requestTimelineUpdate("latest",postsPerRefresh,followingUsers,promotedPostsOnly)', 1000);
+    setTimeout('requestTimelineUpdate("latest",postsPerRefresh,followingUsers,promotedPostsOnly)', 2000);
 }
 
 

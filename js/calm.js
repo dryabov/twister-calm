@@ -1,6 +1,5 @@
 $(function(){
 	$('.dropdown-menu').on('keydown', function(e){
-		e = event || window.event;
 		e.stopPropagation();
 	})
 	$('.post-text').on('click', 'a', function(e){

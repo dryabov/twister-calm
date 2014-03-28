@@ -1259,7 +1259,7 @@ input.userMenu-search-field:focus::-ms-input-placeholder {
 .image-preview
 {
     max-height: 500px;
-    width: 100%;
+    max-width: 100%;
 }
 .preview-container
 {
@@ -1972,6 +1972,15 @@ input.userMenu-search-field:focus::-ms-input-placeholder {
 }
 .following ol.following-list .mini-profile-info button {
     margin-top: 5px;
+}
+.gifCheckBox {
+    float: right;
+    vertical-align: middle;
+}
+.optionsPage .module label {
+    font: 14px "Open Sans", sans-serif;
+    display: block;
+    float: right;
 }
 
 /* Autocomplite*/

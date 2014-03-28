@@ -296,9 +296,10 @@ function imagePreview(post) {
     if (localStorage['showPreviewOpt'] == 'enable') {
         var link = post.find("a[rel='nofollow']");
         var linkAnon = 'https://ssl-proxy.my-addr.org/myaddrproxy.php/http/';
-        if (link.html() && /(\.jpg)|(\.gif)|(\.png)|(\.jpeg)/.test(link.html().toLowerCase()))
+        if (link.html() && /(\.jpg)|(\.gif)|(\.png)|(\.jpeg)|(\.jpe)/.test(link.html().toLowerCase()))
         {
-            var cleanLink = link.html().replace(/^http[s]?:\/\//i, '')
+            var cleanLink = link.html().replace(/^http[s]?:\/\//i, '');
+            if(/\.gif\b/i.test(cleanLink) && localStorage['showPreviewOptGif'] == 'false') return;
             return "<img src='"+linkAnon+cleanLink+"' class='image-preview' />";
         }
     }

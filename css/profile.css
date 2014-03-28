@@ -254,19 +254,18 @@
 }
 #msngrswr {
     display: none;
-    margin-left: 10px;
-    margin-top: 10px;
-    height: 40px;
+    margin-top: 20px;
+    height: 30px;
 }
 #toxbtnwr, #bmbtnwr {
     float: left;
     display: none;
 }
 .bitmessage-ctc, .tox-ctc {
-    height: 35px;
+    height: 30px;
     width: 30px;
     display: inline-block;
-    margin-right: 10px;
+    margin-right: 5px;
     border: 1px solid #d6d8dc;
     background: #e3e5ea url(img/clipboard.png) center no-repeat;
     opacity: .8;
@@ -289,8 +288,8 @@
 }
 .profile-modal .profile-tox, .profile-modal .profile-bitmessage {
     display: inline-block;
-    width: 80px;
-    height: 35px;
+    width: 70px;
+    height: 30px;
     border: 1px solid #c0c2c6;
     opacity: .8;
     -webkit-border-radius: 5px 0 0 5px;
@@ -360,6 +359,7 @@ button.follow:hover {
     position: absolute;
     top: 0;
     height: 100%;
+    width: 99%;
     box-sizing: border-box;
     border-top: 292px solid transparent;
     overflow: auto;
