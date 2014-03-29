@@ -301,6 +301,10 @@ function imagePreview(post) {
             var cleanLink = link.html().replace(/^http[s]?:\/\//i, '');
             if(/\.gif\b/i.test(cleanLink) && localStorage['showPreviewOptGif'] == 'false') return;
             return "<img src='"+linkAnon+cleanLink+"' class='image-preview' />";
+        } else if (link.html() && /https:\/\/img.bi/.test(link.html().toLowerCase()))
+        {
+            return "<img data-imgbi='" + link.html() + "' class='image-preview' />";
+            // imgBiJS();
         }
     }
 }

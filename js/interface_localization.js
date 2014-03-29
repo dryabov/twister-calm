@@ -54,6 +54,7 @@ if(preferredLanguage == "en"){
       "DHT network down.": "DHT network down.",
       "Direct Messages": "Direct Messages",
       "Disable": "Disable",
+      "Display GIF images": "Display GIF images",
       "Display mentions to @": "Display mentions to @",
       "Display retransmissions": "Display retransmissions",
       "DNS to obtain list of peers:": "DNS to obtain list of peers:",
@@ -79,6 +80,7 @@ if(preferredLanguage == "en"){
       "Generate blocks (send promoted messages)": "Generate blocks (send promoted messages)",
       "Home": "Home", // homepage
       "hours": "%{smart_count} hour |||| %{smart_count} hours",
+      "Inline image preview": "Inline image preview",
       "Internal error: lastPostId unknown (following yourself may fix!)": "Internal error: lastPostId unknown (following yourself may fix!)",
       "Keys":"Keys",
       "Known peers:": "Known peers: ",
@@ -115,7 +117,6 @@ if(preferredLanguage == "en"){
       "reply_to": "Reply to %{fullname}",
       "Retransmit": "Retransmit",
       "Retransmits": "Retransmits",
-      "twisted again by": "twisted again by ",
       "search": "search",
       "seconds": "%{smart_count} second |||| %{smart_count} seconds",
       "send": "send",
@@ -131,8 +132,10 @@ if(preferredLanguage == "en"){
                 "your actions may not work.\n" +
                 "Do you want to check Network Status page instead?",
       "The File APIs are not fully supported in this browser.": "The File APIs are not fully supported in this browser.",
+      "Theme": "Theme",
       "time_ago": "%{time} ago", // 5 minutes ago
       "Time of the last block:": "Time of the last block: ",
+      "twisted again by": "twisted again by ",
       "Type message here": "Type message here",
       "Unfollow": "Unfollow",
       "Update": "Update",
@@ -1060,6 +1063,7 @@ if(preferredLanguage == "ru"){
        "DHT network down.": "Недоступна DHT сеть.",
        "Direct Messages": "ЛС",
        "Disable": "Отключено",
+       "Display GIF images": "Отображать GIF изображения",
        "Display mentions to @": "Показать ответы для @",
        "Display retransmissions": "Показать репосты",
        "DNS to obtain list of peers:": "DNS адрес для получения пиров:",
@@ -1085,6 +1089,7 @@ if(preferredLanguage == "ru"){
        "Generate blocks (send promoted messages)": "Генерация блоков (отправка рекламных сообщений)",
        "Home": "Главная", // homepage
        "hours": "%{smart_count} час |||| %{smart_count} часов",
+       "Inline image preview": "Отображать изображения в посте",
        "Internal error: lastPostId unknown (following yourself may fix!)": "Внутренняя ошибка: lastPostId неизвестен (Попробуйте подписаться сами на себя, это должно помочь!)",
        "Keys":"Клавиши",
        "Known peers:": "Известные пиры: ",
@@ -1138,6 +1143,7 @@ if(preferredLanguage == "ru"){
                  "ваши действия могут быть не выполнены.\n" +
                  "Не хотите перейти на страницу настройки сети?",
        "The File APIs are not fully supported in this browser.": "File APIs не полностью поддерживается этим браузером.",
+       "Theme": "Тема оформления",
        "time_ago": "%{time} назад", // 5 minutes ago
        "Time of the last block:": "Время последнего блока: ",
        "Top Trends": "Тенденции",
@@ -1781,8 +1787,9 @@ var fixedLabels = [
   ".module.toptrends h3",
 
   //options page
-  "#notifyForm p",
-  ".module p",
+  ".module h1",
+  ".module h2",
+  ".module label span",
 
   // following page
   ".following h2",

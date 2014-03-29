@@ -1260,6 +1260,8 @@ input.userMenu-search-field:focus::-ms-input-placeholder {
 {
     max-height: 500px;
     max-width: 100%;
+    margin: 0 auto;
+    display: block;
 }
 .preview-container
 {
@@ -1924,11 +1926,11 @@ input.userMenu-search-field:focus::-ms-input-placeholder {
 /* Options */
 #playerVol {
     float: right;
-    margin-right: 20px;
+    margin-right: 30px;
 }
 .volValue {
     float: right;
-    margin-right: -163px;
+    margin-right: -160px;
     font: 12px "Open Sans", sans-serif;
 }
 .optionsPage .module h1 {
@@ -1937,7 +1939,7 @@ input.userMenu-search-field:focus::-ms-input-placeholder {
 }
 .optionsPage .module h2 {
     margin-top: 10px;
-    font-size: 11px;
+    font-size: 12px;
 }
 /* Following page */
 .following ol.following-list > li{
@@ -1978,7 +1980,7 @@ input.userMenu-search-field:focus::-ms-input-placeholder {
     vertical-align: middle;
 }
 .optionsPage .module label {
-    font: 14px "Open Sans", sans-serif;
+    font: 12px "Open Sans", sans-serif;
     display: block;
     float: right;
 }

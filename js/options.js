@@ -89,6 +89,7 @@ function setLang() {
 	$('#language').val(localStorage['locLang'] || 'auto')
 	$('#language').on('change', function(){
 		localStorage['locLang'] = $(this).val();
+		location.reload();
 	})
 }
 
