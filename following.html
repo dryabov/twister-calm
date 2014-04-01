@@ -11,6 +11,8 @@
     <script src="js/jquery.json-2.4.js"></script>
     <script src="js/jquery.jsonrpcclient.js"></script>
     <script src="js/jquery.storageapi.js"></script>
+    <script src="js/jquery.a-tools-1.4.1.js"></script>
+    <script src="js/jquery.asuggest.js"></script>
     <script src="js/mobile_abstract.js"></script>
     <script src="js/twister_io.js"></script>
     <script src="js/polyglot.min.js"></script>
@@ -29,11 +31,10 @@
     <script src="js/calm.js"></script>
 
     <script>
-    $(document).ready(function(){initInterfaceFollowing()});
+    $(function(){initInterfaceFollowing(); homeIntInit();});
     changeStyle();
     </script>
 
-    <link rel="icon" type="image/png" href="img/twister_mini.png" />
   </head>
 
   <body>
@@ -246,7 +247,7 @@
     <!-- TEMPLATE INVÓLUCRO DO POST EXPANDIDO END -->
 
     <!-- TEMPLATE DO MODAL GENÉRICO INIT -->
-    <div class="modal-blackout">
+    <div class="modal-blackout cancel">
       <div class="modal-wrapper">
         <div class="modal-header">
           <h3></h3>

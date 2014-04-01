@@ -119,11 +119,9 @@ function openProfileModal(e)
             unfollow(username);
         });
     };
+    
+    //fix .modal-content height
     $mc = $('.modal-content');
-//    $mch = parseInt($('.modal-content').css('height'));//
-//    $pch = parseInt($('.profile-card').css('height'));//
-//    $mc.css('height', $mch - ($pch + Math.floor($mch/50)));//hed//fix .modal-content height
-
     $mc.off('profileloaded');
     $mc.on('profileloaded', function() {
         var viewHeader = $mc.find(".postboard > h2");

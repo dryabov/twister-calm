@@ -32,7 +32,8 @@ function soundNotifOptions() {
 
 function volumeControl () {
 	var playerVol = $('#playerVol');
-	playerVol[0].value = localStorage[playerVol[0].id] ? localStorage[playerVol[0].id] : 100;
+	if(!localStorage[playerVol[0].id]) localStorage[playerVol[0].id] = 1;
+	playerVol[0].value = localStorage[playerVol[0].id];
 	$('.volValue').text((localStorage[playerVol[0].id] * 100).toFixed());
 	
 	playerVol.on('change',function(){
