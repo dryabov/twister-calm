@@ -104,20 +104,25 @@ function setTheme() {
 }
 
 function setShowPreviewOpt(){
-	$('#displayPreview').val(localStorage['showPreviewOpt'] || "enable");
-	$('input[type="checkbox"]').prop('checked', localStorage['showPreviewOptGif'] == 'true')
+	$('.previewOpt').each(function() {
+		this.value = localStorage[this.id] || 'enable';
+	})
+
+	$('input[type="checkbox"]').prop('checked', localStorage['imagesPreviewGif'] == 'true')
 	
-	if(localStorage['showPreviewOpt'] == 'disable'){
+	if(localStorage['imagesPreview'] == 'disable'){
 		$('input[type="checkbox"]').prop('disabled', true)
 	}
 	
-	if(!localStorage['showPreviewOpt']) localStorage['showPreviewOpt'] = "enable";
+	if(!localStorage['imagesPreview']) localStorage['imagesPreview'] = "enable";
 	
-	$('#displayPreview').on('change', function(){
-		localStorage['showPreviewOpt'] = $(this).val();
-		switch($(this).val()){
-			case 'enable': $('.gifCheckBox').prop('disabled', false); break;
-			case 'disable': $('.gifCheckBox').prop('disabled', true); break;
+	$('.previewOpt').on('change', function(){
+		localStorage[this.id] = $(this).val();
+		if (this.id === 'imagesPreview'){
+			switch($(this).val()){
+				case 'enable': $('.gifCheckBox').prop('disabled', false); break;
+				case 'disable': $('.gifCheckBox').prop('disabled', true); break;
+			}
 		}
 	})
 	

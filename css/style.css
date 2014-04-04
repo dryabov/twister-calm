@@ -1139,6 +1139,80 @@ input.userMenu-search-field:focus::-ms-input-placeholder {
     color: #5e8da4;
     text-decoration: none;
 }
+/* Inpost previw */
+.preview-container
+{
+    height: 100px;
+    width: 95%;
+    margin: 0 auto;
+    overflow: hidden;
+    display: none;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    /*line-height: 0;*/
+    margin-bottom: 3px;
+    position: relative;
+}
+.image-preview
+{
+    max-height: 500px;
+    max-width: 100%;
+    margin: 0 auto;
+    display: block;
+}
+/* video preview */
+
+.vimeo #imgOverlay {
+    border-left: 10px solid #0f5fb6;
+}
+.youtube #imgOverlay {
+    border-left: 10px solid #d8121e;
+}
+
+#ytPreviewTmpl {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+#vidPreviewTmpl img {
+    max-height: 500px;
+    width: 100%;
+    margin: 0 auto;
+    display: block;
+}
+#imgOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: .6;
+}
+#descWrap {
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    width: 450px;
+    margin-left: -225px;
+
+}
+#descWrap a, #descWrap p {
+    position: relative;
+}
+#descWrap a {
+    color: #fff;
+    font: 22px "Open Sans Condensed", sans-serif;
+}
+#descWrap p {
+    color: #d3d3d3;
+    font: 14px "Open Sans Condensed", sans-serif;
+    margin-top: 5px;
+}
+
+
 .mini-screen-name
 {
     font-size: 13px;
@@ -1255,26 +1329,6 @@ input.userMenu-search-field:focus::-ms-input-placeholder {
 {
     display: none;
     padding: 5px 5px 0 5px;
-}
-.image-preview
-{
-    max-height: 500px;
-    max-width: 100%;
-    margin: 0 auto;
-    display: block;
-}
-.preview-container
-{
-    height: 100px;
-    width: 95%;
-    margin: 0 auto;
-    overflow: hidden;
-    display: none;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius: 10px;
-    line-height: 0;
-    margin-bottom: 3px;
 }
 .post-stats
 {

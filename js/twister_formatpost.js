@@ -100,14 +100,25 @@ function postToElem( post, kind ) {
         retweetedByElem.attr("href", $.MAL.userUrl(retweeted_by));
         retweetedByElem.text('@'+retweeted_by);
     }
-    //hed//image in post
-    var previewContainer = elem.find('.preview-container'), postText = elem.find(".post-text");
-    
-    if(imagePreview(postText)){
+
+    //hed//media preview
+    var previewContainer = elem.find('.preview-container'), postText = elem.find(".post-text"); 
+    var postLink = postText.find("a[rel='nofollow']")[0] ? postText.find("a[rel='nofollow']")[0].href : '';
+    var ytRegExp = /(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?/i;
+    var vimeoRegExp = /http:\/\/(www\.)?vimeo.com\/(\d+)($|\/)/i;
+
+    if (postLink && localStorage['imagesPreview'] == 'enable' && (/(\.jpg)|(\.gif)|(\.png)|(\.jpeg)|(\.jpe)/i.test(postLink) || /https:\/\/img.bi/gi.test(postLink))){
         previewContainer.show();
-        previewContainer.append(imagePreview(postText))
-    };
-    
+        previewContainer.append(imagePreview(postLink, t));
+    }else if(postLink && ytRegExp.test(postLink) && localStorage['youtubePreview'] === 'enable'){
+        var ytid = postLink.match(ytRegExp) ? RegExp.$1 : false;
+        previewContainer.show();
+        previewContainer.append(getYoutubePreview(postLink, ytid));
+    }else if(postLink && vimeoRegExp.test(postLink) && localStorage['vimeoPreview'] === 'enable'){
+        var vimid = postLink.match(vimeoRegExp) ? RegExp.$2 : false;
+        previewContainer.show();
+        previewContainer.append(getVimeoPreview(postLink, vimid));
+    }
 
     return elem;
 }
@@ -293,19 +304,72 @@ function _extractHashtag(s) {
 function escapeHtmlEntities(str) {
     return str.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('"', '&quot;').replace("'", '&apos;');
 }
-function imagePreview(post) {
-    if (localStorage['showPreviewOpt'] == 'enable') {
-        var link = post.find("a[rel='nofollow']");
-        var linkAnon = 'https://ssl-proxy.my-addr.org/myaddrproxy.php/http/';
-        if (link.html() && /(\.jpg)|(\.gif)|(\.png)|(\.jpeg)|(\.jpe)/.test(link.html().toLowerCase()))
-        {
-            var cleanLink = link.html().replace(/^http[s]?:\/\//i, '');
-            if(/\.gif\b/i.test(cleanLink) && localStorage['showPreviewOptGif'] == 'false') return;
-            return "<img src='"+linkAnon+cleanLink+"' class='image-preview' />";
-        } else if (link.html() && /https:\/\/img.bi/.test(link.html().toLowerCase()))
-        {
-            return "<img data-imgbi='" + link.html() + "' class='image-preview' />";
-            // imgBiJS();
-        }
+
+function imagePreview(link) {
+    var linkAnon = 'https://ssl-proxy.my-addr.org/myaddrproxy.php/http/';
+        
+    if (link && /https:\/\/img.bi/gi.test(link)){
+        return "<img data-imgbi='" + link + "' class='image-preview' />";
+        imgBiJS();
+    }else{
+        var cleanLink = link.replace(/^http[s]?:\/\//i, '');
+        if(/\.gif\b/i.test(cleanLink) && localStorage['imagesPreviewGif'] == 'false') return;
+        return "<img src='"+linkAnon+cleanLink+"' class='image-preview' />";
+    }
+}
+
+function getYoutubePreview(link, ytid) {
+
+    var vidPreviewTmpl = $('#vidPreviewTmpl').clone(true).removeAttr('style').removeAttr('class').addClass("youtube");
+    var ytDataStorage = localStorage['ytData'] ? JSON.parse(localStorage['ytData']) : {};
+
+    if (ytDataStorage[ytid]) {
+        vidPreviewTmpl.find('img').attr('src', ytDataStorage[ytid].thumbnail);
+        vidPreviewTmpl.find('a').text(ytDataStorage[ytid].title).attr('href', link).attr('target', '_blank');
+        if (ytDataStorage[ytid].description) vidPreviewTmpl.find('p').html(ytDataStorage[ytid].description+'…');
+        return vidPreviewTmpl;
+    }else{
+        $.ajax({
+            url: "http://gdata.youtube.com/feeds/api/videos/"+ytid+"?v=2&alt=jsonc",
+            dataType: 'jsonp',
+            success: function(data) {
+                ytDataStorage[ytid] = {
+                    title: data.data.title,
+                    description: data.data.description.substring(0, 400),
+                    thumbnail: data.data.thumbnail.hqDefault,
+                    link: 'http://youtu.be/'+ytid,
+                    time: Date.now()
+                };
+                localStorage['ytData'] = JSON.stringify(ytDataStorage);
+
+            }
+        });
+    }
+}
+
+function getVimeoPreview (link, vimid) {
+    var vidPreviewTmpl = $('#vidPreviewTmpl').clone(true).removeAttr('style').removeAttr('class').addClass("vimeo");
+    var vimDataStorage = localStorage['vimData'] ? JSON.parse(localStorage['vimData']) : {};
+
+    if (vimDataStorage[vimid]) {
+        vidPreviewTmpl.find('img').attr('src', vimDataStorage[vimid].thumbnail);
+        vidPreviewTmpl.find('a').text(vimDataStorage[vimid].title).attr('href', link).attr('target', '_blank');
+        if (vimDataStorage[vimid].description) vidPreviewTmpl.find('p').html(vimDataStorage[vimid].description+'…');
+        return vidPreviewTmpl;
+    }else{
+        $.ajax({
+            url: "http://vimeo.com/api/v2/video/"+vimid+".json",
+            dataType: 'json',
+            success: function(data) {
+                vimDataStorage[vimid] = {
+                    title: data[0].title,
+                    description: data[0].description.substring(0, 400),
+                    thumbnail: data[0].thumbnail_large,
+                    link: data[0].url,
+                    time: Date.now()
+                };
+                localStorage['vimData'] = JSON.stringify(vimDataStorage);
+            }
+        });
     }
 }
