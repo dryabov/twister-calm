@@ -109,14 +109,16 @@ function postToElem( post, kind ) {
 
     if (postLink && localStorage['imagesPreview'] == 'enable' && (/(\.jpg)|(\.gif)|(\.png)|(\.jpeg)|(\.jpe)/i.test(postLink) || /https:\/\/img.bi/gi.test(postLink))){
         previewContainer.show();
-        previewContainer.append(imagePreview(postLink, t));
+        previewContainer.append(imagePreview(postLink));
     }else if(postLink && ytRegExp.test(postLink) && localStorage['youtubePreview'] === 'enable'){
         var ytid = postLink.match(ytRegExp) ? RegExp.$1 : false;
         previewContainer.show();
+        previewContainer.attr('data-youtube-id', ytid);
         previewContainer.append(getYoutubePreview(postLink, ytid));
     }else if(postLink && vimeoRegExp.test(postLink) && localStorage['vimeoPreview'] === 'enable'){
         var vimid = postLink.match(vimeoRegExp) ? RegExp.$2 : false;
         previewContainer.show();
+        previewContainer.attr('data-vimeo-id', vimid);
         previewContainer.append(getVimeoPreview(postLink, vimid));
     }
 
@@ -342,6 +344,10 @@ function getYoutubePreview(link, ytid) {
                 };
                 localStorage['ytData'] = JSON.stringify(ytDataStorage);
 
+                vidPreviewTmpl.find('img').attr('src', ytDataStorage[ytid].thumbnail);
+                vidPreviewTmpl.find('a').text(ytDataStorage[ytid].title).attr('href', link).attr('target', '_blank');
+                if (ytDataStorage[ytid].description) vidPreviewTmpl.find('p').html(ytDataStorage[ytid].description+'…');
+                $('[data-youtube-id='+ytid+']').append(vidPreviewTmpl);
             }
         });
     }
@@ -369,6 +375,11 @@ function getVimeoPreview (link, vimid) {
                     time: Date.now()
                 };
                 localStorage['vimData'] = JSON.stringify(vimDataStorage);
+
+                vidPreviewTmpl.find('img').attr('src', vimDataStorage[vimid].thumbnail);
+                vidPreviewTmpl.find('a').text(vimDataStorage[vimid].title).attr('href', link).attr('target', '_blank');
+                if (vimDataStorage[vimid].description) vidPreviewTmpl.find('p').html(vimDataStorage[vimid].description+'…');
+                $('[data-vimeo-id='+vimid+']').append(vidPreviewTmpl);
             }
         });
     }

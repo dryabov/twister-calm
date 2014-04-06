@@ -1079,7 +1079,7 @@ if(preferredLanguage == "ru"){
        "Favorite": "Избранное",
        "File APIs not supported in this browser.": "Ваш браузер не поддерживает File APIs.",
        "Follow": "Подписаться",
-       "Followed by": "Подписчик у",
+       "Followed by": "Подписан",
        "followed_by": "%{username} подписан",
        "Followers": "Читателей",
        "Following": "Читаемых",
