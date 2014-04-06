@@ -354,7 +354,7 @@ button.follow:hover {
     font: 18px/40px 'Open Sans Condensed', sans-serif;
     padding-left: 10px;
 }
-.profile-modal .postboard-posts
+.profile-modal .postboard-posts-wrapper
 {
     position: absolute;
     top: 0;

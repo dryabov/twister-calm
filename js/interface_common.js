@@ -126,7 +126,7 @@ function openProfileModal(e)
     $mc.on('profileloaded', function() {
         var viewHeader = $mc.find(".postboard > h2");
         var h = viewHeader.offset().top + viewHeader.outerHeight() - $mc.parent().offset().top + 5;
-        $mc.find(".postboard-posts").css('border-top', parseInt(h, 10) + "px solid transparent");
+        $mc.find(".postboard-posts-wrapper").css('border-top', parseInt(h, 10) + "px solid transparent");
     });
     $mc.trigger('profileloaded');
 }
