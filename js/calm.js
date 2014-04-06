@@ -73,53 +73,8 @@ function changeStyle() {
 	$('#profilecss').attr('href', profile);
 	setTimeout(function(){$(menu).removeAttr('style')}, 0);
 }
-function getJSONToLocalStorage (t) {
-	var ytRegExp = /(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?/i;
-	var vimeoRegExp = /http:\/\/(www\.)?vimeo.com\/(\d+)(\/)?/i;
-
-	if (ytRegExp.test(t.value)){
-		var ytid = t.value.match(ytRegExp) ? RegExp.$1 : false;
-		var ytDataStorage = localStorage['ytData'] ? JSON.parse(localStorage['ytData']) : {};
-		$.ajax({
-            url: "http://gdata.youtube.com/feeds/api/videos/"+ytid+"?v=2&alt=jsonc",
-            dataType: 'jsonp',
-            success: function(data) {
-                ytDataStorage[ytid] = {
-                    title: data.data.title,
-                    description: data.data.description.substring(0, 400),
-                    thumbnail: data.data.thumbnail.hqDefault,
-                    link: 'http://youtu.be/'+ytid
-                };
-                localStorage['ytData'] = JSON.stringify(ytDataStorage);
-            }
-        });
-	}else if(vimeoRegExp.test(t.value)) {
-		var vimid = t.value.match(vimeoRegExp) ? RegExp.$2 : false;
-		var vimDataStorage = localStorage['vimData'] ? JSON.parse(localStorage['vimData']) : {};
-
-		$.ajax({
-            url: "http://vimeo.com/api/v2/video/"+vimid+".json",
-            dataType: 'json',
-            success: function(data) {
-            	console.log(data);
-                vimDataStorage[vimid] = {
-                    title: data[0].title,
-                    description: data[0].description.substring(0, 400),
-                    thumbnail: data[0].thumbnail_large,
-                    link: data[0].url,
-                    time: Date.now()
-                };
-                localStorage['vimData'] = JSON.stringify(vimDataStorage);
-            }
-        });
-	}
-	
-}
 
 function homeIntInit () {
 	modalDMIntr ();
 	$('textarea').on('click', function() {mensAutocomplete(this)});
-	$('textarea').on('keyup', function() {
-		getJSONToLocalStorage(this)
-	})
 }
