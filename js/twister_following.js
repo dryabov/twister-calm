@@ -355,10 +355,26 @@ function closeSearchDialog()
 }
 
 function userSearchKeypress(item) {
-    var partialName = $(".userMenu-search-field").val().toLowerCase();
+    var partialName = $(".userMenu-search-field").val().toLowerCase(),
+        prefix = partialName.substr( 0, 1 );
 
-    if ( partialName.substr( 0, 1 ) == '@' ) {
+    if ( prefix == '@' || prefix == '#') {
         partialName = partialName.substr( 1 );
+    }
+
+    var keyCode = item.keyCode || item.which;
+    if (keyCode == 13) {
+        // Enter pressed
+        var dummy = $('<a></a>');
+        if (prefix == '#') { // hashtag
+            dummy.attr('href', $.MAL.hashtagUrl(partialName));
+            dummy.text('#' + partialName);
+            openHashtagModal.call(dummy.get(0), item);
+        } else { // username
+            dummy.attr('href', $.MAL.userUrl(partialName));
+            openProfileModal.call(dummy.get(0), item);
+        }
+        return false;
     }
 
     //var partialName = item.val();
