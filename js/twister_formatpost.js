@@ -107,7 +107,7 @@ function postToElem( post, kind ) {
     var ytRegExp = /(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?/i;
     var vimeoRegExp = /http:\/\/(www\.)?vimeo.com\/(\d+)($|\/)/i;
 
-    if (postLink && localStorage['imagesPreview'] == 'enable' && (/(\.jpg)|(\.gif)|(\.png)|(\.jpeg)|(\.jpe)/i.test(postLink) || /https:\/\/img.bi/gi.test(postLink))){
+    if (postLink && localStorage['imagesPreview'] == 'enable' && (/(\.jpg)|(\.gif)|(\.png)|(\.jpeg)|(\.jpe)/i.test(postLink) || /https:\/\/img.bi/i.test(postLink))){
         previewContainer.show();
         previewContainer.append(imagePreview(postLink));
     }else if(postLink && ytRegExp.test(postLink) && localStorage['youtubePreview'] === 'enable'){
@@ -310,13 +310,13 @@ function escapeHtmlEntities(str) {
 function imagePreview(link) {
     var linkAnon = 'https://ssl-proxy.my-addr.org/myaddrproxy.php/http/';
         
-    if (link && /https:\/\/img.bi/gi.test(link)){
-        return "<img data-imgbi='" + link + "' class='image-preview' />";
-        imgBiJS();
+    if (link && /https:\/\/img.bi/i.test(link)){
+        return '<img data-imgbi="'+link+'" class="image-preview" />';
+        //imgBiJS();
     }else{
         var cleanLink = link.replace(/^http[s]?:\/\//i, '');
         if(/\.gif\b/i.test(cleanLink) && localStorage['imagesPreviewGif'] == 'false') return;
-        return "<img src='"+linkAnon+cleanLink+"' class='image-preview' />";
+        return '<img src="'+linkAnon+cleanLink+'" class="image-preview" />';
     }
 }
 

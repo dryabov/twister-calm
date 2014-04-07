@@ -104,17 +104,20 @@ function setTheme() {
 }
 
 function setShowPreviewOpt(){
+	if(!localStorage['imagesPreview']) localStorage['imagesPreview'] = 'enable';
+	if(!localStorage['imagesPreviewGif']) localStorage['imagesPreviewGif'] = 'true';
+	if(!localStorage['youtubePreview']) localStorage['youtubePreview'] = 'enable';
+	if(!localStorage['vimeoPreview']) localStorage['vimeoPreview'] = 'enable';
+	
 	$('.previewOpt').each(function() {
-		this.value = localStorage[this.id] || 'enable';
+		this.value = localStorage[this.id];
 	})
 
-	$('input[type="checkbox"]').prop('checked', localStorage['imagesPreviewGif'] == 'true')
+	$('.gifCheckBox').prop('checked', localStorage['imagesPreviewGif'] === 'true')
 	
 	if(localStorage['imagesPreview'] == 'disable'){
-		$('input[type="checkbox"]').prop('disabled', true)
+		$('input[type="checkbox"]').prop('disabled', localStorage['imagesPreviewGif'])
 	}
-	
-	if(!localStorage['imagesPreview']) localStorage['imagesPreview'] = "enable";
 	
 	$('.previewOpt').on('change', function(){
 		localStorage[this.id] = $(this).val();
