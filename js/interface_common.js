@@ -121,7 +121,7 @@ function openProfileModal(e)
     };
     
     //fix .modal-content height
-    $mc = $('.modal-content');
+    var $mc = $("." +profileModalClass + " .modal-content");
     $mc.off('profileloaded');
     $mc.on('profileloaded', function() {
         var viewHeader = $mc.find(".postboard > h2");
