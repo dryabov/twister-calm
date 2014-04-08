@@ -66,15 +66,27 @@ var InterfaceFunctions = function()
                         }
                      });
 
-                     setTimeout("getRandomFollowSuggestion(processSuggestion)", 1000);
-                     setTimeout("getRandomFollowSuggestion(processSuggestion)", 1000);
-                     setTimeout("getRandomFollowSuggestion(processSuggestion)", 1000);
-                     
+                     setTimeout(updateFollowSuggestion, 1000);
                      updateTrendingHashtags();
                      
                      if( args.cbFunc )
                         args.cbFunc(args.cbArg);
                  }, {cbFunc:cbFunc, cbArg:cbArg});
+
+        $('.refresh-users').on('click', function () {
+            updateFollowSuggestion();
+        });
+        $('.follow-suggestions').on('click', 'a.twister-user-remove', function () {
+            $(this).closest('li').remove();
+        });
+    }
+
+    function updateFollowSuggestion()
+    {
+        $('.follow-suggestions').empty();
+        getRandomFollowSuggestion(processSuggestion);
+        getRandomFollowSuggestion(processSuggestion);
+        getRandomFollowSuggestion(processSuggestion);
     }
 
     function updateTrendingHashtags()
