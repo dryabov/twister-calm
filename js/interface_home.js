@@ -47,7 +47,8 @@ var InterfaceFunctions = function()
         getFullname( defaultScreenName, $miniProfile.find(".mini-profile-name") );
         getAvatar( defaultScreenName, $miniProfile.find(".mini-profile-photo").find("img") );
         getPostsCount( defaultScreenName,  $miniProfile.find(".posts-count") );
-        getFollowers( defaultScreenName, $miniProfile.find(".followers-count") );
+
+        updateFollowers();
 
         loadFollowing( function(args) {
                      $(".mini-profile .following-count").text(followingUsers.length-1);
@@ -79,6 +80,13 @@ var InterfaceFunctions = function()
         $('.follow-suggestions').on('click', 'a.twister-user-remove', function () {
             $(this).closest('li').remove();
         });
+    }
+
+    function updateFollowers()
+    {
+        getFollowers( defaultScreenName, $(".mini-profile .followers-count") );
+        // update followers every 10 minutes
+        setTimeout(updateFollowers, 10*60*1000);
     }
 
     function updateFollowSuggestion()

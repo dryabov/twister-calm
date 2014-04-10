@@ -367,13 +367,23 @@ function userSearchKeypress(item) {
         // Enter pressed
         var dummy = $('<a></a>');
         if (prefix == '#') { // hashtag
-            dummy.attr('href', $.MAL.hashtagUrl(partialName));
-            dummy.text('#' + partialName);
-            openHashtagModal.call(dummy.get(0), item);
+            partialName = _extractHashtag(partialName);
+            if (partialName) {
+                dummy.attr('href', $.MAL.hashtagUrl(partialName));
+                dummy.text('#' + partialName);
+                openHashtagModal.call(dummy.get(0), item);
+            }
         } else { // username
-            dummy.attr('href', $.MAL.userUrl(partialName));
-            openProfileModal.call(dummy.get(0), item);
+            partialName = _extractUsername(partialName);
+            if (partialName) {
+                dummy.attr('href', $.MAL.userUrl(partialName));
+                openProfileModal.call(dummy.get(0), item);
+            }
         }
+        return false;
+    }
+
+    if (prefix == '#') { // hashtag
         return false;
     }
 
