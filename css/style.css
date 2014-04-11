@@ -416,7 +416,7 @@ input.userMenu-search-field:focus::-ms-input-placeholder {
     background: rgba( 255, 255, 255, 1 );
     position: absolute;
     top: 45px;
-    right: 10px;
+    right: -50px;
     width: 250px;
     box-shadow: 0 2px 5px #65686f;
     border: solid 1px rgba( 69, 71, 77, .1 );
@@ -477,10 +477,25 @@ input.userMenu-search-field:focus::-ms-input-placeholder {
 .userMenu-search input[type="text"]
 {
     float: right;
-    padding: 3px 10px;
-    margin: 9px 20px 0 0;
-    border-radius: 10px;
+    padding: 6px 10px;
+    margin: 7px 20px 0 0;
+    border-radius: 20px;
+    -webkit-box-shadow: inset 0 0 15px #898989;
+    -moz-box-shadow: inset 0 0 15px #898989;
+    box-shadow: inset 0 0 15px #898989;
+    -webkit-transition: all 200ms;
+    -moz-transition: all 200ms;
+    -ms-transition: all 200ms;
+    -o-transition: all 200ms;
+    transition: all 200ms;
     border: none;
+    background: #f8f8f8;
+}
+.userMenu-search input[type="text"]:focus {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    background: #fff;
 }
 .userMenu-search-sugestions
 {
