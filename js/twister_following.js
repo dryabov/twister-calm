@@ -383,10 +383,6 @@ function userSearchKeypress(item) {
         return false;
     }
 
-    if (prefix == '#') { // hashtag
-        return false;
-    }
-
     //var partialName = item.val();
 
     if( !partialName.length ) {
