@@ -133,6 +133,7 @@ if(preferredLanguage == "en"){
                 "Do you want to check Network Status page instead?",
       "The File APIs are not fully supported in this browser.": "The File APIs are not fully supported in this browser.",
       "Theme": "Theme",
+      "There aren't any posts with this hashtag.": "There aren't any posts with this hashtag.",
       "time_ago": "%{time} ago", // 5 minutes ago
       "Time of the last block:": "Time of the last block: ",
       "twisted again by": "twisted again by ",
@@ -1144,6 +1145,7 @@ if(preferredLanguage == "ru"){
                  "Не хотите перейти на страницу настройки сети?",
        "The File APIs are not fully supported in this browser.": "File APIs не полностью поддерживается этим браузером.",
        "Theme": "Тема оформления",
+       "There aren't any posts with this hashtag.": "Посты по данному тегу отсутствуют.",
        "time_ago": "%{time} назад", // 5 minutes ago
        "Time of the last block:": "Время последнего блока: ",
        "Top Trends": "Тенденции",

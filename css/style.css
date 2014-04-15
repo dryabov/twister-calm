@@ -1836,6 +1836,25 @@ input.userMenu-search-field:focus::-ms-input-placeholder {
     width: 100%;
     padding-left: 10px;
 }
+.no-posts-found-message {
+    display: block;
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    font-size: 12px;
+}
+.no-posts-found-message:after {
+    content: ' : (';
+    display: block;
+    width: 42px;
+    margin-top: 20px;
+    height: 40px;
+    font-size: 30px;
+    line-height: 40px;
+    position: relative;
+    left: 40%;
+    -webkit-transform: rotate(90deg);
+}
 /*************************************
 ****************** FOLLOWING MODAL
 **************************************/

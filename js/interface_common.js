@@ -163,6 +163,19 @@ function openHashtagModal(e)
     $( "."+hashtagModalClass + " h3" ).text( "#" + hashtag );
 }
 
+function openHashtagModalFromSearch(hashtag)
+{
+    var hashtagModalClass = "hashtag-modal";
+    openModal( hashtagModalClass );
+    $( "."+hashtagModalClass ).attr("data-resource","hashtag");
+
+    var hashtagModalContent = newHashtagModal( hashtag );
+    hashtagModalContent.appendTo("." +hashtagModalClass + " .modal-content");
+
+    //título do modal
+    $( "."+hashtagModalClass + " h3" ).text( "#" + hashtag );
+ }
+
 function updateHashtagModal(postboard,hashtag) {
     var $hashtagModalClass = $(".hashtag-modal");
     if( !$hashtagModalClass.length || $hashtagModalClass.css("display") == 'none' )
