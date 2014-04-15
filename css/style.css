@@ -1853,7 +1853,11 @@ input.userMenu-search-field:focus::-ms-input-placeholder {
     line-height: 40px;
     position: relative;
     left: 40%;
+    transform: rotate(90deg);
     -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
 }
 /*************************************
 ****************** FOLLOWING MODAL
