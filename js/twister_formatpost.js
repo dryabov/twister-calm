@@ -105,7 +105,7 @@ function postToElem( post, kind ) {
     var previewContainer = elem.find('.preview-container'), postText = elem.find(".post-text"); 
     var postLink = postText.find("a[rel='nofollow']")[0] ? postText.find("a[rel='nofollow']")[0].href : '';
     var ytRegExp = /(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?/i;
-    var vimeoRegExp = /http:\/\/(www\.)?vimeo.com\/(\d+)($|\/)/i;
+    var vimeoRegExp = /http[s]?:\/\/(www\.)?vimeo.com\/(\d+)($|\/)/i;
 
     if (postLink && localStorage['imagesPreview'] == 'enable' && (/(\.jpg)|(\.gif)|(\.png)|(\.jpeg)|(\.jpe)/i.test(postLink) || /https:\/\/img.bi/i.test(postLink))){
         previewContainer.show();

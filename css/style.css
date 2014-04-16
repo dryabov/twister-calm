@@ -532,6 +532,9 @@ input.userMenu-search-field:focus::-ms-input-placeholder {
     color: rgba( 0, 0, 0, .7 ); 
     padding: 0 75px 0 15px;
 }
+.config-menu {
+    right: 0;
+}
 /***********************************
 ********************* MINI PROFILE
 ***********************************/
