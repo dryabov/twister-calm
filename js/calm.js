@@ -1,10 +1,15 @@
 $(function(){
 	$('.post-text, #descWrap').on('click', 'a', function(e){e.stopPropagation();});
+	
 	$('#showqr').on('click', function(){
-		if($('#qrcode img')[0]) return;
+		if($('#qrcode img')[0]) {
+			$('#qrcode').empty();
+			return;
+		};
          var skey = document.getElementById('skey').innerText;
          new QRCode(document.getElementById("qrcode"), skey);
     });
+
     $('.tox-ctc').on('click', function(){
     	window.prompt('Press Ctrl/Cmd+C to copy then Enter to close', $(this).attr('data'))
     })

@@ -94,7 +94,7 @@ var MAL = function()
                 newTweetsBar.text("Refresh");
             }
         } else {
-            var newTweetsBar = $(".postboard-news");
+            var newTweetsBar = $(".wrapper").find(".postboard-news");
             if( newPosts ) {
                 document.title = "(" + String(newPosts) + ") twister";
                 newTweetsBar.text(String(newPosts) + " new posts");
@@ -338,7 +338,7 @@ var MAL = function()
              $button.addClass("disabled");
              $button.attr("disabled","true");
          }
-     }
+    }
 
     this.changedUser = function() {
         if( $.hasOwnProperty("mobile") ) {
@@ -350,6 +350,20 @@ var MAL = function()
         } else {
             window.location.href = "home.html";
         }
+    }
+
+    this.soundNotifyMentions = function() {
+         if( $.hasOwnProperty("mobile") ) {
+         } else {
+             $.Options.mensNotif();
+         }
+    }
+
+    this.soundNotifyDM = function() {
+         if( $.hasOwnProperty("mobile") ) {
+         } else {
+             $.Options.DMsNotif();
+         }
     }
 }
 

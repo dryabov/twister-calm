@@ -13,6 +13,7 @@
     <script src="js/jquery.storageapi.js"></script>
     <script src="js/jquery.a-tools-1.4.1.js"></script>
     <script src="js/jquery.asuggest.js"></script>
+    <script src="js/options.js"></script>
     <script src="js/mobile_abstract.js"></script>
     <script src="js/twister_io.js"></script>
     <script src="js/polyglot.min.js"></script>
@@ -29,14 +30,11 @@
     <script src="js/interface_home.js"></script>
     <script src="js/jquery.animate-colors-min.js"></script>
     <script src="js/calm.js"></script>
-    <script src="js/options.js"></script>
     <script src="jquery-emotions/jquery.emotions.js"></script>
     <script src="js/sjcl.js"></script>
     <script src="js/img.bi.js"></script>
     <script>
     $(function(){setInterval("networkUpdate()", 2000); homeIntInit();})
-    changeStyle();
-    InitOptionsforHome();
     </script>
 
     <link rel="icon" type="image/png" href="img/twister_mini.png" />
@@ -44,8 +42,7 @@
 
   <body>
     
-  <!-- MENU SUPERIOR INIT CALM--> 
-  <div style="display:none" class="calm_menu">
+  <!-- MENU SUPERIOR INIT-->
   <nav class="userMenu">
     <ul>
       <li class="userMenu-home"><a href="#"></a></li>
@@ -95,82 +92,10 @@
             </li>
           </ul>
         </div>
-      
       </li>
-    
-
     </ul>
   </nav>
-  </div>
     <!-- MENU SUPERIOR END -->
-   <!-- MENU SUPERIOR INIT ORIGINAL--> 
-   <div style="display:none" class="original_menu">
-  <nav class="userMenu">
-    <ul>
-      <li class="userMenu-home current"><a href="#">Home</a></li>
-      <li class="userMenu-network"><a href="network.html">Network</a></li>
-      <li class="userMenu-profile"><a href="profile-edit.html">Profile</a></li>
-      <li class="userMenu-config">
-        <a class="userMenu-config-dropdown" href="#">
-          <div class="config-menu dialog-modal">
-            <div class="mini-profile-info">
-              <div class="mini-profile-photo"><img src="img/grayed_avatar_placeholder_24.png" alt="user-photo"/></div>
-              <a href="#" class="mini-profile-name">Fulano da Silva</a>
-              <span class="mini-profile-view">View</span>
-            </div>
-            <a class="dropdown-menu-item" href="options.html">Options</a>
-            <a class="dropdown-menu-item" href="profile-edit.html">Setup account</a>
-            <a class="dropdown-menu-item" href="following.html">Following users</a>
-            <a class="dropdown-menu-item" href="network.html">Network config</a>
-            <a class="dropdown-menu-item" href="login.html">Change user</a>
-            <a class="dropdown-menu-item promoted-posts-only" href="#">Switch to Promoted posts</a>
-            <a class="direct-messages dropdown-menu-item" href="#">Direct Messages</a>
-          </div>
-        </a>
-      </li>
-      <li class="userMenu-connections">
-        <a href="#">
-          <span class="messages-qtd" style="display:none;">12</span>
-        </a>
-      </li>
-      <li class="userMenu-messages">
-        <a href="#">
-          <span class="messages-qtd" style="display:none;">12</span>
-        </a>
-      </li>
-
-      <!-- BUSCA -->
-      <li class="userMenu-search">
-        <input type="text" class="userMenu-search-field" placeholder="search"/>
-        
-        <div class="search-results dialog-modal">
-          <ul class="userMenu-search-sugestions" style="display: none;">
-            <li><a href="#">Fulano</a></li>
-            <li><a href="#">Outro Fulano</a></li>
-            <li><a href="#">Mais outro</a></li>
-          </ul>
-          <ul class="userMenu-search-profiles">
-            <li id="search-profile-template" style="display: none;">
-              <div class="mini-profile-info" data-screen-name="">
-                <a href="#" class="open-profile-modal">
-                  <img class="mini-profile-photo" src="img/grayed_avatar_placeholder_24.png" alt="user-photo"/>
-                  <span class="mini-screen-name">@<b></b></span>
-                  <span class="mini-profile-name"></span>
-                </a>
-                <button class="follow">Follow</button>
-              </div>
-            </li>
-          </ul>
-        </div>
-      
-      </li>
-    
-
-    </ul>
-  </nav></div>
-  <!-- MENU SUPERIOR END ORIGINAL-->
-
-
 
   <div class="wrapper">
 

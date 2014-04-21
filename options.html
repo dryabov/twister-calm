@@ -11,6 +11,7 @@
     <script src="js/jquery.json-2.4.js"></script>
     <script src="js/jquery.jsonrpcclient.js"></script>
     <script src="js/jquery.storageapi.js"></script>
+    <script src="js/options.js"></script>
     <script src="js/mobile_abstract.js"></script>
     <script src="js/twister_io.js"></script>
     <script src="js/twister_network.js"></script>
@@ -20,17 +21,17 @@
     <script src="js/polyglot.min.js"></script>
     <script src="js/interface_localization.js"></script>
     <script src="js/calm.js"></script>
-    <script src="js/options.js"></script>
     <script>
-    $(function(){initInterfaceCommon(); InitOptions()});
-    changeStyle();
+    $(function(){
+      initInterfaceCommon();
+      $.Options.initOptions()
+    });
     </script>
   </head>
 
   <body>
     
-  <!-- MENU SUPERIOR INIT Calm--> 
- <div style="display:none" class="calm_menu">
+  <!-- MENU SUPERIOR INIT--> 
   <nav class="userMenu">
     <ul>
     <li class="userMenu-home"><a href="home.html"></a></li>
@@ -48,36 +49,14 @@
       </li>
     </ul>
   </nav>
- </div>
-  <!-- MENU SUPERIOR END Calm-->
-  <!-- MENU SUPERIOR INIT Original--> 
- <div style="display:none" class="original_menu">
-  <nav class="userMenu">
-    <ul>
-    <li class="userMenu-home"><a href="home.html"></a></li>
-    <li class="userMenu-options current"><a href="options.html">Options</a></li>
-      <li class="userMenu-config">
-        <a class="userMenu-config-dropdown" href="#">
-          <div class="config-menu dialog-modal">
-            <a class="dropdown-menu-item" href="options.html">Options</a>
-            <a class="dropdown-menu-item" href="network.html">Network config</a>
-            <a class="dropdown-menu-item" href="profile-edit.html">Setup account</a>
-            <a class="dropdown-menu-item" href="following.html">Following users</a>
-            <a class="dropdown-menu-item" href="login.html">Change user</a>
-          </div>
-        </a>
-      </li>
-    </ul>
-  </nav>
- </div>
-  <!-- MENU SUPERIOR END Original-->
+  <!-- MENU SUPERIOR END-->
   
   <div class="wrapper optionsPage">
 
       <div class="module">
         <h1>Use language</h1>
         <div>
-          <select name="" id="language">
+          <select name="" id="locLang">
             <option value="auto">Auto</option>
             <option value="pt-BR">Braz. Portuguese</option>
             <option value="zh">Chinese</option>
@@ -90,16 +69,6 @@
             <option value="ru">Russian</option>
             <option value="es">Spanish</option>
             <option value="tr">Turkish</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="module">
-        <h1>Theme</h1>
-        <div>
-          <select name="" id="theme">
-            <option value="calm">Calm</option>
-            <option value="original">Original</option>
           </select>
         </div>
       </div>
@@ -141,19 +110,19 @@
         <h1>Media links preview</h1>
         <h2>Images preview</h2>
         <select name="" id="imagesPreview" class="previewOpt">
-          <option value="disable">Disable</option>
           <option value="enable">Enable</option>
+          <option value="disable">Disable</option>
         </select>
           <label><span>Display GIF images</span><input class="gifCheckBox" type="checkbox" name="imagesPreviewGif"></label>
         <h2>Youtube links preview</h2>
         <select name="" id="youtubePreview" class="previewOpt">
-          <option value="disable">Disable</option>
           <option value="enable">Enable</option>
+          <option value="disable">Disable</option>
         </select>
         <h2>Vimeo links preview</h2>
         <select name="" id="vimeoPreview" class="previewOpt">
-          <option value="disable">Disable</option>
           <option value="enable">Enable</option>
+          <option value="disable">Disable</option>
         </select>
       </div>
 

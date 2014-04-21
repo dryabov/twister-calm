@@ -18,16 +18,20 @@ function processMention(user, mentionTime, data) {
     if( mentionTime > curTime + 3600 ) {
         console.log("mention from the future will be ignored");
     } else {
+        var newMentionsUpdated = false;
         if( !(key in _knownMentions) ) {
-            mensNotif(); // sound notification
             // mention must be somewhat recent compared to last known one to be considered new
             if( mentionTime + 3600 > _lastMentionTime ) {
                 _newMentions++;
+                newMentionsUpdated = true;
                 _lastMentionTime = mentionTime;
             }
             _knownMentions[key] = {mentionTime:mentionTime, data:data};
             purgeOldMentions();
             saveMentionsToStorage();
+        }
+        if(newMentionsUpdated){
+            $.MAL.soundNotifyMentions();
         }
     }
 }
@@ -158,7 +162,7 @@ function getNewDMsCount() {
         }
     }
     for (key in _newDMsPerUser){if(_newDMsPerUser[key] * 1)reslt = true};
-    if(newDMs > 0 && reslt) DMsNotif(); //sound notification
+    if(newDMs > 0 && reslt) $.MAL.soundNotifyDM();
     return newDMs;
 }
 

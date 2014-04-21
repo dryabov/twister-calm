@@ -11,6 +11,7 @@
     <script src="js/jquery.json-2.4.js"></script>
     <script src="js/jquery.jsonrpcclient.js"></script>
     <script src="js/jquery.storageapi.js"></script>
+    <script src="js/options.js"></script>
     <script src="js/mobile_abstract.js"></script>
     <script src="js/twister_io.js"></script>
     <script src="js/polyglot.min.js"></script>
@@ -54,7 +55,7 @@
   <!-- MENU SUPERIOR END -->
 
 
-  <div class="wrapper">
+  <div class="wrapper profileEditPage">
 
   <!-- ÁREA DE PROFILE PHOTO INIT --> 
     <div class="profile-card forEdition">
@@ -76,11 +77,12 @@
       </div>
 
        <div style="font-size:80%;text-align: center;" class="secret-key-container">
-         <span class="label">Secret key:</span> <div id="skey"><span class="secret-key"></span></div>
-                  <button href="#" id="showqr">Show QR code</button>
+          <span class="label">Secret key:</span> <div id="skey"><span class="secret-key"></span></div>
+          <button href="#" id="showqr">Show QR code</button>
+          <div align="center" id="qrcode"></div>
       </div>
          
-         <div align="center" id="qrcode"></div>
+         
       
     </div>
     

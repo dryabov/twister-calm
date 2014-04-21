@@ -378,6 +378,19 @@ input.userMenu-search-field:focus::-ms-input-placeholder {
     z-index: 1;
     min-height: 100%;
 }
+.optionsPage:after, .profileEditPage:after, .loginPage:after
+{
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: .05;
+    z-index: -1;
+    background: url('../img/wrapperBg.png') repeat;
+}
 .dashboard
 {
     width: 320px;

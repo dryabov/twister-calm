@@ -1,147 +1,146 @@
-$(function() {
-	
-});
+var TwisterOptions = function()
+{
+	this.getOption = function(optionName, defaultValue) {
+		var keyName = 'options:' + optionName;
+		if ($.localStorage.isSet(keyName)) {
+			return $.localStorage.get(keyName);
+		}else{
+			return defaultValue;
+		}
+	};
 
-function soundNotifOptions() {
-	if(!localStorage['sndDM']) localStorage['sndDM'] = false;
-	if(!localStorage['sndMention']) localStorage['sndMention'] = false;
-	$('.sndOpt').each(function(){
-		this.value = localStorage[this.id];
-	});
+	this.setOption = function(optionName, value) {
+		var keyName = 'options:' + optionName;
+		$.localStorage.set(keyName, value);
+	};
 
-	var player = $('#player');
-	player[0].pause();
-	$('#player').empty();
+	this.soundNotifOptions = function() {
+
+		$('.sndOpt').each(function(){
+			this.value = $.Options.getOption(this.id, 'false');
+		});
+
+		var player = $('#player');
+		player[0].pause();
+		$('#player').empty();
 
 
-	$('.sndOpt').on('change',function(){
-		localStorage.setItem(this.id, this.value);
+		$('.sndOpt').on('change',function(){
+			$.Options.setOption(this.id, this.value);
 
-		if(this.value == false) {player[0].pause(); return;}
+			if(this.value == false) {player[0].pause(); return;}
+			if (player[0].canPlayType('audio/mpeg;')) {
+			    player.attr('type', 'audio/mpeg');
+			    player.attr('src', 'sound/'+this.value+'.mp3');
+				} else {
+			    player.attr('type', 'audio/ogg');
+			    player.attr('src', 'sound/'+this.value+'.ogg');
+			}
+			
+			player[0].play();
+		});
+	}
+
+	this.volumeControl = function() {
+		var playerVol = $('#playerVol');
+
+		playerVol[0].value = $.Options.getOption(playerVol[0].id, 1)
+		
+		$('.volValue').text((playerVol[0].value * 100).toFixed());
+		
+		playerVol.on('change',function(){
+			$.Options.setOption(this.id, this.value)
+			$('#player')[0].volume = (this.value);
+			$('.volValue').text((this.value * 100).toFixed());
+		});
+	}
+
+	this.DMsNotif = function() {
+		if($.Options.getOption('sndDM', 'false') === "false") return;
+		var player = $('#player');
+		$('#player').empty();
+
 		if (player[0].canPlayType('audio/mpeg;')) {
-		    player.attr('type', 'audio/mpeg');
-		    player.attr('src', 'sound/'+this.value+'.mp3');
-			} else {
-		    player.attr('type', 'audio/ogg');
-		    player.attr('src', 'sound/'+this.value+'.ogg');
+			    player.attr('type', 'audio/mpeg');
+			    player.attr('src', 'sound/'+localStorage['sndDM']+'.mp3');
+				} else {
+			    player.attr('type', 'audio/ogg');
+			    player.attr('src', 'sound/'+localStorage['sndDM']+'.ogg');
+			}
+		player[0].volume = $.Options.getOption('playerVol', 1);
+		player[0].play();
+	}
+
+	this.mensNotif = function() {
+		if($.Options.getOption('sndMention', 'false' === 'false')) return;
+
+		var player = $('#player');
+		$('#playerSec').empty();
+
+		if (player[0].canPlayType('audio/mpeg;')) {
+			    player.attr('type', 'audio/mpeg');
+			    player.attr('src', 'sound/'+localStorage['sndMention']+'.mp3');
+				} else {
+			    player.attr('type', 'audio/ogg');
+			    player.attr('src', 'sound/'+localStorage['sndMention']+'.ogg');
+			}
+		player[0].volume = $.Options.getOption('playerVol', 1);
+		player[0].play();
+	};
+	
+	this.keysSend = function() {
+		
+		$('#keysSend')[0].value = $.Options.getOption('keysSend', 2)
+		
+		$('#keysSend').on('change', function(){
+			$.Options.setOption(this.id, this.value);
+	
+		})
+	}
+
+	this.locLang = function() {
+		$('#locLang').val($.Options.getOption('locLang', 'auto'))
+		$('#locLang').on('change', function(){
+			$.Options.setOption(this.id, this.value);
+			location.reload();
+		})
+	}
+
+	this.showPreviewOpt = function() {
+		
+		$('.previewOpt').each(function() {
+			this.value = $.Options.getOption(this.id, 'enable');
+		})
+
+		$('.gifCheckBox').prop('checked', $.Options.getOption('imagesPreviewGif', 'true'))
+		
+		if($.Options.getOption('imagesPreview', 'enable') === 'disable'){
+			$('input[type="checkbox"]').prop('disabled', 'true')
 		}
 		
-	player[0].play();
-	});
-}
-
-function volumeControl () {
-	var playerVol = $('#playerVol');
-	if(!localStorage[playerVol[0].id]) localStorage[playerVol[0].id] = 1;
-	playerVol[0].value = localStorage[playerVol[0].id];
-	$('.volValue').text((localStorage[playerVol[0].id] * 100).toFixed());
-	
-	playerVol.on('change',function(){
-		localStorage.setItem(this.id, this.value);
-		$('#player')[0].volume = (this.value);
-		$('.volValue').text((this.value * 100).toFixed());
-	});
-}
-
-function DMsNotif() {
-	if(localStorage['sndDM'] == "false") return;
-	var player = $('#player');
-	$('#player').empty();
-
-	if (player[0].canPlayType('audio/mpeg;')) {
-		    player.attr('type', 'audio/mpeg');
-		    player.attr('src', 'sound/'+localStorage['sndDM']+'.mp3');
-			} else {
-		    player.attr('type', 'audio/ogg');
-		    player.attr('src', 'sound/'+localStorage['sndDM']+'.ogg');
-		}
-	player[0].volume = localStorage['playerVol'];
-	player[0].play();
-}
-
-function mensNotif() {
-	if(localStorage['sndMention'] == "false") return;
-	var player = $('#player');
-	$('#playerSec').empty();
-
-	if (player[0].canPlayType('audio/mpeg;')) {
-		    player.attr('type', 'audio/mpeg');
-		    player.attr('src', 'sound/'+localStorage['sndMention']+'.mp3');
-			} else {
-		    player.attr('type', 'audio/ogg');
-		    player.attr('src', 'sound/'+localStorage['sndMention']+'.ogg');
-		}
-	player[0].volume = localStorage['playerVol'];
-	player[0].play();
-};
-
-function keysSend() {
-	if(!localStorage['keysSend']) localStorage['keysSend'] = 1;
-	$('#keysSend')[0].value = localStorage['keysSend'];
-	
-	$('#keysSend').on('change', function(){
-		localStorage[this.id] = this.value;
-	
-	})
-}
-
-function setLang() {
-
-	$('#language').val(localStorage['locLang'] || 'auto')
-	$('#language').on('change', function(){
-		localStorage['locLang'] = $(this).val();
-		location.reload();
-	})
-}
-
-function setTheme() {
-	if(!localStorage['theme']) localStorage['theme'] = 'calm';
-	$('#theme').val(localStorage['theme']).on('change', function(){
-		localStorage['theme'] = $(this).val();
-		location.reload();
-	});
-
-}
-
-function setShowPreviewOpt(){
-	if(!localStorage['imagesPreview']) localStorage['imagesPreview'] = 'enable';
-	if(!localStorage['imagesPreviewGif']) localStorage['imagesPreviewGif'] = 'true';
-	if(!localStorage['youtubePreview']) localStorage['youtubePreview'] = 'enable';
-	if(!localStorage['vimeoPreview']) localStorage['vimeoPreview'] = 'enable';
-	
-	$('.previewOpt').each(function() {
-		this.value = localStorage[this.id];
-	})
-
-	$('.gifCheckBox').prop('checked', localStorage['imagesPreviewGif'] === 'true')
-	
-	if(localStorage['imagesPreview'] == 'disable'){
-		$('input[type="checkbox"]').prop('disabled', localStorage['imagesPreviewGif'])
-	}
-	
-	$('.previewOpt').on('change', function(){
-		localStorage[this.id] = $(this).val();
-		if (this.id === 'imagesPreview'){
-			switch($(this).val()){
-				case 'enable': $('.gifCheckBox').prop('disabled', false); break;
-				case 'disable': $('.gifCheckBox').prop('disabled', true); break;
+		$('.previewOpt').on('change', function(){
+			$.Options.setOption(this.id, this.value)
+			if (this.id === 'imagesPreview'){
+				switch(this.value){
+					case 'enable': $('.gifCheckBox').prop('disabled', false); break;
+					case 'disable': $('.gifCheckBox').prop('disabled', true); break;
+				}
 			}
-		}
-	})
-	
-	$('input[type="checkbox"]').on('click', function(){
-		localStorage[$(this).attr('name')] = $(this).prop('checked')
-	})
+		})
+		
+		$('input[type="checkbox"]').on('click', function(){
+			$.Options.setOption(this.name, this.checked)
+		})
+	}
+
+	this.initOptions = function() {
+		this.soundNotifOptions();
+		this.volumeControl();
+		this.keysSend();
+		this.locLang();
+		this.showPreviewOpt();
+	}
+
 }
 
-function InitOptions() {
-	soundNotifOptions();
-	volumeControl();
-	keysSend();
-	setLang();
-	setTheme();
-	setShowPreviewOpt();
-}
-function InitOptionsforHome() {
-	setShowPreviewOpt();
-}
+jQuery.Options = new TwisterOptions;

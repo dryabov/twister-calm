@@ -107,15 +107,15 @@ function postToElem( post, kind ) {
     var ytRegExp = /(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?/i;
     var vimeoRegExp = /http[s]?:\/\/(www\.)?vimeo.com\/(\d+)($|\/)/i;
 
-    if (postLink && localStorage['imagesPreview'] == 'enable' && (/(\.jpg)|(\.gif)|(\.png)|(\.jpeg)|(\.jpe)/i.test(postLink) || /https:\/\/img.bi/i.test(postLink))){
+    if (postLink && $.Options.getOption('imagesPreview', 'enable') === 'enable' && (/(\.jpg)|(\.gif)|(\.png)|(\.jpeg)|(\.jpe)/i.test(postLink) || /https:\/\/img.bi/i.test(postLink))){
         previewContainer.show();
         previewContainer.append(imagePreview(postLink));
-    }else if(postLink && ytRegExp.test(postLink) && localStorage['youtubePreview'] === 'enable'){
+    }else if(postLink && ytRegExp.test(postLink) && $.Options.getOption('youtubePreview', 'enable') === 'enable'){
         var ytid = postLink.match(ytRegExp) ? RegExp.$1 : false;
         previewContainer.show();
         previewContainer.attr('data-youtube-id', ytid);
         previewContainer.append(getYoutubePreview(postLink, ytid));
-    }else if(postLink && vimeoRegExp.test(postLink) && localStorage['vimeoPreview'] === 'enable'){
+    }else if(postLink && vimeoRegExp.test(postLink) && $.Options.getOptions('vimeoPreview', 'enable') === 'enable'){
         var vimid = postLink.match(vimeoRegExp) ? RegExp.$2 : false;
         previewContainer.show();
         previewContainer.attr('data-vimeo-id', vimid);
@@ -314,8 +314,9 @@ function imagePreview(link) {
         return '<img data-imgbi="'+link+'" class="image-preview" />';
         //imgBiJS();
     }else{
-        var cleanLink = link.replace(/^http[s]?:\/\//i, '');
-        if(/\.gif\b/i.test(cleanLink) && localStorage['imagesPreviewGif'] == 'false') return;
+        var cleanLink;
+        if(/\.gif\b/i.test(cleanLink) && $.Options.getOption('imagesPreviewGif', 'true') === 'false') return;
+        cleanLink = link.replace(/^http[s]?:\/\//i, '');
         return '<img src="'+linkAnon+cleanLink+'" class="image-preview" />';
     }
 }

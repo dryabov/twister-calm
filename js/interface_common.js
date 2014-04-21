@@ -400,7 +400,7 @@ var unfocusThis = function()
 }
 
 function replyTextKeypress(e) {
-    e = e || event;
+    var e = e || event;
     var $this = $( this );
     var tweetForm = $this.parents("form");
     if( tweetForm != undefined ) {
@@ -418,21 +418,29 @@ function replyTextKeypress(e) {
         } else {
             $.MAL.disableButton(tweetAction);
         }
+    }
+}
 
-        if(localStorage['keysSend'] == 1 && $('.dropdown-menu').css('display') == 'none'){
-            if (e.keyCode === 13 && (!e.metaKey && !e.ctrlKey)) {
-                $this.val($this.val().trim());
-                if( !tweetAction.hasClass("disabled")) {
-                    tweetAction.click();
-                }
+var replyTextSendKeys = function(e) {
+    var $this = $(this);
+    var tweetAction = $this.parents("form").find('.post-submit');
+
+    if($.Options.getOption('keysSend', 2) === 1){
+        if (!(e.metaKey || e.ctrlKey) && e.keyCode === 13) {
+            $this.val($this.val().trim());
+            if( !tweetAction.hasClass("disabled")) {
+                tweetAction.click();
             }
-        }else if(localStorage['keysSend'] == 2){
-            if (e.keyCode === 13 && (e.metaKey || e.ctrlKey)) {
-                
-                $this.val($this.val().trim());
-                if( !tweetAction.hasClass("disabled") ) {
-                    tweetAction.click();
-                }
+        }else if((e.metaKey || e.ctrlKey) && e.keyCode === 13){
+                e.preventDefault();
+                var val = $this.val();
+                $this.val(val += '\r')
+            }
+    }else if($.Options.getOption('keysSend', 2) === 2){
+        if ((e.metaKey || e.ctrlKey) && e.keyCode === 13) {
+            $this.val($this.val().trim());
+            if( !tweetAction.hasClass("disabled") ) {
+                tweetAction.click();
             }
         }
     }
@@ -499,7 +507,8 @@ function initInterfaceCommon() {
     $( ".modal-propagate").click( retweetSubmit );
 
     var $replyText = $( ".post-area-new textarea" );
-    $replyText.on("keyup", replyTextKeypress );
+    $replyText.on('keyup', replyTextKeypress );
+    $replyText.on('keydown', replyTextSendKeys);
 
     $( ".open-profile-modal").bind( "click", openProfileModal );
     $( ".open-hashtag-modal").bind( "click", openHashtagModal );
