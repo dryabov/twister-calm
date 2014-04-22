@@ -11,9 +11,6 @@ Calm is an alternative client for [twister](http://twister.net.co/) based on  [o
 
 ####Screenshots
 ![Main page](https://raw.github.com/iHedgehog/twister-calm/master/img/screenshots/scr1.png)
-
 ![Modal profile](https://raw.github.com/iHedgehog/twister-calm/master/img/screenshots/scr2.png)
-
 ![Options page](https://raw.github.com/iHedgehog/twister-calm/master/img/screenshots/scr3.png)
-
 ![Following page](https://raw.github.com/iHedgehog/twister-calm/master/img/screenshots/scr4.png)
