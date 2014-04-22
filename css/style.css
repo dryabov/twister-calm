@@ -378,7 +378,7 @@ input.userMenu-search-field:focus::-ms-input-placeholder {
     z-index: 1;
     min-height: 100%;
 }
-.optionsPage:after, .profileEditPage:after, .loginPage:after
+.optionsPage:after, .profileEditPage:after, .loginPage:after, .followingPage:after
 {
     content: '';
     display: block;
