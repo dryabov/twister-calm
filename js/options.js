@@ -131,7 +131,27 @@ var TwisterOptions = function()
 		$('input[type="checkbox"]').on('click', function(){
 			$.Options.setOption(this.name, this.checked)
 		})
-	}
+
+    this.splitPostsOpt = function (){
+        $('#splitPosts').val($.Options.getOption('splitPosts', 'disable'))
+
+        if ($.Options.getOption('splitPosts', 'disable') === 'enable'){
+            $("#splitPostWarning").css('display', 'inline')
+        }else{
+            $("#splitPostWarning").css('display', 'none')
+        }
+
+        $('#splitPosts').on('change', function (){
+            $.Options.setOption(this.id, this.value);
+
+            if (this.value === 'enable'){
+                $("#splitPostWarning").css('display', 'inline');
+            }else{
+                $("#splitPostWarning").css('display', 'none');
+            }
+        });
+    }
+}
 
 	this.initOptions = function() {
 		this.soundNotifOptions();
@@ -139,6 +159,7 @@ var TwisterOptions = function()
 		this.keysSend();
 		this.locLang();
 		this.showPreviewOpt();
+		this.splitPostsOpt();
 	}
 
 }

@@ -269,7 +269,9 @@ function htmlFormatMsg( msg, output, mentions ) {
 function _formatText(msg)
 {
     msg = $.emotions(msg);
-    msg = msg.replace(/\n/g, '<br />');
+    msg = msg
+    .replace(/(\r?\n){2,}/g, '\n\n')
+    .replace(/\n/g, '<br />');
 
     return msg;
 }
