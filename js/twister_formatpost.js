@@ -308,7 +308,8 @@ function escapeHtmlEntities(str) {
 }
 
 function imagePreview(link) {
-    var linkAnon = 'https://ssl-proxy.my-addr.org/myaddrproxy.php/http/';
+    var proxyOpt = $.Options.getOption('imgPreviewProxy', 'disable');
+    var linkAnon = proxyOpt !== 'disable' ? proxyOpt : '';
         
     if (link && /https:\/\/img.bi/i.test(link)){
         return '<img data-imgbi="'+link+'" class="image-preview" />';
@@ -316,7 +317,7 @@ function imagePreview(link) {
     }else{
         var cleanLink;
         if(/\.gif\b/i.test(cleanLink) && $.Options.getOption('imagesPreviewGif', 'true') === 'false') return;
-        cleanLink = link.replace(/^http[s]?:\/\//i, '');
+        cleanLink = link.replace(/^http[s]?:\/\//i, 'http://');
         return '<img src="'+linkAnon+cleanLink+'" class="image-preview" />';
     }
 }

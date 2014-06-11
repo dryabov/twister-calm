@@ -90,7 +90,7 @@ var TwisterOptions = function()
 	
 	this.keysSend = function() {
 		
-		$('#keysSend')[0].value = $.Options.getOption('keysSend', 2)
+		$('#keysSend').val($.Options.getOption('keysSend', 2));
 		
 		$('#keysSend').on('change', function(){
 			$.Options.setOption(this.id, this.value);
@@ -132,13 +132,19 @@ var TwisterOptions = function()
 			$.Options.setOption(this.name, this.checked)
 		})
 	}
-
+	this.imgPreviwProxy = function () {
+	    $('#imgPreviewProxy').val($.Options.getOption('imgPreviewProxy', 'disable'));
+	    $('#imgPreviewProxy').on('change', function () {
+	        $.Options.setOption(this.id, this.value);
+	    })
+	}
 	this.initOptions = function() {
 		this.soundNotifOptions();
 		this.volumeControl();
 		this.keysSend();
 		this.locLang();
 		this.showPreviewOpt();
+		this.imgPreviwProxy();
 	}
 
 }
