@@ -138,10 +138,18 @@ function requestGetposts(req)
 // callback to getposts rpc when updating the timeline
 // process the received posts (adding them to screen) and do another
 // request if needed
-function processReceivedPosts(req, posts)
-{
+function processReceivedPosts(req, posts) {
+    //hiding posts can cause empty postboard, so we have to track the count...
+    var p2a = posts.length;
+    var showAlienReplyOpt = $.Options.getOption("showAlienReply", "only-me");
     for( var i = 0; i < posts.length; i++ ) {
         var post = posts[i];
+        if (showAlienReplyOpt !== 'all') {
+            if (willBeHidden(post)) {
+                p2a--;
+                continue;
+            }
+        }
         var streamPost = postToElem(post, "original");
         var timePost = post["userpost"]["time"];
         streamPost.attr("data-time",timePost);
@@ -192,11 +200,15 @@ function processReceivedPosts(req, posts)
     }
     req.doneReportProcessing(posts.length);
 
-    if( req.mode == "done" ) {
+    //if the count of posts less then 5....
+    if( req.mode == "done" && p2a > 5 ) {
         timelineLoaded = true;
         $.MAL.postboardLoaded();
         _refreshInProgress = false;
     } else {
+        //we will request more older post...
+        req.count += postsPerRefresh;
+        req.mode = 'older';
         requestGetposts(req);
     }
 }
@@ -267,6 +279,16 @@ function processLastHave(userHaves)
 function processNewPostsConfirmation(expected, posts)
 {
     _newPostsPending += posts.length;
+
+    //we don't want to produce alert for the posts that won't be displayed
+    var p2h = 0;
+    for( var i = posts.length-1; i >= 0; i-- ) {
+        if (willBeHiden(posts[i])) {
+            //posts.splice(i, 1);
+            p2h++;
+        }
+    }
+    _newPostsPending += posts.length - p2h;
     if( _newPostsPending ) {
         $.MAL.reportNewPosts(_newPostsPending);
     }
@@ -287,4 +309,20 @@ function timelineChangedUser()
     _refreshInProgress = false;
     _newPostsPending = 0;
     timelineLoaded = false;
+}
+function willBeHidden(post){
+    var msg = post['userpost']['msg'];
+    if (post['userpost']['n'] !== defaultScreenName &&
+        $.Options.getOption("showAlienReply", "only-me") !== 'all' &&
+        /^\@/.test(msg) &&
+        !(new RegExp('@' + defaultScreenName + '( |,|;|\\.|:|\\/|\\?|\\!|\\\\|\'|"|\\n|$)').test(msg)))
+    {
+            if ($.Options.getOption("showAlienReply", "only-me") === 'only-me' ||
+                ($.Options.getOption("showAlienReply", "only-me") === 'following' &&
+                 followingUsers.indexOf(msg.substring(1, msg.search(/ |,|;|\.|:|\/|\?|\!|\\|'|"|\n/))) === -1 ))
+            {
+                return true
+            }
+    }
+    return false;
 }

@@ -138,6 +138,12 @@ var TwisterOptions = function()
 	        $.Options.setOption(this.id, this.value);
 	    })
 	}
+	this.showAlienReply = function () {
+		$('#showAlienReply').val($.Options.getOption('showAlienReply', 'all'));
+	    $('#showAlienReply').on('change', function () {
+	        $.Options.setOption(this.id, this.value);
+	    })
+	}
 	this.initOptions = function() {
 		this.soundNotifOptions();
 		this.volumeControl();
@@ -145,6 +151,7 @@ var TwisterOptions = function()
 		this.locLang();
 		this.showPreviewOpt();
 		this.imgPreviwProxy();
+		this.showAlienReply();
 	}
 
 }

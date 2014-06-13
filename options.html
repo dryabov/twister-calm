@@ -54,9 +54,9 @@
   <div class="wrapper optionsPage">
 
       <div class="module">
-        <h1>Use language</h1>
-        <div>
-          <select name="" id="locLang">
+        <h1>Interface</h1>
+          <h2>Language</h2>
+          <select id="locLang">
             <option value="auto">Auto</option>
             <option value="pt-BR">Braz. Portuguese</option>
             <option value="zh">Chinese</option>
@@ -70,9 +70,40 @@
             <option value="es">Spanish</option>
             <option value="tr">Turkish</option>
           </select>
-        </div>
+          <h2>Posts that begins with another user's @username</h2>
+          <select id="showAlienReply">
+            <option value="all">Show all</option>
+            <option value="only-me">Only if I'm in</option>
+            <option value="following">If it's between users I follow</option>
+          </select>
       </div>
-
+      <div class="module">
+        <h1>Media links preview</h1>
+        <h2>Images preview</h2>
+        <select name="" id="imagesPreview" class="previewOpt">
+          <option value="enable">Enable</option>
+          <option value="disable">Disable</option>
+        </select>
+          <label><span>Display GIF images</span><input class="gifCheckBox" type="checkbox" name="imagesPreviewGif"></label>
+        <h2>Youtube links preview</h2>
+        <select name="" id="youtubePreview" class="previewOpt">
+          <option value="enable">Enable</option>
+          <option value="disable">Disable</option>
+        </select>
+        <h2>Vimeo links preview</h2>
+        <select name="" id="vimeoPreview" class="previewOpt">
+          <option value="enable">Enable</option>
+          <option value="disable">Disable</option>
+        </select>
+        <h2>Proxy for images preview</h2>
+        <select name="" id="imgPreviewProxy" class="previewOpt">
+          <option value="disable">Disable</option>
+          <option value="https://london-s01-i15-traffic.cyberghostvpn.com/go/browse.php?u=">London</option>
+          <option value="https://losangeles-s02-i01-traffic.cyberghostvpn.com/go/browse.php?u=">Los Angeles</option>
+          <option value="https://frankfurt-s02-i01-traffic.cyberghostvpn.com/go/browse.php?u=">Frankfurt</option>
+          <option value="https://bucharest-s05-i01-traffic.cyberghostvpn.com/go/browse.php?u=">Bucharest</option>
+        </select>
+      </div>
       <div class="module">
         <h1>Sound notifications</h1>
           <h2>Mentions</h2>
@@ -105,37 +136,6 @@
             <option value="2">Ctrl/Cmd+Enter</option>
           </select>
       </div>
-
-      <div class="module">
-        <h1>Media links preview</h1>
-        <h2>Images preview</h2>
-        <select name="" id="imagesPreview" class="previewOpt">
-          <option value="enable">Enable</option>
-          <option value="disable">Disable</option>
-        </select>
-          <label><span>Display GIF images</span><input class="gifCheckBox" type="checkbox" name="imagesPreviewGif"></label>
-        <h2>Youtube links preview</h2>
-        <select name="" id="youtubePreview" class="previewOpt">
-          <option value="enable">Enable</option>
-          <option value="disable">Disable</option>
-        </select>
-        <h2>Vimeo links preview</h2>
-        <select name="" id="vimeoPreview" class="previewOpt">
-          <option value="enable">Enable</option>
-          <option value="disable">Disable</option>
-        </select>
-      </div>
-      <div class="module">
-        <h1>Output proxy</h1>
-        <h2>Images preview</h2>
-        <select name="" id="imgPreviewProxy" class="previewOpt">
-          <option value="disable">Disable</option>
-          <option value="https://london-s01-i15-traffic.cyberghostvpn.com/go/browse.php?u=">London</option>
-          <option value="https://losangeles-s02-i01-traffic.cyberghostvpn.com/go/browse.php?u=">Los Angeles</option>
-          <option value="https://frankfurt-s02-i01-traffic.cyberghostvpn.com/go/browse.php?u=">Frankfurt</option>
-          <option value="https://bucharest-s05-i01-traffic.cyberghostvpn.com/go/browse.php?u=">Bucharest</option>
-        </select>
-
     </div>
   </body>
 </html>
