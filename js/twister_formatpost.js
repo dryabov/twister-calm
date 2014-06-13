@@ -312,13 +312,36 @@ function imagePreview(link) {
     var linkAnon = proxyOpt !== 'disable' ? proxyOpt : '';
         
     if (link && /https:\/\/img.bi/i.test(link)){
-        return '<img data-imgbi="'+link+'" class="image-preview" />';
-        //imgBiJS();
-    }else{
+        getImgbi(link);
+        return '<img data-imgbi="'+link+'" class="image-preview imgbi"/>';
+    } else {
         var cleanLink;
         if(/\.gif\b/i.test(cleanLink) && $.Options.getOption('imagesPreviewGif', 'true') === 'false') return;
         cleanLink = link.replace(/^http[s]?:\/\//i, 'http://');
         return '<img src="'+linkAnon+cleanLink+'" class="image-preview" />';
+    };
+};
+
+function getImgbi(link) {
+    var params = link.split('!');
+    imgBiJSDownload(params[0].replace('#','') + 'download/' + params[1], params[2], new XMLHttpRequest(), link);
+
+    function imgBiJSDownload(url, pass, request, link) {
+        request.open('GET', url);
+        request.onload = function() {
+            if (request.status == 200) {
+                var result = sjcl.decrypt(pass,request.responseText);
+                if (result) {
+                    var elem = $('img[data-imgbi="'+link+'"]')[0];
+                    elem.src = result;
+                } else {
+                    console.log('Failed to decrypt image');
+                }
+            } else {
+                console.log('Failed to load image');
+            }
+        };
+        request.send(null);
     }
 }
 
@@ -332,7 +355,7 @@ function getYoutubePreview(link, ytid) {
         vidPreviewTmpl.find('a').text(ytDataStorage[ytid].title).attr('href', link).attr('target', '_blank');
         if (ytDataStorage[ytid].description) vidPreviewTmpl.find('p').html(ytDataStorage[ytid].description+'…');
         return vidPreviewTmpl;
-    }else{
+    } else {
         $.ajax({
             url: "http://gdata.youtube.com/feeds/api/videos/"+ytid+"?v=2&alt=jsonc",
             dataType: 'jsonp',
@@ -352,8 +375,8 @@ function getYoutubePreview(link, ytid) {
                 $('[data-youtube-id='+ytid+']').append(vidPreviewTmpl);
             }
         });
-    }
-}
+    };
+};
 
 function getVimeoPreview (link, vimid) {
     var vidPreviewTmpl = $('#vidPreviewTmpl').clone(true).removeAttr('style').removeAttr('class').addClass("vimeo");
@@ -364,7 +387,7 @@ function getVimeoPreview (link, vimid) {
         vidPreviewTmpl.find('a').text(vimDataStorage[vimid].title).attr('href', link).attr('target', '_blank');
         if (vimDataStorage[vimid].description) vidPreviewTmpl.find('p').html(vimDataStorage[vimid].description+'…');
         return vidPreviewTmpl;
-    }else{
+    } else {
         $.ajax({
             url: "http://vimeo.com/api/v2/video/"+vimid+".json",
             dataType: 'json',
@@ -384,5 +407,5 @@ function getVimeoPreview (link, vimid) {
                 $('[data-vimeo-id='+vimid+']').append(vidPreviewTmpl);
             }
         });
-    }
-}
+    };
+};

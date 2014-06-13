@@ -16,7 +16,6 @@ $(function(){
     $('.bitmessage-ctc').on('click', function(){
     	window.prompt('Press Ctrl/Cmd+C to copy then Enter to close', $(this).attr('data'))
     })
-
 })
 
 function dhtIndicatorBg(){
