@@ -278,12 +278,12 @@ function processLastHave(userHaves)
 // callback for getposts to update the number of new pending posts not shown in timeline
 function processNewPostsConfirmation(expected, posts)
 {
-    _newPostsPending += posts.length;
+    _newPostsPending += posts.length -1;
 
     //we don't want to produce alert for the posts that won't be displayed
     var p2h = 0;
     for( var i = posts.length-1; i >= 0; i-- ) {
-        if (willBeHiden(posts[i])) {
+        if (willBeHidden(posts[i])) {
             //posts.splice(i, 1);
             p2h++;
         }
