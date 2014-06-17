@@ -57,33 +57,28 @@ var TwisterOptions = function()
 
 	this.DMsNotif = function() {
 		if($.Options.getOption('sndDM', 'false') === "false") return;
+		var opt = $.Options.getOption('sndDM', 'false');
+
 		var player = $('#player');
 		$('#player').empty();
 
-		if (player[0].canPlayType('audio/mpeg;')) {
-			    player.attr('type', 'audio/mpeg');
-			    player.attr('src', 'sound/'+localStorage['sndDM']+'.mp3');
-				} else {
-			    player.attr('type', 'audio/ogg');
-			    player.attr('src', 'sound/'+localStorage['sndDM']+'.ogg');
-			}
+	    player.attr('type', 'audio/mpeg');
+	    player.attr('src', 'sound/'+opt+'.mp3');
+
 		player[0].volume = $.Options.getOption('playerVol', 1);
 		player[0].play();
 	}
 
 	this.mensNotif = function() {
-		if($.Options.getOption('sndMention', 'false' === 'false')) return;
+		if($.Options.getOption('sndMention', 'false') === 'false') return;
+		var opt = $.Options.getOption('sndMention', 'false');
 
 		var player = $('#player');
 		$('#playerSec').empty();
 
-		if (player[0].canPlayType('audio/mpeg;')) {
-			    player.attr('type', 'audio/mpeg');
-			    player.attr('src', 'sound/'+localStorage['sndMention']+'.mp3');
-				} else {
-			    player.attr('type', 'audio/ogg');
-			    player.attr('src', 'sound/'+localStorage['sndMention']+'.ogg');
-			}
+	    player.attr('type', 'audio/mpeg');
+	    player.attr('src', 'sound/'+opt+'.mp3');
+
 		player[0].volume = $.Options.getOption('playerVol', 1);
 		player[0].play();
 	};

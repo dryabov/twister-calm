@@ -279,7 +279,7 @@ function processLastHave(userHaves)
 // callback for getposts to update the number of new pending posts not shown in timeline
 function processNewPostsConfirmation(expected, posts)
 {
-    _newPostsPending += posts.length -1;
+    _newPostsPending += posts.length;
 
     //we don't want to produce alert for the posts that won't be displayed
     var p2h = 0;
@@ -291,7 +291,7 @@ function processNewPostsConfirmation(expected, posts)
     }
     _newPostsPending += posts.length - p2h;
     if( _newPostsPending ) {
-        $.MAL.reportNewPosts(_newPostsPending);
+        $.MAL.reportNewPosts(_newPostsPending - 1);
     }
     if( posts.length < expected ) {
         // new DMs have probably been produced by users we follow.
