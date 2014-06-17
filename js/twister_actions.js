@@ -120,6 +120,7 @@ function requestPostRecursively(containerToAppend,username,resource,count)
                        requestPostRecursively(args.containerToAppend, n, "post"+lastk, count-1);
                    } else {
                        profilePostsLoading = false;
+                       args.containerToAppend.scroll();
                    }
                }
            }, {containerToAppend:containerToAppend, count:count} );

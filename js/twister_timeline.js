@@ -211,6 +211,7 @@ function processReceivedPosts(req, posts) {
         req.mode = 'older';
         requestGetposts(req);
     }
+    $(window).scroll();
 }
 
 // request timeline update for a given list of users
