@@ -205,6 +205,7 @@ function processReceivedPosts(req, posts) {
         timelineLoaded = true;
         $.MAL.postboardLoaded();
         _refreshInProgress = false;
+        $(window).scroll();
     } else {
         //we will request more older post...
         req.count += postsPerRefresh;
