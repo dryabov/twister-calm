@@ -1538,27 +1538,28 @@ input.userMenu-search-field:focus::-ms-input-placeholder {
     background: #fff;
     transition: background-color 100ms linear;
 }
-.login .module select, .optionsPage select{
-    height: 30px;
-    font: 13px/24px "Open sans";
-    text-align: center;
-    padding: 3px 30px 3px 10px;
-    margin: 0;
-    background: #fff url(../img/form-arrow-down-black.png) no-repeat right center;
-    border: 1px solid #ccc;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
+@media screen and (-webkit-min-device-pixel-ratio:0) { 
+    .login .module select, .optionsPage select{
+        height: 30px;
+        font: 13px/24px "Open sans";
+        text-align: center;
+        padding: 3px 30px 3px 10px;
+        margin: 0;
+        background: #fff url(../img/form-arrow-down-black.png) no-repeat right center;
+        border: 1px solid #ccc;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
 
-/* hide default apperance select element and arrow in firefox */
-    -webkit-appearance:none;
-    -moz-appearance:none;
-    appearance:none;
-    text-indent: 0.01px;
-    text-overflow: '';
-/* end */
+    /* hide default apperance select element and arrow in firefox */
+        -webkit-appearance:none;
+        -moz-appearance:none;
+        appearance:none;
+        text-indent: 0.01px;
+        text-overflow: '';
+    /* end */
+    }
 }
-
 .login .module span.availability {
     margin-left: 10px;
     font: italic 16px "Open sans";
