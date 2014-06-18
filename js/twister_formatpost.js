@@ -323,16 +323,23 @@ function imagePreview(link) {
 };
 
 function getImgbi(link) {
-    var params = link.split('!');
-    imgBiJSDownload(params[0].replace('#','') + 'download/' + params[1], params[2], new XMLHttpRequest(), link);
+    var originLink = link;
+    if (link.indexOf('#/' > 0)) var link = link.replace('#/', '#!');
 
-    function imgBiJSDownload(url, pass, request, link) {
+    var params = link.split('!');
+    var url = params[0].replace('#','') + 'download/' + params[1];
+    var pass = params[2];
+
+    imgBiJSDownload(url, pass, new XMLHttpRequest(), link, originLink);
+
+    function imgBiJSDownload(url, pass, request, link, originLink) {
         request.open('GET', url);
+
         request.onload = function() {
             if (request.status == 200) {
                 var result = sjcl.decrypt(pass,request.responseText);
                 if (result) {
-                    var elem = $('img[data-imgbi="'+link+'"]')[0];
+                    var elem = $('img[data-imgbi="'+originLink+'"]')[0];
                     elem.src = result;
                 } else {
                     console.log('Failed to decrypt image');
