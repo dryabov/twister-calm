@@ -75,7 +75,7 @@ function requestMentionsCount() {
                    $.MAL.updateNewMentionsUI(_newMentions);
                }
            }, {},
-           [10000,2000,3]); // use extended timeout parameters (requires twister_core >= 0.9.14)
+           [10000,2500,6]); // use extended timeout parameters (requires twister_core >= 0.9.14)
 }
 
 function resetMentionsCount() {
