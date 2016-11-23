@@ -23,17 +23,17 @@
     <script src="js/twister_network.js"></script>
     <script src="js/interface_common.js"></script>
     <script src="js/calm.js"></script>
+    <script src="js/dl.js"></script>
 
     <script>
         $(document).ready(function(){initInterfaceNetwork()});
-        changeStyle();
     </script>
 
     <link rel="icon" type="image/png" href="img/twister_mini.png" />
   </head>
 
   <body>
-    
+  <div class="bgdl"></div>
   <!-- MENU SUPERIOR INIT-->
   <nav class="userMenu">
     <ul>
@@ -115,7 +115,8 @@
             <label> Mining difficulty: </label>
             <span class="mining-difficulty">0.0</span>
           </li>
-
+		</ul>
+		
         <h3> Traffic information </h3>
         <ul>
           <li>

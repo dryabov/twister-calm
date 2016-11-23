@@ -102,30 +102,35 @@ var TwisterOptions = function()
 	}
 
 	this.showPreviewOpt = function() {
-		
+		var $gifCheckBox = $('.gifCheckBox');
 		$('.previewOpt').each(function() {
 			this.value = $.Options.getOption(this.id, 'enable');
 		})
 
-		$('.gifCheckBox').prop('checked', $.Options.getOption('imagesPreviewGif', 'true'))
+		$gifCheckBox.prop('checked', $.Options.getOption('imagesPreviewGif', 'true'))
 		
 		if($.Options.getOption('imagesPreview', 'enable') === 'disable'){
-			$('input[type="checkbox"]').prop('disabled', 'true')
+			$gifCheckBox.prop('disabled', 'true')
 		}
 		
 		$('.previewOpt').on('change', function(){
 			$.Options.setOption(this.id, this.value)
 			if (this.id === 'imagesPreview'){
 				switch(this.value){
-					case 'enable': $('.gifCheckBox').prop('disabled', false); break;
-					case 'disable': $('.gifCheckBox').prop('disabled', true); break;
+					case 'enable': $gifCheckBox.prop('disabled', false); break;
+					case 'disable': $gifCheckBox.prop('disabled', true); break;
 				}
 			}
-		})
+		});
 		
-		$('input[type="checkbox"]').on('click', function(){
+		$gifCheckBox.on('click', function(){
 			$.Options.setOption(this.name, this.checked)
-		})
+		});
+		$('input[name="previewSize"]').on('change', function () {
+		    $.Options.setOption(this.name, this.value);
+		});
+		var query = 'input[value=\"'+$.Options.getOption('previewSize', 'short')+'\"]';
+		$(query)[0].checked = true;
 	}
 	this.imgPreviwProxy = function () {
 	    $('#imgPreviewProxy').val($.Options.getOption('imgPreviewProxy', 'disable'));
@@ -139,6 +144,60 @@ var TwisterOptions = function()
 	        $.Options.setOption(this.id, this.value);
 	    })
 	}
+	this.trendsFilter = function () {
+	    var $all = $('[name="trendsFilterAll"]');
+	    var $latin = $('[name="trendsFilterLat"]');
+	    var $cyrillic = $('[name="trendsFilterCyr"]');
+	    var $han = $('[name="trendsFilterHan"]');
+	    var $custom = $('[name="trendsFilterCustom"]');
+
+	    $('[name^="trendsFilter"]').each(function () {
+	        $this = $(this);
+
+	        if ($this.attr("type") === "checkbox") {
+	        	$this.prop('checked', $.Options.getOption(this.name, false));
+	        };
+	        if ($this.attr("type") === "text") $this.val($.Options.getOption(this.name, ""));
+	        if (this.name === 'trendsFilterAll' && $this.prop('checked') === true) {
+				$latin.prop('disabled', true);
+				$cyrillic.prop('disabled', true);
+				$han.prop('disabled', true);
+				$custom.prop('disabled', true);
+			};
+	    })
+
+		$all.on('click', function () {
+		    $.Options.setOption(this.name, this.checked);
+		    $latin.prop('disabled', this.checked);
+			$cyrillic.prop('disabled', this.checked);
+			$han.prop('disabled', this.checked);
+			$custom.prop('disabled', this.checked);
+		});
+		$latin.on('click', function () {
+		    $.Options.setOption(this.name, this.checked);
+		});
+		$cyrillic.on('click', function () {
+		    $.Options.setOption(this.name, this.checked);
+		});
+		$han.on('click', function () {
+		    $.Options.setOption(this.name, this.checked);
+		});
+		$custom.on('keyup', function () {
+		    $.Options.setOption(this.name, this.value);
+		});
+		$custom.on('blur', function () {
+		    var oldArr = $.Options.getOption(this.name, '').split(',');
+		    var newArr = [];
+		    oldArr.forEach(function (element, index, array) {
+		        var tempElem = $.trim(element);
+		        tempElem = tempElem[0] === '#' ? tempElem.slice(1) : tempElem;
+		        newArr.push(tempElem);
+		    });
+		    $.Options.setOption(this.name, newArr.join(','));
+		    $custom.val(newArr.join(','));
+		})
+
+	}
 	this.initOptions = function() {
 		this.soundNotifOptions();
 		this.volumeControl();
@@ -147,6 +206,7 @@ var TwisterOptions = function()
 		this.showPreviewOpt();
 		this.imgPreviwProxy();
 		this.showAlienReply();
+		this.trendsFilter();
 	}
 
 }

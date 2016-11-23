@@ -124,8 +124,13 @@ function newDirectMsg(msg,  dm_screenname) {
 }
 
 //dispara o modal de direct messages
-function directMessagesPopup()
+function directMessagesPopup(e)
 {
+    if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+    
     var directMessagesClass = "directMessages";
     openModal( directMessagesClass );
 

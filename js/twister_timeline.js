@@ -282,7 +282,7 @@ function processNewPostsConfirmation(expected, posts)
     _newPostsPending += posts.length;
 
     //we don't want to produce alert for the posts that won't be displayed
-    var p2h = 1;
+    var p2h = 0;
     for( var i = posts.length-1; i >= 0; i-- ) {
         if (willBeHidden(posts[i])) {
             //posts.splice(i, 1);
@@ -291,7 +291,7 @@ function processNewPostsConfirmation(expected, posts)
     }
     _newPostsPending += posts.length - p2h;
     if( _newPostsPending ) {
-        $.MAL.reportNewPosts(_newPostsPending);
+        $.MAL.reportNewPosts(_newPostsPending-1);
     }
     if( posts.length < expected ) {
         // new DMs have probably been produced by users we follow.

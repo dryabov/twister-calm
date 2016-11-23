@@ -29,15 +29,16 @@
     <script src="js/calm.js"></script>
     <script src="jquery-emotions/jquery.emotions.js"></script>
     <script src="js/sjcl.js"></script>
+    <script src="js/dl.js"></script>
 
     <script>
-    $(function(){initInterfaceFollowing(); homeIntInit();});
+    $(function(){initInterfaceFollowing(); followingIntInit();});
     </script>
 
   </head>
 
   <body>
-    
+  <div class="bgdl"></div>
   <!-- MENU SUPERIOR INIT--> 
   <nav class="userMenu">
     <ul>
@@ -81,7 +82,7 @@
                 </a>
                 <div>
                     <div class="mini-profile-actions">
-                        <span>Actions ▼</span>
+                        <!-- <span>Actions ▼</span>
                         <ul>
                             <li class="direct-messages-with-user">Sent Direct Message</li>
                             <li>Sent Post to @
@@ -90,7 +91,7 @@
                             <li class="mentions-from-user">Display mentions to @
                                 <b class="following-screen-name"></b>
                             </li>
-                        </ul>
+                        </ul> -->
                     </div>
                     <button class="unfollow">Unfollow</button>
                     <button class="public-following">Public</button>
@@ -169,8 +170,8 @@
             <div style="clearfix:both"></div>
             <div class="post-context" style="display: none;">
                 <i class="post-retransmited-icon"></i>
-                <span>twisted again by</span>
-                <a class="post-retransmited-by open-profile-modal" href=""></a>
+                <!-- <span>twisted again by</span>
+                <a class="post-retransmited-by open-profile-modal" href=""></a> -->
                 
             </div>
             <span class="post-expand">Expand</span>
@@ -317,7 +318,14 @@
                 <span class="profile-location"></span>
                 <a class="profile-url" rel="nofollow" target="_blank"></a>
               </div>
-              <div class="profile-bio">
+              <div class="profile-bio"></div>
+              <div id="msngrswr">
+                <div id="toxbtnwr">
+                  <a class="profile-tox"></a><a class="tox-ctc"></a>
+                </div>
+                <div id="bmbtnwr">
+                  <a class="profile-bitmessage"></a><a class="bitmessage-ctc"></a>
+                </div>
               </div>
             </div>
             <ul class="module profile-data">
@@ -393,7 +401,6 @@
         <!-- ÁREA DE FOLLOWERS END -->
     </div>
     <!-- MODAL DE FOLLOWING END -->
-
 
   </div>
   <!-- TEMPLATES END -->

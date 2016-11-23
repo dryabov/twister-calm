@@ -255,7 +255,7 @@ function getLocation( username, item ){
 function getWebpage( username, item ){
     getProfileResource( username, "url", item,
                       function(args, val) {
-                           if( val.indexOf("://") < 0 ) {
+                           if( val && val.indexOf("://") < 0 ) {
                                val = "http://" + val;
                            }
                            args.item.attr("href", val);

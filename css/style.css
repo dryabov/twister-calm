@@ -368,8 +368,7 @@ input.userMenu-search-field:focus::-ms-input-placeholder {
     padding: 0 20px 0 30px;
     opacity: .7;
 }
-.wrapper
-{
+.wrapper {
     width: 900px;
     margin: 0 auto;
     background: #e0e6f5;
@@ -613,6 +612,9 @@ input.userMenu-search-field:focus::-ms-input-placeholder {
     display: block;
     font-size: 16px;
 }
+
+/* mini profile actions */
+
 .mini-profile-actions
 {
     position: relative;
@@ -760,11 +762,6 @@ input.userMenu-search-field:focus::-ms-input-placeholder {
     color: #fff;
     opacity: .7;
 }
-/*.post-area-new.open textarea + .post-area-extras
-{
-    height: 35px;
-    transition: all .6s linear;
-}*/
 .post-area-new.open > .post-area-extras
 {
     height: 35px;
@@ -993,10 +990,6 @@ input.userMenu-search-field:focus::-ms-input-placeholder {
 }
 .postboard-posts > .post.open
 {
-    /*border-left: none;
-    border-right: none;
-    border-top: solid 2px #e34f42;
-    border-bottom: solid 2px #e34f42;*/
     border: none;
 }
 .postboard-posts > .post:after
@@ -1012,8 +1005,7 @@ input.userMenu-search-field:focus::-ms-input-placeholder {
 }
 .postboard-posts > .post.open:after
 {
-    width: 5px;
-    /*right: -5px;*/
+    width: 3px;
 }
 .post:hover,
 .post .post
@@ -1098,6 +1090,35 @@ input.userMenu-search-field:focus::-ms-input-placeholder {
 {
     color: #76b2ce;
 }
+
+.rt {
+    background: url(img/rt-bg.png);
+    -webkit-transition: all 200ms;
+    -moz-transition: all 200ms;
+    -ms-transition: all 200ms;
+    -o-transition: all 200ms;
+    transition: all 200ms;
+}
+.rt:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #ffd42b;
+    width: 3px;
+    height: 100%;
+}
+.rt.open:before {
+    width: 3px;
+}
+.rt-me {
+    background: url(img/rt-me-bg.png);
+    opacity: .7;
+}
+.rt-me:before {
+    background: #a1a1b0;
+}
+
 /* external http links */
 .post-text a[href^="http"] {
     font: italic 13px "Open Sans", sans-serif;
@@ -1170,10 +1191,8 @@ input.userMenu-search-field:focus::-ms-input-placeholder {
     color: #5e8da4;
     text-decoration: none;
 }
-/* Inpost previw */
-.preview-container
-{
-    height: 100px;
+/* Inpost preview */
+.preview-container {
     width: 95%;
     margin: 0 auto;
     overflow: hidden;
@@ -2033,13 +2052,16 @@ input.userMenu-search-field:focus::-ms-input-placeholder {
   }
 }
 /* Options */
+.volumeWrapper {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+}
 #playerVol {
     float: right;
-    margin-right: 30px;
 }
 .volValue {
-    float: right;
-    margin-right: -160px;
+    float: left;
     font: 12px "Open Sans", sans-serif;
 }
 .optionsPage .module h1 {
@@ -2050,6 +2072,28 @@ input.userMenu-search-field:focus::-ms-input-placeholder {
     margin-top: 10px;
     font-size: 12px;
 }
+.previewSizeContainer {
+    font-size: 12px;
+}
+.gifCheckBox {
+    float: right;
+    vertical-align: middle;
+}
+.optionsPage .module label.gifCheckBoxLabel {
+    font: 12px "Open Sans", sans-serif;
+    display: block;
+    float: right;
+}
+.optionsPage .trendsFilterWrapper span {
+    font: 12px "Open Sans", sans-serif;
+}
+.optionsPage .trendsFilterWrapper input {
+    margin-right: 10px;
+}
+.optionsPage .customWrapper input[type="text"]{
+    width: 450px;
+}
+
 /* Following page */
 .following ol.following-list > li{
     display: inline-block;
@@ -2084,17 +2128,13 @@ input.userMenu-search-field:focus::-ms-input-placeholder {
 .following ol.following-list .mini-profile-info button {
     margin-top: 5px;
 }
-.gifCheckBox {
-    float: right;
-    vertical-align: middle;
-}
-.optionsPage .module label {
-    font: 12px "Open Sans", sans-serif;
+ol.following-list:after {
+    content: " ";
     display: block;
-    float: right;
+    height: 0;
+    clear: both;
 }
-
-/* Autocomplite*/
+/* Autocomplite old */
 .textcomplete-wrapper textarea {
     display: inline;
 }
@@ -2157,4 +2197,9 @@ p.post-text img {
 
 .reply textarea{
     margin-top: 20px;
+}
+.bgdl {
+    width: 100%;
+    height: 100%;
+    position: fixed;
 }

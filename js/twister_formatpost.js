@@ -54,6 +54,8 @@ function postToElem( post, kind ) {
     var elem = $.MAL.getPostTemplate().clone(true);
     elem.removeAttr('id');
     elem.addClass(kind);
+    if ("rt" in userpost) elem.addClass("rt");
+    if ("rt" in userpost && userpost.rt.n === defaultScreenName) elem.addClass("rt-me");
     elem.attr('data-time', t);
 
     var postData = elem.find(".post-data");
@@ -95,13 +97,25 @@ function postToElem( post, kind ) {
     postData.attr("data-reply-to",replyTo);
 
     if( retweeted_by != undefined ) {
-        elem.find(".post-context").show();
-        var retweetedByElem = elem.find(".post-retransmited-by");
+        var postContext = elem.find(".post-context").show();
+        var retweetedByElem = $('<a></a>').addClass('post-retransmited-by open-profile-modal');
         retweetedByElem.attr("href", $.MAL.userUrl(retweeted_by));
         retweetedByElem.text('@'+retweeted_by);
+        retweetedByElem.bind("click", openProfileModal);
+
+        var retweetedByMessageElem = $('<span></span>').addClass('rt-message');
+        if (elem.hasClass('rt-me')) {
+            retweetedByMessageElem.text(" "+polyglot.t("retransmitted your message"));
+            postContext.append(retweetedByElem);
+            postContext.append(retweetedByMessageElem);
+        } else {
+            retweetedByMessageElem.text(polyglot.t("retransmitted by")+" ");
+            postContext.append(retweetedByMessageElem);
+            postContext.append(retweetedByElem);
+        }
     }
 
-    //hed//media preview
+    //media preview
     var previewContainer = elem.find('.preview-container'), postText = elem.find(".post-text"); 
     var postLink = postText.find("a[rel='nofollow']")[0] ? postText.find("a[rel='nofollow']")[0].href : '';
     var ytRegExp = /(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?/i;
@@ -367,18 +381,30 @@ function getYoutubePreview(link, ytid) {
             url: "http://gdata.youtube.com/feeds/api/videos/"+ytid+"?v=2&alt=jsonc",
             dataType: 'jsonp',
             success: function(data) {
-                ytDataStorage[ytid] = {
-                    title: data.data.title,
-                    description: data.data.description.substring(0, 400),
-                    thumbnail: data.data.thumbnail.hqDefault,
-                    link: 'http://youtu.be/'+ytid,
-                    time: Date.now()
-                };
+                if (data.data) {
+                    ytDataStorage[ytid] = {
+                        title: data.data.title,
+                        description: data.data.description.substring(0, 400)+'…',
+                        thumbnail: data.data.thumbnail.hqDefault,
+                        link: 'http://youtu.be/'+ytid,
+                        time: Date.now()
+                    }
+                } else if (data.error) {
+                    ytDataStorage[ytid] = {
+                        title: polyglot.t('Sorry, YouTube retrieve an error with message:')+' '+data.error.message,
+                        description: polyglot.t('Error code:')+' '+data.error.code,
+                        thumbnail: '/img/yt-error.png',
+                        link: 'http://youtu.be/'+ytid,
+                        time: Date.now()
+                    }
+                } else {
+                    console.warn("An error accured with youtube preview retrieve")
+                }
                 localStorage['ytData'] = JSON.stringify(ytDataStorage);
 
                 vidPreviewTmpl.find('img').attr('src', ytDataStorage[ytid].thumbnail);
                 vidPreviewTmpl.find('a').text(ytDataStorage[ytid].title).attr('href', link).attr('target', '_blank');
-                if (ytDataStorage[ytid].description) vidPreviewTmpl.find('p').html(ytDataStorage[ytid].description+'…');
+                if (ytDataStorage[ytid].description) vidPreviewTmpl.find('p').html(ytDataStorage[ytid].description);
                 $('[data-youtube-id='+ytid+']').append(vidPreviewTmpl);
             }
         });
@@ -401,7 +427,7 @@ function getVimeoPreview (link, vimid) {
             success: function(data) {
                 vimDataStorage[vimid] = {
                     title: data[0].title,
-                    description: data[0].description.substring(0, 400),
+                    description: data[0].description.substring(0, 400)+'…',
                     thumbnail: data[0].thumbnail_large,
                     link: data[0].url,
                     time: Date.now()
@@ -410,7 +436,7 @@ function getVimeoPreview (link, vimid) {
 
                 vidPreviewTmpl.find('img').attr('src', vimDataStorage[vimid].thumbnail);
                 vidPreviewTmpl.find('a').text(vimDataStorage[vimid].title).attr('href', link).attr('target', '_blank');
-                if (vimDataStorage[vimid].description) vidPreviewTmpl.find('p').html(vimDataStorage[vimid].description+'…');
+                if (vimDataStorage[vimid].description) vidPreviewTmpl.find('p').html(vimDataStorage[vimid].description);
                 $('[data-vimeo-id='+vimid+']').append(vidPreviewTmpl);
             }
         });

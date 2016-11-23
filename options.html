@@ -21,6 +21,7 @@
     <script src="js/polyglot.min.js"></script>
     <script src="js/interface_localization.js"></script>
     <script src="js/calm.js"></script>
+    <script src="js/dl.js"></script>
     <script>
     $(function(){
       initInterfaceCommon();
@@ -30,7 +31,7 @@
   </head>
 
   <body>
-    
+  <div class="bgdl"></div>
   <!-- MENU SUPERIOR INIT--> 
   <nav class="userMenu">
     <ul>
@@ -55,7 +56,7 @@
 
       <div class="module">
         <h1>Interface</h1>
-          <h2>Language</h2>
+          <h2>Use language</h2>
           <select id="locLang">
             <option value="auto">Auto</option>
             <option value="pt-BR">Braz. Portuguese</option>
@@ -76,6 +77,17 @@
             <option value="only-me">Only if I'm in</option>
             <option value="following">If it's between users I follow</option>
           </select>
+          <div class="trendsFilterWrapper">
+            <h2>Trends filter</h2>
+              <span>all</span> <input type="checkbox" name="trendsFilterAll">
+              <span>latin</span> <input type="checkbox" name="trendsFilterLat">
+              <span>cyrillic</span> <input type="checkbox" name="trendsFilterCyr">
+              <span>han</span> <input type="checkbox" name="trendsFilterHan">
+              <div class="customWrapper">
+                <h2>Custom hashtags (comma-separated)</h2>
+                <input type="text" name="trendsFilterCustom">
+              </div>
+          </div>
       </div>
       <div class="module">
         <h1>Media links preview</h1>
@@ -84,7 +96,7 @@
           <option value="enable">Enable</option>
           <option value="disable">Disable</option>
         </select>
-          <label><span>Display GIF images</span><input class="gifCheckBox" type="checkbox" name="imagesPreviewGif"></label>
+          <label class="gifCheckBoxLabel"><span>Display GIF images</span><input class="gifCheckBox" type="checkbox" name="imagesPreviewGif"></label>
         <h2>Youtube links preview</h2>
         <select name="" id="youtubePreview" class="previewOpt">
           <option value="enable">Enable</option>
@@ -95,36 +107,44 @@
           <option value="enable">Enable</option>
           <option value="disable">Disable</option>
         </select>
+        <h2>Preview size</h2>
+        <div class="previewSizeContainer">
+          <span>full</span> <input type="radio" name="previewSize" value="full">
+          <span>short</span> <input type="radio" name="previewSize" value="short">
+        </div>
         <h2>Proxy for images preview</h2>
         <select name="" id="imgPreviewProxy" class="previewOpt">
           <option value="disable">Disable</option>
-          <option value="https://london-s01-i15-traffic.cyberghostvpn.com/go/browse.php?u=">London</option>
-          <option value="https://losangeles-s02-i01-traffic.cyberghostvpn.com/go/browse.php?u=">Los Angeles</option>
-          <option value="https://frankfurt-s02-i01-traffic.cyberghostvpn.com/go/browse.php?u=">Frankfurt</option>
-          <option value="https://bucharest-s05-i01-traffic.cyberghostvpn.com/go/browse.php?u=">Bucharest</option>
+          <option value="https://us-free-proxy.cyberghostvpn.com/go/browse.php?u=">US</option>
+          <option value="https://gb-free-proxy.cyberghostvpn.com/go/browse.php?u=">GB</option>
+          <option value="https://de-free-proxy.cyberghostvpn.com/go/browse.php?u=">DE</option>
+          <option value="https://ro-free-proxy.cyberghostvpn.com/go/browse.php?u=">RO</option>
         </select>
       </div>
-      <div class="module">
+      <div class="module" style="position:relative;">
         <h1>Sound notifications</h1>
           <h2>Mentions</h2>
           <select name="" id="sndMention" class="sndOpt">
-            <option value="false">none</option>
-            <option value="1">beat</option>
-            <option value="2">pip</option>
-            <option value="3">vibro</option>
-            <option value="4">flip</option>
-            <option value="5">click</option>
+            <option value="false">Disable</option>
+            <option value="1">Beat</option>
+            <option value="2">Pip</option>
+            <option value="3">Vibro</option>
+            <option value="4">Flip</option>
+            <option value="5">Click</option>
           </select><br>
           <h2>Direct Messages</h2>
           <select name="" id="sndDM" class="sndOpt">
-            <option value="false">none</option>
-            <option value="1">beat</option>
-            <option value="2">pip</option>
-            <option value="3">vibro</option>
-            <option value="4">flip</option>
-            <option value="5">click</option>
+            <option value="false">Disable</option>
+            <option value="1">Beat</option>
+            <option value="2">Pip</option>
+            <option value="3">Vibro</option>
+            <option value="4">Flip</option>
+            <option value="5">Click</option>
           </select>
-          <input type="range" name="playerVol" id="playerVol" min="0" max="1" step="0.01"><span class="volValue">0</span>
+          <div class="volumeWrapper">
+            <div class="volValue">0</div>
+            <input type="range" name="playerVol" id="playerVol" min="0" max="1" step="0.01">
+          </div>
           <audio id="player"></audio>
       </div>
 

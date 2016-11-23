@@ -61,6 +61,7 @@ if(preferredLanguage == "en"){
       "download_posts_status": "Downloaded %{portion} posts", // Downloaded 10/30 posts
       "Enable": "Enable",
       "error": "Error: %{error}",
+      "Error code:": "Error code:",
       "error_connecting_to_daemon": "Error connecting to local twister daemon.",
       "Error in 'createwalletuser' RPC.": "Error in 'createwalletuser' RPC.",
       "Error in 'importprivkey'": "Error in 'importprivkey' RPC: %{rpc}",
@@ -75,15 +76,20 @@ if(preferredLanguage == "en"){
       "Following": "Following",
       "Following users": "Following users",
       "Force connection to peer:": "Force connection to peer:",
+      "full": "full",
       "General information": "General information",
       "Generate blocks (send promoted messages)": "Generate blocks (send promoted messages)",
       "Home": "Home", // homepage
       "hours": "%{smart_count} hour |||| %{smart_count} hours",
+      "If it's between users I follow": "If it's between users I follow",
+      "Images preview": "Images preview",
       "Inline image preview": "Inline image preview",
+      "Interface": "Interface",
       "Internal error: lastPostId unknown (following yourself may fix!)": "Internal error: lastPostId unknown (following yourself may fix!)",
       "Keys":"Keys",
       "Known peers:": "Known peers: ",
       "Last block is ahead of your computer time, check your clock.": "Last block is ahead of your computer time, check your clock.",
+      "Media links preview": "Media links preview",
       "Mentions": "Mentions",
       "mentions_at": "Mentions @%{user}",
       "minutes": "%{smart_count} minute |||| %{smart_count} minutes",
@@ -99,6 +105,7 @@ if(preferredLanguage == "en"){
       "Number of blocks in block chain:": "Number of blocks in block chain: ",
       "Number of CPUs to use": "Number of CPUs to use ",
       "Only alphanumeric and underscore allowed.": "Only alphanumeric and underscore allowed.",
+      "Only if I'm in": "Only if I'm in",
       "peer address": "peer address",
       "Private": "Private",
       "Profile": "Profile",
@@ -106,8 +113,11 @@ if(preferredLanguage == "en"){
       "post": "post", // verb - button to post a message
       "Post to promote:": "Post to promote: ",
       "Posts": "Posts",
+      "Posts that begins with another user's @username": "Posts that begins with another user's @username",
+      "Preview size": "Preview size",
       "Promoted posts are needed to run the network infrastructure. If you want to help, start generating blocks and advertise. [en]": "Promoted posts are needed to run the network infrastructure. If you want to help, start generating blocks and advertise. [en]",
       "propagating_nickname": "Propagating nickname %{username} to the network...",
+      "Proxy for images preview": "Proxy for images preview",
       "Public": "Public",
       "Refresh": "Refresh",
       "retransmit_this": "Retransmit this post to your followers?",
@@ -115,6 +125,8 @@ if(preferredLanguage == "en"){
       "Reply...": "Reply...",
       "reply_to": "Reply to %{fullname}",
       "Retransmit": "Retransmit",
+      "retransmitted by": "retransmitted by",
+      "retransmitted your message": "retransmitted your message",
       "Retransmits": "Retransmits",
       "search": "search",
       "seconds": "%{smart_count} second |||| %{smart_count} seconds",
@@ -125,6 +137,9 @@ if(preferredLanguage == "en"){
       "Sent Post to @": "Sent Post to @",
       "Setup account": "Setup account",
       "Sound notifications": "Sound notifications",
+      "Sorry, YouTube retrieve an error with message:": "Sorry, YouTube retrieve an error with message:",
+      "short": "short",
+      "Show all": "Show all",
       "Show QR code":"Show QR code",
       "switch_to_network": "Local daemon is not connected to the network or\n" +
                 "block chain is outdated. If you stay in this page\n" +
@@ -135,7 +150,6 @@ if(preferredLanguage == "en"){
       "There aren't any posts with this hashtag.": "There aren't any posts with this hashtag.",
       "time_ago": "%{time} ago", // 5 minutes ago
       "Time of the last block:": "Time of the last block: ",
-      "twisted again by": "twisted again by ",
       "Type message here": "Type message here",
       "Unfollow": "Unfollow",
       "Update": "Update",
@@ -155,6 +169,8 @@ if(preferredLanguage == "en"){
       "username_undefined": "Username undefined, login required.",
       "View": "View",
       "View All": "View All",
+      "Vimeo links preview": "Vimeo links preview",
+      "Youtube links preview": "Youtube links preview",
       "Who to Follow": "Who to Follow",
       "Your message was sent!": "Your message was sent!",
       "twister login": "twister login",
@@ -176,7 +192,7 @@ if(preferredLanguage == "en"){
       "Terminate Daemon:": "Terminate Daemon:",
       "Exit": "Exit",
       "Save Changes": "Save Changes",
-      "Secret key:": "Secret key:"
+      "Secret key:": "Secret key:",
     };
 }
 
@@ -1023,23 +1039,9 @@ if(preferredLanguage == "fr"){
     };
 }
 
-// translators: sample adding a language
+
 if(preferredLanguage == "ru"){
-    // polyglot.locale() is used to support plurals
-    // locales currently known by Polyglot.js:
-    /*
-      chinese:   ['id', 'ja', 'ko', 'ms', 'th', 'tr', 'zh'],
-      german:    ['da', 'de', 'en', 'es', 'fi', 'el', 'he', 'hu', 'it', 'nl', 'no', 'pt', 'sv'],
-      french:    ['fr', 'tl'],
-      russian:   ['hr', 'ru'],
-      czech:     ['cs'],
-      polish:    ['pl'],
-      icelandic: ['is']
-    */
-
     polyglot.locale("ru");
-
-    // list of the English words and translations
     wordset = {
        "Actions ▼": "Действия ▼", // , comma after each match except the last
        "Active DHT nodes:": "Активные узлы DHT: ",
@@ -1071,6 +1073,7 @@ if(preferredLanguage == "ru"){
        "download_posts_status": "Загружено %{portion} постов", // Downloaded 10/30 posts
        "Enable": "Включено",
        "error": "Ошибка: %{error}",
+       "Error code:": "Код ошибки:",
        "error_connecting_to_daemon": "Ошибка подключения к локальному демону twisterd.",
        "Error in 'createwalletuser' RPC.": "Ошибка при обращении к RPC - при попытке выполнить 'createwalletuser'.",
        "Error in 'importprivkey'": "Ошибка при обращении к RPC - при попытке выполнить 'importprivkey' %{rpc}",
@@ -1085,15 +1088,20 @@ if(preferredLanguage == "ru"){
        "Following": "Читаемых",
        "Following users": "Читаемые пользователи",
        "Force connection to peer:": "Принудительно подключиться к пиру:",
+       "full": "полный",
        "General information": "Основное",
        "Generate blocks (send promoted messages)": "Генерация блоков (отправка рекламных сообщений)",
        "Home": "Главная", // homepage
        "hours": "%{smart_count} час |||| %{smart_count} часов",
+       "If it's between users I follow": "Если упоминание между друзьями",
+       "Images preview": "Отображать изображения",
        "Inline image preview": "Отображать изображения в посте",
+       "Interface": "Интерфейс",
        "Internal error: lastPostId unknown (following yourself may fix!)": "Внутренняя ошибка: lastPostId неизвестен (Попробуйте подписаться сами на себя, это должно помочь!)",
        "Keys":"Клавиши",
        "Known peers:": "Известные пиры: ",
        "Last block is ahead of your computer time, check your clock.": "Последний полученный блок опережает время вашего компьютера, проверьте правильно ли работают часы.",
+       "Media links preview": "Предпросмотр медиа-ссылок",
        "Mentions": "Упоминания",
        "mentions_at": "Упоминания @%{user}",
        "minutes": "%{smart_count} минута |||| %{smart_count} минут",
@@ -1109,6 +1117,7 @@ if(preferredLanguage == "ru"){
        "Number of blocks in block chain:": "Количество блоков в цепочке: ",
        "Number of CPUs to use": "Сколько использовать ядер процессора",
        "Only alphanumeric and underscore allowed.": "Разрешены только латинские буквы, цифры и подчеркивания.",
+       "Only if I'm in": "Если меня упомянули",
        "Options": "Опции",
        "peer address": "адрес пира",
        "Private": "Приватный",
@@ -1117,8 +1126,11 @@ if(preferredLanguage == "ru"){
        "post": "отправить", // verb - button to post a message
        "Post to promote:": "Рекламное сообщение: ",
        "Posts": "Посты",
+       "Posts that begins with another user's @username": "Посты которые начинаются с @username другого пользователя",
+       "Preview size": "Размер области предпросмотра",
        "Promoted posts are needed to run the network infrastructure. If you want to help, start generating blocks and advertise. [en]": "Рекламные сообщения нужны для того, чтобы поддерживать инфраструктуру сети. Если вы хотите помочь, то включите генерацию блоков и распространяйте информацию о сети. [ru]",
        "propagating_nickname": "Распространяю информацию о регистрации %{username} в сеть...",
+       "Proxy for images preview": "Прокси для предпросмотра изображений",
        "Public": "Публичный",
        "Refresh": "Обновить",
        "retransmit_this": "Перепостить данное сообщение своим подписчикам?",
@@ -1126,6 +1138,8 @@ if(preferredLanguage == "ru"){
        "Reply...": "Ответить...",
        "reply_to": "Ответить %{fullname}",
        "Retransmit": "Перепостить",
+       "retransmitted by": "перепостил",
+       "retransmitted your message": "перепостил ваше сообщение",
        "Retransmits": "Репосты",
        "twisted again by": "Перепостил ",
        "search": "поиск",
@@ -1136,8 +1150,11 @@ if(preferredLanguage == "ru"){
        "Sent Direct Message": "Отправить личное сообщение",
        "Sent Post to @": "Отправить сообщение для @",      
        "Setup account": "Настроить аккаунт",
-       "Sound notifications": "Звуковые уведомления",
+       "short": "компактный",
+       "Show all": "Показывать все",
        "Show QR code":"Показать QR код",
+       "Sound notifications": "Звуковые уведомления",
+       "Sorry, YouTube retrieve an error with message:":"К сожалению YouTube вернул ошибку с сообщением:",
        "switch_to_network": "Локальный демон не подключен к сети или\n" +
                  "цепочка блоков устарела. Если вы останитесь на этой странице\n" +
                  "ваши действия могут быть не выполнены.\n" +
@@ -1167,8 +1184,10 @@ if(preferredLanguage == "ru"){
        "username_undefined": "Имя пользователя не определено, требуется войти.",
        "View": "Просмотреть",
        "View All": "Просмотреть всё",
+       "Vimeo links preview": "Предпросмотр ссылок на Vimeo",
        "Who to Follow": "Кого почитать",
        "Your message was sent!": "Ваше сообщение отправлено!",
+       "Youtube links preview": "Предпросмотр ссылок на YouTube",
        "twister login": "Вход в twister",
        "Existing local users": "Предыдущие аккаунты",
        "Or...": "Или...",
@@ -1791,6 +1810,7 @@ var fixedLabels = [
   ".module h1",
   ".module h2",
   ".module label span",
+  "select option",
 
   // following page
   ".following h2",

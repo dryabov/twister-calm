@@ -187,8 +187,7 @@ function updateHashtagModal(postboard,hashtag) {
     setTimeout( function() {updateHashtagModal(postboard,hashtag);}, 5000);
 }
 
-function openMentionsModal(e)
-{
+function openMentionsModal(e) {
     e.stopPropagation();
     e.preventDefault();
 
@@ -199,10 +198,11 @@ function openMentionsModal(e)
 
     var username;
     var $userInfo = $(this).closest("[data-screen-name]");
-    if( $userInfo.length )
+    if ( $userInfo.length ) {
         username = $userInfo.attr("data-screen-name");
-    else
+    } else {
         username = defaultScreenName;
+    };
 
     var hashtagModalContent = newHashtagModal( username );
     hashtagModalContent.appendTo("." +hashtagModalClass + " .modal-content");
@@ -223,8 +223,7 @@ function newFollowingModal(username) {
     return followingModalContent;
 }
 
-function openFollowingModal(e)
-{
+function openFollowingModal(e) {
     e.stopPropagation();
     e.preventDefault();
 
@@ -296,9 +295,10 @@ var replyInitPopup = function(e, post)
 //abre o menu dropdown de configurações
 var dropDownMenu = function( e )
 {
+    e.stopPropagation();
+    e.preventDefault();
     var $configMenu = $( ".config-menu" );
     $configMenu.slideToggle( "fast" );
-    e.stopPropagation();
 }
 
 //fecha o config menu ao clicar em qualquer lugar da tela
@@ -319,7 +319,7 @@ var postExpandFunction = function( e, postLi )
     var $postsRelated = postLi.find(".related");
 
     var openClass = "open";
-    if( !postLi.hasClass( openClass ) ) {
+    if (!postLi.hasClass(openClass)) {
         originalPost.detach();
         postLi.empty();
         postLi.addClass( openClass );
@@ -338,11 +338,12 @@ var postExpandFunction = function( e, postLi )
         // RTs faces and counter
         requestRTs(originalLi);
 
-        //hed//image preview 
-        postLi.find('.preview-container').css('height', '100%');
-    }
-    else
-    {
+        if ($.Options.getOption('previewSize', 'short') === 'short' && postLi.find('.preview-container')[0].firstChild) {
+
+            var h = postLi.find('.preview-container').children().first().height();
+            postLi.find('.preview-container').animate({'height': h+'px'}, 200);
+        }
+    } else {
         postLi.removeClass( openClass );
         $postInteractionText.text( polyglot.t("Expand") );
 
@@ -353,7 +354,12 @@ var postExpandFunction = function( e, postLi )
             postLi.empty();
             postLi.append(originalPost);
         });
-        postLi.find('.preview-container').css('height', '')
+
+        if ($.Options.getOption('previewSize', 'short') === 'short') {
+            postLi.find('.preview-container').each(function () {
+                if ($(this).html()) $(this).animate({'height': '100px'}, 200);
+            })
+        }
     }
 
     e.stopPropagation();
@@ -488,8 +494,6 @@ var retweetSubmit = function(e)
     closeModal($this);
 }
 
-
-
 function initInterfaceCommon() {
     $( "body" ).on( "click", function(event) { 
         if($(event.target).hasClass('cancel')) closeModal($(this));
@@ -514,5 +518,4 @@ function initInterfaceCommon() {
     $( ".open-hashtag-modal").bind( "click", openHashtagModal );
     $( ".open-following-modal").bind( "click", openFollowingModal );
     $( ".userMenu-connections a").bind( "click", openMentionsModal );
-
 }

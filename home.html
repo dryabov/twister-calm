@@ -27,20 +27,21 @@
     <script src="js/twister_actions.js"></script>
     <script src="js/twister_directmsg.js"></script>
     <script src="js/interface_common.js"></script>
+    <script src="js/franc.js"></script>
     <script src="js/interface_home.js"></script>
     <script src="js/jquery.animate-colors-min.js"></script>
     <script src="js/calm.js"></script>
     <script src="jquery-emotions/jquery.emotions.js"></script>
     <script src="js/sjcl.js"></script>
     <script>
-    $(function(){setInterval("networkUpdate()", 2000); homeIntInit();});
+    $(function(){homeIntInit()});
     </script>
 
     <link rel="icon" type="image/png" href="img/twister_mini.png" />
   </head>
 
   <body>
-    
+
   <!-- MENU SUPERIOR INIT-->
   <nav class="userMenu">
     <ul>
@@ -230,8 +231,8 @@
             <div style="clearfix:both"></div>
             <div class="post-context" style="display: none;">
                 <i class="post-retransmited-icon"></i>
-                <span>twisted again by</span>
-                <a class="post-retransmited-by open-profile-modal" href=""></a>
+                <!-- <span>twisted again by</span>
+                <a class="post-retransmited-by open-profile-modal" href=""></a> -->
             </div>
             <span class="post-expand">Expand</span>
             <!-- elementos de interação com o post que são exibidos no hover -->

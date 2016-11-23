@@ -15,7 +15,10 @@ var InterfaceFunctions = function()
     {
         $( ".wrapper .postboard-news").click(function() {
             requestTimelineUpdate("latest",postsPerRefresh,followingUsers,promotedPostsOnly);});
-        $( ".promoted-posts-only").click(function() {
+        $( ".promoted-posts-only").click(function(e) {
+            e.stopPropagation();
+            e.preventDefault();
+            
             promotedPostsOnly = !promotedPostsOnly;
             $(this).text( promotedPostsOnly ? "Promoted posts" : "Normal posts" );
             $(".postboard h2").animate({backgroundColor: promotedPostsOnly ? '#48577d' : '#768fce'}, 200);
@@ -100,8 +103,21 @@ var InterfaceFunctions = function()
     function updateTrendingHashtags()
     {
         $(".toptrends-list").empty();
-        twisterRpc("gettrendinghashtags", [10],
+        twisterRpc("gettrendinghashtags", [100],
                 function(args, ret) {
+                    var opts = {};
+                        opts.all = $.Options.getOption("trendsFilterAll", true);
+                        opts.lat = $.Options.getOption('trendsFilterLat', false);
+                        opts.cyr = $.Options.getOption('trendsFilterCyr', false);
+                        opts.han = $.Options.getOption('trendsFilterHan', false);
+                        opts.cust = $.Options.getOption('trendsFilterCustom', '');
+
+                    if (opts.all || (!opts.all && !opts.lat && !opts.cyr && !opts.han && opts.cust === '')) {
+                        ret = ret.slice(0, 10);
+                    } else {
+                        ret = filterTrends(ret, opts);
+                    }
+
                     for( var i = 0; i < ret.length; i++ ) {
                         var $li = $("<li>");
                         var hashtagLinkTemplate = $("#hashtag-link-template").clone(true);
@@ -116,6 +132,21 @@ var InterfaceFunctions = function()
                     console.log("Error with gettrendinghashtags. Older twister daemon?");
                 }, {});
         setTimeout(updateTrendingHashtags, 20*60*1000);
+    }
+}
+function filterTrends(ret, opts) {
+    var isEng = function (str) {return franc(str, {whitelist: ['eng','rus','cmn']}) === 'eng'};
+    var isRus = function (str) {return franc(str, {whitelist: ['eng','rus','cmn']}) === 'rus'};
+    var isCmn = function (str) {return franc(str, {whitelist: ['eng','rus','cmn']}) === 'cmn'};
+
+    var filterArr = opts.cust !== '' ? $.Options.getOption('trendsFilterCustom', '').split(',') : [];
+    var newRet = [];
+
+    for (var i = 0; i < ret.length; i++) {
+        if ( (((opts.lat && isEng(ret[i])) || (opts.cyr && isRus(ret[i])) || (opts.han && isCmn(ret[i])) ) && filterArr.indexOf(ret[i]) === -1) || ((!opts.lat && !opts.cyr && !opts.han) && filterArr.indexOf(ret[i]) === -1)) {
+            newRet.push(ret[i]);
+        };
+        if (newRet.length === 10 || i === ret.length-1) return newRet;
     }
 }
 
